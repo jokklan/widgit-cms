@@ -34,6 +34,7 @@ module Widgit
 
       def destroy
         @page.destroy
+        redirect_to admin_pages_path
       end
 
     private

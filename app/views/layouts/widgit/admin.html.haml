@@ -1,0 +1,21 @@
+!!! html
+%html
+  %head
+    %title
+      WidgIt CMS
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
+    = csrf_meta_tag
+    %meta{charset: "utf-8"}
+    %meta{content: "IE=Edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
+    %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", name: "viewport"}
+  %body
+    = navbar do
+      = vertical do
+        = link_to 'Home', admin_root_path
+      = horizontal do
+        = nav class: 'navbar-right' do
+          = link_to 'Profile', admin_root_path
+          = link_to 'Settings', admin_root_path
+    .container
+      = yield
