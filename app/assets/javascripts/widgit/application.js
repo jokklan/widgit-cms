@@ -10,4 +10,10 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree .
+// jQuery
+//= require jquery
+//= require jquery_ujs
+
+// Twitter Bootstrap
+//= require bootstrap
+//= require bootstrap-sprockets
