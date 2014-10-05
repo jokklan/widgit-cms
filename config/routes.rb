@@ -1,7 +1,9 @@
 Widgit::Engine.routes.draw do
-  root 'admin/pages#index'
+  resources :pages, only: [:show]
 
   namespace :admin do
+    root 'pages#index'
+
     resources :pages, except: [:show]
   end
 end
