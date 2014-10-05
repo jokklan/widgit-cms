@@ -1,0 +1,13 @@
+en:
+  widgit:
+    admin:
+      pages:
+        page:
+          show: Show
+          edit: Edit
+          delete: Delete
+          confirm: Are you sure?
+        index:
+          new: New Page
+        form:
+          back: Back

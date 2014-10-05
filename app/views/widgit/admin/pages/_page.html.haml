@@ -1,0 +1,7 @@
+%tr
+  %td= page.title
+  %td
+    .btn-group.pull-right
+      = link_to icon(:eye), page, title: t('.show'), class: 'btn btn-link', data: { toggle: 'tooltip', container: 'body' }
+      = link_to icon(:pencil), edit_admin_page_path(page), class: 'btn btn-link', title: t('.edit'), data: { toggle: 'tooltip', container: 'body' }
+      = link_to icon(:times), admin_page_path(page), method: 'DELETE', title: t('.delete'), class: 'btn btn-link', data: { toggle: 'tooltip', container: 'body', confirm: t('.confirm') }
