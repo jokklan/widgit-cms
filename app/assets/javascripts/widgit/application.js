@@ -12,8 +12,14 @@
 //
 // jQuery
 //= require jquery
-//= require jquery_ujs
 
 // Twitter Bootstrap
 //= require bootstrap
 //= require bootstrap-sprockets
+
+// Rails
+//= require jquery_ujs
+//= require turbolinks
+
+// Modules
+//= require widgit/modules/tooltips
