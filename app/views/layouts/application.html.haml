@@ -10,12 +10,5 @@
     %meta{content: "IE=Edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
     %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", name: "viewport"}
   %body
-    = navbar do
-      = vertical do
-        = link_to 'Home', root_path
-      = horizontal do
-        = nav class: 'navbar-right' do
-          = link_to 'Profile', root_path
-          = link_to 'Settings', root_path
     .container
       = yield
