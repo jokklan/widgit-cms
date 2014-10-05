@@ -1,0 +1,13 @@
+.row
+  .col-xs-12
+    %table.table
+      %thead
+        %tr
+          %th= Widgit::Page.human_attribute_name(:title)
+      %tbody
+        - @pages.each do |page|
+          %tr
+            %td= page.title
+.row
+  .col-xs-12
+    = link_to t('.new'), new_admin_page_path, class: 'btn btn-primary'

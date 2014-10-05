@@ -1,0 +1,8 @@
+.row
+  .col-xs-12
+    = form_for page, url: admin_pages_path, layout: :basic do |f|
+      = f.text_field :title
+      = f.submit
+.row
+  .col-xs-12
+    = link_to t('.back'), admin_pages_path, class: 'btn btn-primary'
