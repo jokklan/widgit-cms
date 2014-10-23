@@ -48,4 +48,7 @@ Gem::Specification.new do |s|
 
   # Use postgresql as the database for Active Record
   s.add_dependency 'apotomo', '~> 1.3.0'
+
+  # jQuery UI for Rails assets pipeline
+  s.add_dependency 'jquery-ui-rails', '~> 5.0.2'
 end
