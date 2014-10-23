@@ -10,5 +10,17 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree .
-//= require widgit
+// jQuery
+//= require jquery
+//= require jquery-ui
+
+// Twitter Bootstrap
+//= require bootstrap
+//= require bootstrap-sprockets
+
+// Rails
+//= require jquery_ujs
+//= require turbolinks
+
+// Modules
+//= require widgit/modules/tooltips
