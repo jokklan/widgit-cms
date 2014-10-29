@@ -1,2 +1,4 @@
 .col-xs-12
-  = raw @widget.text
+  %span{ data: { editor: 'text', id: @widget.id } }
+    = raw @widget.text
+
