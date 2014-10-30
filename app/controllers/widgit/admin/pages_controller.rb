@@ -25,10 +25,13 @@ module Widgit
       end
 
       def update
-        if @page.update(page_params)
-          redirect_to edit_admin_page_path(@page)
-        else
-          render 'edit'
+        respond_to do |format|
+          if @page.update(page_params)
+            format.html { redirect_to edit_admin_page_path(@page) }
+            format.json { render nothing: true }
+          else
+            format.json { raise @page.errors.inspect }
+          end
         end
       end
 
@@ -44,7 +47,7 @@ module Widgit
       end
 
       def page_params
-        params.require(:page).permit(:title)
+        params.require(:page).permit(:title, widgets_attributes: [:id, :text])
       end
     end
   end

@@ -19,8 +19,9 @@ class TextEditor
       @update()
 
   update: ->
-    window.Editor.store(@id, {
-      text: $.trim(@$el.html())
+    window.Editor.store({
+      text: $.trim(@$el.html()),
+      id: @id
     })
 
 # PLUGIN DEFINITION

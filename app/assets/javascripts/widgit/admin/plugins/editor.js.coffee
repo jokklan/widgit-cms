@@ -3,19 +3,18 @@ $ = jQuery
 
 # CLASS DEFINITION
 Editor = {
-  dataStore: {}
+  dataStore: []
   save: ->
     $.ajax(
       url: '/admin/pages/1',
       method: 'PATCH',
       dataType: 'json',
-      data: { widget_group_attributes: @dataStore }
+      data: { page: { widgets_attributes: @dataStore } }
     ).done ->
       alert("DONE")
-  store: (id, data)->
-    @dataStore[id] = data
+  store: (data)->
+    @dataStore.push(data)
 }
-
 
 # DATA-API
 window.Editor = Editor
