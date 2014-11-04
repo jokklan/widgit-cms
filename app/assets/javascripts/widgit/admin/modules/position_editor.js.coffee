@@ -2,32 +2,25 @@
 $ = jQuery
 
 # CLASS DEFINITION
-class PositionEditor
+class PositionEditor extends BaseModule
   reordering: false
 
-  constructor: (el, options) ->
-    @options = $.extend({}, @defaults, options)
-    @$widgetGroupsContainer = $(el)
+  refresh: (options) ->
+    @$widgetGroupsContainer = $('[data-editor="position"]')
     @$widgetsContainers = $('[data-type="widget_group"]')
     @$sortableContainers = @$widgetsContainers.add(@$widgetGroupsContainer)
     @$sortables = $('[data-sortable="item"]')
 
-    @init()
-
   init: (echo) ->
+    super()
+
     @$widgetGroupsContainer.sortable
       items: '> [data-sortable="item"]'
-      placeholder: 'draggable-placeholder'
-      forcePlaceholderSize: true
       disabled: true
     @$widgetsContainers.sortable
       connectWith: @$widgetsContainers
-      # placeholder: 'draggable-placeholder'
       items: '> [data-sortable="item"]'
-      # forcePlaceholderSize: true
       disabled: true
-
-    console.log @$widgetsContainers.sortable("option", "placeholder")
 
   toggle: ->
     if @reordering
@@ -61,17 +54,6 @@ class PositionEditor
       if groupId
         window.pageForm["add#{type}"](id, 'widget_group_id', groupId)
 
-# PLUGIN DEFINITION
-$.fn.extend positioneditor: (option, args...) ->
-  @each ->
-    $this = $(this)
-    data = $this.data('positioneditor')
-
-    if !data
-      $this.data 'positioneditor', (data = new PositionEditor(this, option))
-    if typeof option == 'string'
-      data[option].apply(data, args)
-
 # DATA-API
-$(document).on 'page:change', ->
-  $('[data-editor="position"]').positioneditor()
+$(document).ready ->
+  window.positionEditor = new PositionEditor()

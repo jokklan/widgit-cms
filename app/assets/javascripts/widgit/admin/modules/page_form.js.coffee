@@ -1,8 +1,7 @@
-class PageForm
+class PageForm extends BaseModule
   data: {}
 
-  constructor: (options) ->
-    @options = $.extend({}, options)
+  refresh: ->
     @id = $('body').data('id')
 
   submit: ->
@@ -27,5 +26,5 @@ class PageForm
 
 
 # DATA-API
-$(document).on 'page:change', ->
+$(document).ready ->
   window.pageForm = new PageForm()
