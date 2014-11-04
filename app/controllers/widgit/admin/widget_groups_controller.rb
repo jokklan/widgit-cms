@@ -1,9 +1,7 @@
 module Widgit
   module Admin
     class WidgetGroupsController < Admin::BaseController
-      has_widgets do |root|
-        root << widget('widgit/text', page: @page)
-      end
+      include Widgit::HasWidgets
 
       def new
         @widget_group = WidgetGroup.new(widget_group_params)

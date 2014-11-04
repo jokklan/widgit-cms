@@ -1,2 +1,3 @@
-%button.btn.btn-default{ type: "button", data: { toggle: 'add-block' } }
-  Add block
+- Widgit::Widget.types.each do |type|
+  %button.btn.btn-default{ type: "button", data: { toggle: 'add-widget', type: "Widgit::Widgets::#{type}" } }
+    Add #{type}

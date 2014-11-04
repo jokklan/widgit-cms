@@ -13,9 +13,18 @@ module Widgit
     # Callbacks
     before_validation :set_position, on: :create
 
-    # Class Methods
+    # Instance Methods
     def to_json
       attributes.symbolize_keys.compact.slice(:id, :type, :text, :position, :columns).to_json
+    end
+
+    def widget_type
+      type.demodulize.downcase
+    end
+
+    # Class Methods
+    def self.types
+      %w(Header Text)
     end
 
   private

@@ -1,8 +1,6 @@
 module Widgit
   class PagesController < BaseController
-    has_widgets do |root|
-      root << widget('widgit/text', page: @page)
-    end
+    include Widgit::HasWidgets
 
     def show
       @page = Page.find(params[:id])
