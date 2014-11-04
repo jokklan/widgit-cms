@@ -2,18 +2,28 @@
 $ = jQuery
 
 # CLASS DEFINITION
-Editor = {
+class Editor extends BaseModule
+  init: ->
+    $(document).on 'click', '[data-toggle="save"]', =>
+      @save()
+
+    $(document).on 'click', '[data-toggle="reorder"]', =>
+      @toggleReorder()
+
+    $(document).on 'click', '[data-toggle="add-block"]', =>
+      @addBlock()
+
   save: ->
-    window.pageForm.submit()
+    window.page.save()
+
   toggleReorder: ->
     window.positionEditor.toggle()
-}
 
-# DATA-API
-window.Editor = Editor
+  addBlock: ->
+    $.ajax
+      url: "/admin/widget_groups/new",
+      method: 'GET'
+      data: { widget_group: { widgets_attributes: [{ type: 'Widgit::Widgets::Text', text: '', columns: 12 }] } }
 
-$(document).on 'click', '[data-toggle="save"]', ->
-  Editor.save()
-
-$(document).on 'click', '[data-toggle="reorder"]', ->
-  Editor.toggleReorder()
+$(document).ready ->
+  window.editor = new Editor()

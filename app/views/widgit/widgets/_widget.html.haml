@@ -1,2 +1,2 @@
-%div{ class: "widget col-xs-#{widget.columns}", data: { sortable: 'item', id: widget.id } }
+%div{ class: "widget col-xs-#{widget.columns}", data: { resource: 'widget', attributes: widget.to_json } }
   = render_widget 'widgit/text', :display, widget: widget

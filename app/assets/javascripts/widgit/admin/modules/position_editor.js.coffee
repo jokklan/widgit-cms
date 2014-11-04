@@ -9,17 +9,19 @@ class PositionEditor extends BaseModule
     @$widgetGroupsContainer = $('[data-editor="position"]')
     @$widgetsContainers = $('[data-type="widget_group"]')
     @$sortableContainers = @$widgetsContainers.add(@$widgetGroupsContainer)
-    @$sortables = $('[data-sortable="item"]')
+    @$widgetGroups = $('[data-resource="widget-group"]')
+    @$widgets = $('[data-resource="widget"]')
+    @$sortables = @$widgets.add(@$widgetGroups)
 
   init: (echo) ->
     super()
 
     @$widgetGroupsContainer.sortable
-      items: '> [data-sortable="item"]'
+      items: '> [data-resource="widget-group"]'
       disabled: true
     @$widgetsContainers.sortable
       connectWith: @$widgetsContainers
-      items: '> [data-sortable="item"]'
+      items: '> [data-resource="widget"]'
       disabled: true
 
   toggle: ->
@@ -41,18 +43,18 @@ class PositionEditor extends BaseModule
     @saveItems @$widgetGroupsContainer, 'WidgetGroup'
     @$widgetsContainers.each (index, widget_group)=>
       $widget_group = $(widget_group)
-      @saveItems $widget_group, 'Widget', $widget_group.data('id')
+      @saveItems $widget_group, 'Widget',
 
-  saveItems: ($element, type, groupId) ->
+  saveItems: ($element, type) ->
     items = $element.sortable('instance')._getItemsAsjQuery()
     data = []
 
     items.each (index, item) =>
-      id = $(item).data('id')
-      window.pageForm["add#{type}"](id, 'position', index)
+      $(item).resource('update', 'position', index)
 
-      if groupId
-        window.pageForm["add#{type}"](id, 'widget_group_id', groupId)
+      if widgetGroupId = $element.data('id')
+        $(item).resource('update', 'widget_group_id', widgetGroupId)
+
 
 # DATA-API
 $(document).ready ->

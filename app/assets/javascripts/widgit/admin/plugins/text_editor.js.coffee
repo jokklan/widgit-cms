@@ -2,25 +2,25 @@
 $ = jQuery
 
 # CLASS DEFINITION
-class TextEditor
-
+class TextEditor extends BaseModule
   defaults:
     event: 'hallodeactivated'
 
   constructor: (el, options) ->
     @options = $.extend({}, @defaults, options)
     @$el = $(el)
-    @id = @$el.data('id')
+    @$parent = @$el.closest('[data-resource]')
 
     @init()
 
   init: (echo) ->
+    @$el.hallo()
     @$el.on @options.event, (event) =>
       @update()
 
   update: ->
     value = $.trim @$el.html()
-    window.pageForm.addWidget(@id, 'text', value)
+    @$parent.resource('update', 'text', value)
 
 # PLUGIN DEFINITION
 $.fn.extend texteditor: (option, args...) ->
@@ -34,5 +34,5 @@ $.fn.extend texteditor: (option, args...) ->
       data[option].apply(data, args)
 
 # DATA-API
-$(document).on 'page:change', ->
+$(document).on 'page:update', ->
   $('[data-editor="text"]').texteditor()

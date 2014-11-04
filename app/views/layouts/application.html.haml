@@ -9,7 +9,11 @@
     %meta{charset: "utf-8"}
     %meta{content: "IE=Edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
     %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", name: "viewport"}
-  %body{ data: { resource: @page.class.name, id: @page.id } }
+  %body{ data: { id: @page.id } }
     = render 'header'
-    .container{ data: { editor: 'position' } }
+    .container{ data: { editor: 'position', type: 'page' } }
       = yield
+    .container
+      .row
+        .col-xs-12
+          = render 'bottom'

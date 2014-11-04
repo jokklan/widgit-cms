@@ -5,5 +5,6 @@ Widgit::Engine.routes.draw do
     root 'pages#index'
 
     resources :pages, except: [:show]
+    resources :widget_groups, only: [:new]
   end
 end

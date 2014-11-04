@@ -3,6 +3,7 @@ $ = jQuery
 
 # CLASS DEFINITION
 class @BaseModule
+  defaults: {}
   constructor: (options) ->
     @options = $.extend({}, @defaults, options)
 
@@ -12,6 +13,6 @@ class @BaseModule
 
   init: ->
     @refresh()
-    $(document).on 'page:change', =>
+    $(document).on 'page:update', =>
       @refresh()
 

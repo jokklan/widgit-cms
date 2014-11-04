@@ -6,6 +6,5 @@ module Widgit
 
     # Attributes
     accepts_nested_attributes_for :widget_groups
-    accepts_nested_attributes_for :widgets
   end
 end
