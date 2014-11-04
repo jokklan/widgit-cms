@@ -7,19 +7,27 @@ class PositionEditor
 
   constructor: (el, options) ->
     @options = $.extend({}, @defaults, options)
-    @$el = $(el)
-    @$widgetGroups = @$el.find('[data-type="widget_group"]')
+    @$widgetGroupsContainer = $(el)
+    @$widgetsContainers = $('[data-type="widget_group"]')
+    @$sortableContainers = @$widgetsContainers.add(@$widgetGroupsContainer)
+    @$sortables = $('[data-sortable="item"]')
 
     @init()
 
   init: (echo) ->
-    @$el.sortable
+    @$widgetGroupsContainer.sortable
       items: '> [data-sortable="item"]'
+      placeholder: 'draggable-placeholder'
+      forcePlaceholderSize: true
       disabled: true
-    @$widgetGroups.sortable
-      connectWith: @$widgetGroups
+    @$widgetsContainers.sortable
+      connectWith: @$widgetsContainers
+      # placeholder: 'draggable-placeholder'
       items: '> [data-sortable="item"]'
+      # forcePlaceholderSize: true
       disabled: true
+
+    console.log @$widgetsContainers.sortable("option", "placeholder")
 
   toggle: ->
     if @reordering
@@ -30,20 +38,21 @@ class PositionEditor
       @reordering = true
 
   startReorder: ->
-    @$el.sortable('enable')
-    @$widgetGroups.sortable('enable')
+    @$sortableContainers.sortable('enable')
+    @$sortables.addClass('draggable')
 
   stopReorder: ->
-    @saveItems @$el, 'WidgetGroup'
-    @$widgetGroups.each (index, widget_group)=>
+    @$sortables.removeClass('draggable')
+    @$sortableContainers.sortable('disable')
+
+    @saveItems @$widgetGroupsContainer, 'WidgetGroup'
+    @$widgetsContainers.each (index, widget_group)=>
       $widget_group = $(widget_group)
       @saveItems $widget_group, 'Widget', $widget_group.data('id')
 
   saveItems: ($element, type, groupId) ->
     items = $element.sortable('instance')._getItemsAsjQuery()
     data = []
-
-    $element.sortable('disable')
 
     items.each (index, item) =>
       id = $(item).data('id')
