@@ -19,10 +19,8 @@ class TextEditor
       @update()
 
   update: ->
-    window.Editor.store({
-      text: $.trim(@$el.html()),
-      id: @id
-    })
+    value = $.trim @$el.html()
+    window.pageForm.addWidget(@id, 'text', value)
 
 # PLUGIN DEFINITION
 $.fn.extend texteditor: (option, args...) ->
