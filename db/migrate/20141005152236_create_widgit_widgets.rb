@@ -4,6 +4,7 @@ class CreateWidgitWidgets < ActiveRecord::Migration
       t.references :widget_group, index: true
       t.string :type, null: false
       t.integer :columns, null: false
+      t.integer :position, null: false
       t.hstore :properties
 
       t.timestamps null: false

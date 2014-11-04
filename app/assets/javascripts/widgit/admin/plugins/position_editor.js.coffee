@@ -8,6 +8,7 @@ class PositionEditor
   constructor: (el, options) ->
     @options = $.extend({}, @defaults, options)
     @$el = $(el)
+    @$widgetGroups = @$el.find('[data-type="widget_group"]')
 
     @init()
 
@@ -15,9 +16,12 @@ class PositionEditor
     @$el.sortable
       items: '> [data-sortable="item"]'
       disabled: true
+    @$widgetGroups.sortable
+      items: '> [data-sortable="item"]'
+      disabled: true
 
-  update: (id, position)->
-    window.pageForm.addWidgetGroup(id, 'position', position)
+  update: (id, position, type)->
+    window.pageForm["add#{type}"](id, 'position', position)
 
   toggle: ->
     if @reordering
@@ -29,16 +33,22 @@ class PositionEditor
 
   startReorder: ->
     @$el.sortable('enable')
+    @$widgetGroups.sortable('enable')
 
   stopReorder: ->
-    items = @$el.sortable('instance')._getItemsAsjQuery()
+    @saveItems @$el, 'WidgetGroup'
+    @$widgetGroups.each (index, widget_group)=>
+      @saveItems $(widget_group), 'Widget'
+
+  saveItems: ($element, type) ->
+    items = $element.sortable('instance')._getItemsAsjQuery()
     data = []
 
-    @$el.sortable('disable')
+    $element.sortable('disable')
 
     items.each (index, item) =>
       id = $(item).data('id')
-      @update(id, index)
+      @update(id, index, type)
 
 # PLUGIN DEFINITION
 $.fn.extend positioneditor: (option, args...) ->

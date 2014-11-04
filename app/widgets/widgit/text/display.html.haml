@@ -1,4 +1,4 @@
-.col-xs-12
+%div{ class: "col-xs-#{@widget.columns}", data: { sortable: 'item', id: @widget.id } }
   %span{ data: { editor: 'text', id: @widget.id } }
     = raw @widget.text
 

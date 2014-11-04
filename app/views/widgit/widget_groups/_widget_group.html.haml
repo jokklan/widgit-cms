@@ -1,3 +1,2 @@
-.row.well{ id: dom_id(widget_group), data: { sortable: 'item', id: widget_group.id, attribute: "widget_groups_attributes[#{widget_group.id}]" } }
-  = "POSITION: #{widget_group.position} !"
+.row.well{ id: dom_id(widget_group), data: { type: 'widget_group', sortable: 'item', id: widget_group.id, attribute: "widget_groups_attributes[#{widget_group.id}]" } }
   = render partial: 'widgit/widgets/widget', collection: widget_group.widgets

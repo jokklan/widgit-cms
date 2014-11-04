@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20141005152236) do
     t.integer  "widget_group_id"
     t.string   "type",            null: false
     t.integer  "columns",         null: false
+    t.integer  "position",        null: false
     t.hstore   "properties"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
