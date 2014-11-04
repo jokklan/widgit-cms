@@ -25,7 +25,7 @@ class Editor extends BaseModule
     $.ajax
       url: "/admin/widget_groups/new",
       method: 'GET'
-      data: { widget_group: { widgets_attributes: [{ type: type, text: '', columns: 12 }] } }
+      data: { widget_group: { widgets_attributes: [{ type: type, columns: 12 }] } }
 
 $(document).ready ->
   window.editor = new Editor()
