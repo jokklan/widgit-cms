@@ -17,11 +17,9 @@ class PositionEditor
       items: '> [data-sortable="item"]'
       disabled: true
     @$widgetGroups.sortable
+      connectWith: @$widgetGroups
       items: '> [data-sortable="item"]'
       disabled: true
-
-  update: (id, position, type)->
-    window.pageForm["add#{type}"](id, 'position', position)
 
   toggle: ->
     if @reordering
@@ -38,9 +36,10 @@ class PositionEditor
   stopReorder: ->
     @saveItems @$el, 'WidgetGroup'
     @$widgetGroups.each (index, widget_group)=>
-      @saveItems $(widget_group), 'Widget'
+      $widget_group = $(widget_group)
+      @saveItems $widget_group, 'Widget', $widget_group.data('id')
 
-  saveItems: ($element, type) ->
+  saveItems: ($element, type, groupId) ->
     items = $element.sortable('instance')._getItemsAsjQuery()
     data = []
 
@@ -48,7 +47,10 @@ class PositionEditor
 
     items.each (index, item) =>
       id = $(item).data('id')
-      @update(id, index, type)
+      window.pageForm["add#{type}"](id, 'position', index)
+
+      if groupId
+        window.pageForm["add#{type}"](id, 'widget_group_id', groupId)
 
 # PLUGIN DEFINITION
 $.fn.extend positioneditor: (option, args...) ->
