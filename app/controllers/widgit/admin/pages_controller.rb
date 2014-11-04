@@ -1,6 +1,6 @@
 module Widgit
   module Admin
-    class PagesController < BaseController
+    class PagesController < Admin::BaseController
       before_action :find_page, only: [:edit, :update, :destroy]
 
       def index
