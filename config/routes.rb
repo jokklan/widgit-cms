@@ -6,5 +6,6 @@ Widgit::Engine.routes.draw do
 
     resources :pages, except: [:show]
     resources :widget_groups, only: [:new]
+    resources :images, only: [:create]
   end
 end
