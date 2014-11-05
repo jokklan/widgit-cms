@@ -1,27 +1,23 @@
 'use strict'
 $ = jQuery
 
+Dropzone.autoDiscover = false;
+
 # CLASS DEFINITION
 class UploadEditor extends BaseModule
-  defaults:
-    event: 'hallodeactivated'
-
   constructor: (el, options) ->
     @options = $.extend({}, @defaults, options)
     @$el = $(el)
-    @$parent = @$el.closest('[data-resource]')
+    @$dialog = $('[data-init="dialog"]')
 
     @init()
 
-  init: (echo) ->
+  init: () ->
     @$el.dropzone
       url: '/admin/images'
       paramName: 'image[image]'
-      success: (file, response, xhr) =>
-        @update(response.id)
-
-  update: (image_id)->
-    @$parent.resource('update', 'image_id', image_id)
+      sending: (file, xhr, formData, kage) ->
+        $.rails.CSRFProtection(xhr)
 
 # PLUGIN DEFINITION
 $.fn.extend uploadeditor: (option, args...) ->
@@ -36,5 +32,5 @@ $.fn.extend uploadeditor: (option, args...) ->
 
 # DATA-API
 $(document).on 'page:update', ->
-  $('[data-editor="image"]').uploadeditor()
+  $('[data-editor="upload"]').uploadeditor()
 

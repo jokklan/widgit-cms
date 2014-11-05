@@ -5,5 +5,14 @@ module Widgit
 
     # Attributes
     delegate :url, to: :image
+
+    # Instance Methods
+    def to_json
+      {
+        id: id,
+        url: url,
+        name: image.file.filename
+      }.to_json
+    end
   end
 end

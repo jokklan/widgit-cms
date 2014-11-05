@@ -3,8 +3,8 @@
 //= require jquery-ui
 
 // Twitter Bootstrap
-// require bootstrap
-// require bootstrap-sprockets
+//= require bootstrap
+//= require bootstrap-sprockets
 
 // Rails
 //= require jquery_ujs

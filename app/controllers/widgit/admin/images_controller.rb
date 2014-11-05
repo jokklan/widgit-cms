@@ -6,7 +6,7 @@ module Widgit
 
         respond_to do |format|
           if @image.save
-            format.json { render json: @image }
+            format.json { render json: @image.to_json }
           else
             format.json { render nothing: true }
           end
