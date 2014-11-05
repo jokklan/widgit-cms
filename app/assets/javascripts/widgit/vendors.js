@@ -12,3 +12,5 @@
 
 //= require rangy/rangy-core
 //= require hallo
+
+//= require dropzone
