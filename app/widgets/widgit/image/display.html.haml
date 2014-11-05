@@ -1,0 +1,6 @@
+%span{ data: { editor: 'image' } }
+  - if @widget.image
+    = image_tag @widget.image.url
+  - else
+    .dropzone
+

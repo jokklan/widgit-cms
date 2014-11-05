@@ -24,7 +24,7 @@ module Widgit
 
     # Class Methods
     def self.types
-      %w(Header Text)
+      %w(header text image)
     end
 
   private

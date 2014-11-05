@@ -4,8 +4,9 @@ module Widgit
 
     included do
       has_widgets do |root|
-        root << widget('widgit/text', page: @page)
-        root << widget('widgit/header', page: @page)
+        Widgit::Widget.types.each do |type|
+          root << widget("widgit/#{type}", page: @page)
+        end
       end
     end
   end
