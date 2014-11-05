@@ -2,24 +2,21 @@
 $ = jQuery
 
 # CLASS DEFINITION
-class TextEditor extends BaseModule
+class TextEditor extends BasePlugin
   defaults:
     event: 'hallodeactivated'
 
   constructor: (el, options) ->
-    @options = $.extend({}, @defaults, options)
-    @$el = $(el)
-    @$parent = @$el.closest('[data-resource]')
-
-    @init()
+    super(el, options)
+    @$parent = @$this.closest('[data-resource]')
 
   init: (echo) ->
-    @$el.hallo()
-    @$el.on @options.event, (event) =>
+    @$this.hallo()
+    @$this.on @options.event, (event) =>
       @update()
 
   update: ->
-    value = $.trim @$el.html()
+    value = $.trim @$this.html()
     @$parent.resource('update', 'text', value)
 
 # PLUGIN DEFINITION
@@ -36,3 +33,9 @@ $.fn.extend texteditor: (option, args...) ->
 # DATA-API
 $(document).on 'page:update', ->
   $('[data-editor="text"]').texteditor()
+
+# DATA-API
+BasePlugin.addPlugin
+  name: 'texteditor'
+  klass: TextEditor
+  selector: '[data-editor="text"]'

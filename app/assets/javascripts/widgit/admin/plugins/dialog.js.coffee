@@ -4,12 +4,12 @@ $ = jQuery
 Dropzone.autoDiscover = false;
 
 # CLASS DEFINITION
-class Dialog extends BaseModule
+class Dialog extends BasePlugin
   constructor: (el, options) ->
-    @options = $.extend({}, @defaults, options)
     @$modal = $(el)
     @callback = ->
-    @init()
+
+    super(el, options)
 
   init: ->
     $(document).on 'click', '[data-dialog="link"]', (event)=>
@@ -28,18 +28,8 @@ class Dialog extends BaseModule
   close: ->
     @$modal.modal('hide')
 
-# PLUGIN DEFINITION
-$.fn.extend dialog: (option, args...) ->
-  @each ->
-    $this = $(this)
-    data = $this.data('widgit.dialog')
-
-    if !data
-      $this.data 'widgit.dialog', (data = new Dialog(this, option))
-    if typeof option == 'string'
-      data[option].apply(data, args)
-
 # DATA-API
-$(document).on 'page:update', ->
-  $('[data-init="dialog"]').dialog()
-
+BasePlugin.addPlugin
+  name: 'dialog'
+  klass: Dialog
+  selector: '[data-init="dialog"]'
