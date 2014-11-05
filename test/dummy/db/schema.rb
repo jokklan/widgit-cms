@@ -11,11 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141005152236) do
+ActiveRecord::Schema.define(version: 20141104234026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "widgit_images", force: true do |t|
+    t.string   "image",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "widgit_pages", force: true do |t|
     t.string   "title"
