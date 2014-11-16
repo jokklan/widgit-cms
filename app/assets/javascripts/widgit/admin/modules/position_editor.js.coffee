@@ -6,22 +6,22 @@ class PositionEditor extends BaseModule
   reordering: false
 
   refresh: (options) ->
-    @$widgetGroupsContainer = $('[data-editor="position"]')
-    @$widgetsContainers = $('[data-type="block"]')
-    @$sortableContainers = @$widgetsContainers.add(@$widgetGroupsContainer)
-    @$widgetGroups = $('[data-resource="block"]')
-    @$widgets = $('[data-resource="widget"]')
-    @$sortables = @$widgets.add(@$widgetGroups)
+    @$blocksContainer = $('[data-editor="position"]')
+    @$componentsContainers = $('[data-type="block"]')
+    @$sortableContainers = @$componentsContainers.add(@$blocksContainer)
+    @$blocks = $('[data-resource="block"]')
+    @$components = $('[data-resource="component"]')
+    @$sortables = @$components.add(@$blocks)
 
   init: (echo) ->
     super()
 
-    @$widgetGroupsContainer.sortable
+    @$blocksContainer.sortable
       items: '> [data-resource="block"]'
       disabled: true
-    @$widgetsContainers.sortable
-      connectWith: @$widgetsContainers
-      items: '> [data-resource="widget"]'
+    @$componentsContainers.sortable
+      connectWith: @$componentsContainers
+      items: '> [data-resource="component"]'
       disabled: true
 
   toggle: ->
@@ -40,10 +40,10 @@ class PositionEditor extends BaseModule
     @$sortables.removeClass('draggable')
     @$sortableContainers.sortable('disable')
 
-    @saveItems @$widgetGroupsContainer, 'Block'
-    @$widgetsContainers.each (index, block)=>
+    @saveItems @$blocksContainer, 'Block'
+    @$componentsContainers.each (index, block)=>
       $block = $(block)
-      @saveItems $block, 'Widget',
+      @saveItems $block, 'Component',
 
   saveItems: ($element, type) ->
     items = $element.sortable('instance')._getItemsAsjQuery()
@@ -52,8 +52,8 @@ class PositionEditor extends BaseModule
     items.each (index, item) =>
       $(item).resource('update', 'position', index)
 
-      if widgetGroupId = $element.data('id')
-        $(item).resource('update', 'block_id', widgetGroupId)
+      if blockId = $element.data('id')
+        $(item).resource('update', 'block_id', blockId)
 
 
 # DATA-API

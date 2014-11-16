@@ -1,7 +1,7 @@
 module Widgit
-  class TextWidget < Apotomo::Widget
+  class TextComponent < Apotomo::Widget
     def display(params)
-      @widget = params[:widget]
+      @component = params[:component]
       render
     end
   end

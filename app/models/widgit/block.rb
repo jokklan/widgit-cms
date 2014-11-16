@@ -4,11 +4,11 @@ module Widgit
     default_scope { order(:position) }
 
     # Associations
-    belongs_to :widgetable, polymorphic: true
-    has_many :widgets, inverse_of: :block
+    belongs_to :componentable, polymorphic: true
+    has_many :components, inverse_of: :block
 
     # Attributes
-    accepts_nested_attributes_for :widgets
+    accepts_nested_attributes_for :components
 
     # Validations
     validates :position, presence: true
@@ -25,7 +25,7 @@ module Widgit
 
     def set_position
       self.position ||= begin
-        if widgetable && (last_block = widgetable.blocks.last)
+        if componentable && (last_block = componentable.blocks.last)
           last_block.position.to_i + 1
         else
           0

@@ -1,10 +1,10 @@
 module Widgit
-  class Widget < ActiveRecord::Base
+  class Component < ActiveRecord::Base
     # Configuration
     default_scope { order(:position) }
 
     # Association
-    belongs_to :block, inverse_of: :widgets
+    belongs_to :block, inverse_of: :components
     has_one :page, through: :block
 
     # Validations
@@ -18,7 +18,7 @@ module Widgit
       attributes.symbolize_keys.compact.slice(:id, :type, :text, :position, :columns).to_json
     end
 
-    def widget_type
+    def component_type
       type.demodulize.downcase
     end
 
@@ -32,8 +32,8 @@ module Widgit
     # Private Instance Methods
     def set_position
       self.position ||= begin
-        if block && (last_widget = block.widgets.last)
-          last_widget.position.to_i + 1
+        if block && (last_component = block.components.last)
+          last_component.position.to_i + 1
         else
           0
         end

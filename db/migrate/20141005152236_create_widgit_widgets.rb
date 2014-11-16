@@ -1,6 +1,6 @@
-class CreateWidgitWidgets < ActiveRecord::Migration
+class CreateWidgitComponents < ActiveRecord::Migration
   def change
-    create_table :widgit_widgets do |t|
+    create_table :widgit_components do |t|
       t.references :block, index: true
       t.string :type, null: false
       t.integer :columns, null: false

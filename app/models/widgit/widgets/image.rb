@@ -1,6 +1,6 @@
 module Widgit
-  module Widgets
-    class Image < Widget
+  module Components
+    class Image < Component
       # Extensions
       hstore_accessor :properties, { image_id: :integer }
 

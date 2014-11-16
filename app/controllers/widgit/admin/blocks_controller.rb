@@ -1,7 +1,7 @@
 module Widgit
   module Admin
     class BlocksController < Admin::BaseController
-      include Widgit::HasWidgets
+      include Widgit::HasComponents
 
       def new
         @block = Block.new(block_params)
@@ -14,7 +14,7 @@ module Widgit
     private
 
       def block_params
-        params.require(:block).permit(widgets_attributes: [:type, :text, :position, :columns])
+        params.require(:block).permit(components_attributes: [:type, :text, :position, :columns])
       end
     end
   end

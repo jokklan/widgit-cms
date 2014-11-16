@@ -1,5 +1,5 @@
 module Widgit
-  module Widgets
+  module Components
     class Header < Text
     end
   end

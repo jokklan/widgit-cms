@@ -1,10 +1,10 @@
 module Widgit
-  module HasWidgets
+  module HasComponents
     extend ActiveSupport::Concern
 
     included do
       has_widgets do |root|
-        Widgit::Widget.types.each do |type|
+        Widgit::Component.types.each do |type|
           root << widget("widgit/#{type}", page: @page)
         end
       end

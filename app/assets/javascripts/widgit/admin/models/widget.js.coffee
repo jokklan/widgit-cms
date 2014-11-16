@@ -2,6 +2,6 @@
 $ = jQuery
 
 # CLASS DEFINITION
-class Widget extends Resource
+class Component extends Resource
 
-Resource.addType('widget', Widget)
+Resource.addType('component', Component)
