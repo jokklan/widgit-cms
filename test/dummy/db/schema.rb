@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20141116161829) do
   add_index "widgit_blocks", ["buildable_id", "buildable_type"], name: "index_widgit_blocks_on_buildable_id_and_buildable_type", using: :btree
 
   create_table "widgit_columns", force: true do |t|
-    t.integer  "block_id"
-    t.integer  "tile_id"
+    t.integer  "block_id",   null: false
+    t.integer  "tile_id",    null: false
     t.integer  "columns",    null: false
     t.integer  "position",   null: false
     t.datetime "created_at"

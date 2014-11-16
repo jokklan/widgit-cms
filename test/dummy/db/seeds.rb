@@ -1,26 +1,29 @@
 ActiveRecord::Base.transaction do
-  page = Widgit::Page.create!(title: 'Test')
+  Widgit::Page.create!(title: 'Test').tap do |page|
+    page.blocks.create! do |block|
+      block.columns.build(columns: 12) do |column|
+        column.create_tile!.components.create!(type: "Widgit::Components::Text", text: "Some text")
+      end
+    end
 
-  block = page.blocks.create!
-  column = block.columns.create(columns: 12)
-  tile = column.create_tile!
-  tile.components.create!(type: "Widgit::Components::Text", text: "Some text")
+    page.blocks.create! do |block|
+      block.columns.build(columns: 6) do |column|
+        column.create_tile!.components.create!(type: "Widgit::Components::Text", text: "Some text")
+      end
 
-  block = page.blocks.create!
-  column = block.columns.create(columns: 6)
-  tile = column.create_tile!
-  tile.components.create!(type: "Widgit::Components::Text", text: "Some text")
+      block.columns.build(columns: 6) do |column|
+        column.create_tile!.components.create!(type: "Widgit::Components::Text", text: "Some text")
+      end
+    end
 
-  column = block.columns.create(columns: 6)
-  tile = column.create_tile!
-  tile.components.create!(type: "Widgit::Components::Text", text: "Some text")
+    page.blocks.create! do |block|
+      block.columns.build(columns: 4) do |column|
+        column.create_tile!.components.create!(type: "Widgit::Components::Text", text: "Some text")
+      end
 
-  block = page.blocks.create!
-  column = block.columns.create(columns: 4)
-  tile = column.create_tile!
-  tile.components.create!(type: "Widgit::Components::Text", text: "Some text")
-
-  column = block.columns.create(columns: 6)
-  tile = column.create_tile!
-  tile.components.create!(type: "Widgit::Components::Text", text: "Some text")
+      block.columns.build(columns: 6) do |column|
+        column.create_tile!.components.create!(type: "Widgit::Components::Text", text: "Some text")
+      end
+    end
+  end
 end
