@@ -1,16 +1,15 @@
 module Widgit
   class Component < ActiveRecord::Base
-    # Configuration
-    default_scope { order(:position) }
+    include Positionable
+
+    # Extensions
+    positionable :tile
 
     # Association
     belongs_to :tile, inverse_of: :components
 
     # Validations
-    validates :tile, :type, :position, presence: true
-
-    # Callbacks
-    before_validation :set_position, on: :create
+    validates :tile, :type, presence: true
 
     # Instance Methods
     def to_json
@@ -24,19 +23,6 @@ module Widgit
     # Class Methods
     def self.types
       %w(header text image)
-    end
-
-  private
-
-    # Private Instance Methods
-    def set_position
-      self.position ||= begin
-        if tile && (last_component = tile.components.last)
-          last_component.position.to_i + 1
-        else
-          0
-        end
-      end
     end
   end
 end

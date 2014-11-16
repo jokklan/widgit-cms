@@ -1,13 +1,15 @@
 module Widgit
   class Column < ActiveRecord::Base
-    # Configuration
-    default_scope { order(:position) }
+    include Positionable
+
+    # Extensions
+    positionable :block
 
     # Associations
     belongs_to :block, inverse_of: :columns
     belongs_to :tile, inverse_of: :columns
 
     # Validations
-    validates :columns, :position, presence: true
+    validates :columns, presence: true
   end
 end
