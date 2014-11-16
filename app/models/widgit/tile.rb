@@ -1,5 +1,10 @@
 module Widgit
   class Tile < ActiveRecord::Base
+    include Parentable
+
+    # Extensions
+    parentable :components
+
     # Associations
     has_many :columns, inverse_of: :tile, dependent: :destroy
     has_many :blocks, through: :columns
