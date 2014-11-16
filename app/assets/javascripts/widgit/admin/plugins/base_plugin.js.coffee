@@ -14,8 +14,6 @@ class @BasePlugin extends BaseModule
 
     @init()
 
-
-
 initializePlugin = (plugin) ->
   name = plugin.name
   dataNamespace = "widgit.#{name}"
