@@ -3,10 +3,29 @@ body {
 }
 
 .draggable {
-  outline: black dashed thin;
+  outline: #ccc dashed thin;
 }
 
 .widget-group {
   padding-bottom: 5px;
   margin-bottom: 5px;
+}
+
+.widget {
+  padding: $padding-large-vertical;
+
+  border: 1px solid transparent; /* needs to be set so the element dont jump when hovering */
+
+  &:hover {
+    border: 1px solid #e1e1e1;
+    border-radius: 2px;
+  }
+}
+
+.component-image {
+  @extend .pointer;
+}
+
+.component-image {
+  cursor: text;
 }
