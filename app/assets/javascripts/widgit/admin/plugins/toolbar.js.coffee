@@ -10,9 +10,7 @@ class Toolbar extends BasePlugin
     super(el, options)
 
   init: ->
-    super()
-
-    @$editable.on 'mouseenter', (event)=>
+    $(document).on 'mouseenter', '[data-resource="tile"]', (event)=>
       @show(event.currentTarget)
 
     $(document).on 'click', '[data-toggle="add-component"]', (event)=>
@@ -20,9 +18,6 @@ class Toolbar extends BasePlugin
 
     $(document).on 'click', '[data-toggle="remove"]', (event)=>
       @remove()
-
-  refresh: ->
-    @$editable = $('[data-resource="tile"]')
 
   show: (object)->
     @$currentObject = $(object)

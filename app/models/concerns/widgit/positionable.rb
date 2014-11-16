@@ -26,19 +26,20 @@ module Widgit
     end
 
     def positionable_parent
-      public_send(self.class.positionable_parent)
+      public_send(positionable_parent_association)
     end
 
     def positionable_association
-      raise positionable_parent.inspect
-      positionable_parent.public_send(self.class.model_name.element.pluralize)
+      positionable_parent.public_send(positionable_children_association)
     end
 
     module ClassMethods
-      def positionable(parent)
-        attr_accessor :positionable_parent
+      def positionable(parent_association, children_association = nil)
+        class_attribute :positionable_parent_association
+        class_attribute :positionable_children_association
 
-        @positionable_parent = parent.to_sym
+        self.positionable_parent_association = parent_association.to_sym
+        self.positionable_children_association = (children_association || model_name.element.pluralize).to_sym
       end
     end
   end
