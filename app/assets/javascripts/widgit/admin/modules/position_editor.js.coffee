@@ -9,7 +9,7 @@ class PositionEditor extends BaseModule
     @$widgetGroupsContainer = $('[data-editor="position"]')
     @$widgetsContainers = $('[data-type="block"]')
     @$sortableContainers = @$widgetsContainers.add(@$widgetGroupsContainer)
-    @$widgetGroups = $('[data-resource="widget-group"]')
+    @$widgetGroups = $('[data-resource="block"]')
     @$widgets = $('[data-resource="widget"]')
     @$sortables = @$widgets.add(@$widgetGroups)
 
@@ -17,7 +17,7 @@ class PositionEditor extends BaseModule
     super()
 
     @$widgetGroupsContainer.sortable
-      items: '> [data-resource="widget-group"]'
+      items: '> [data-resource="block"]'
       disabled: true
     @$widgetsContainers.sortable
       connectWith: @$widgetsContainers

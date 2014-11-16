@@ -15,7 +15,7 @@ class Page extends BaseModule
 
   data: ->
     {
-      blocks_attributes: $('[data-resource="widget-group"]').map(-> $(this).resource('data')).get()
+      blocks_attributes: $('[data-resource="block"]').map(-> $(this).resource('data')).get()
     }
 
 $(document).ready ->
