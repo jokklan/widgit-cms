@@ -17,6 +17,28 @@ ActiveRecord::Schema.define(version: 20141104234026) do
   enable_extension "plpgsql"
   enable_extension "hstore"
 
+  create_table "widgit_blocks", force: true do |t|
+    t.integer  "componentable_id"
+    t.string   "componentable_type"
+    t.integer  "position",           null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "widgit_blocks", ["componentable_id", "componentable_type"], name: "index_widgit_blocks_on_componentable", using: :btree
+
+  create_table "widgit_components", force: true do |t|
+    t.integer  "block_id"
+    t.string   "type",       null: false
+    t.integer  "columns",    null: false
+    t.integer  "position",   null: false
+    t.hstore   "properties"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "widgit_components", ["block_id"], name: "index_widgit_components_on_block_id", using: :btree
+
   create_table "widgit_images", force: true do |t|
     t.string   "image",      null: false
     t.datetime "created_at"
@@ -28,27 +50,5 @@ ActiveRecord::Schema.define(version: 20141104234026) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "widgit_widget_groups", force: true do |t|
-    t.integer  "widgetable_id"
-    t.string   "widgetable_type"
-    t.integer  "position",        null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "widgit_widget_groups", ["widgetable_id", "widgetable_type"], name: "index_widgit_widget_groups_on_widgetable", using: :btree
-
-  create_table "widgit_widgets", force: true do |t|
-    t.integer  "widget_group_id"
-    t.string   "type",            null: false
-    t.integer  "columns",         null: false
-    t.integer  "position",        null: false
-    t.hstore   "properties"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "widgit_widgets", ["widget_group_id"], name: "index_widgit_widgets_on_widget_group_id", using: :btree
 
 end
