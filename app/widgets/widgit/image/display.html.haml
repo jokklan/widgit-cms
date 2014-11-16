@@ -1,5 +1,6 @@
-.component-image{ data: { editor: 'image' }}
-  - if @component.image
-    = image_tag @component.image.url, class: 'img-responsive'
-  - else
-    Upload image
+.component
+  .component-image{ data: { editor: 'image' }}
+    - if @component.image
+      = image_tag @component.image.url, class: 'img-responsive'
+    - else
+      Upload image

@@ -1,2 +1,2 @@
-%div{ class: "component col-xs-#{component.columns}", data: { resource: 'component', attributes: component.to_json } }
+%div{ class: "component-wrapper col-xs-#{component.columns}", data: { resource: 'component', attributes: component.to_json } }
   = render_widget "widgit/#{component.component_type}", :display, component: component

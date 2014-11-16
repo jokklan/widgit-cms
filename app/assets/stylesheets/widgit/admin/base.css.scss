@@ -1,24 +1,48 @@
 body {
-  padding-top: 50px;
+  padding-top: 70px;
 }
 
 .draggable {
-  outline: #ccc dashed thin;
+  cursor: move;
+
+  &:active {
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+    outline: 0px dashed #e1e1e1;
+  }
+
+  .draggable {
+    outline: 0px;
+    cursor: move;
+
+    &:active {
+      outline: 0px;
+      box-shadow: none;
+    }
+
+    .component {
+      border: 1px dashed #e1e1e1;
+    }
+  }
 }
 
 .block {
-  padding-bottom: 5px;
-  margin-bottom: 5px;
+  padding: 5px 0;
 }
 
-.widget {
-  padding: $padding-large-vertical;
+.ui-sortable-helper {
+  background: #fff;
+}
 
-  border: 1px solid transparent; /* needs to be set so the element dont jump when hovering */
+.component-wrapper {
+  .component {
+    padding: 15px 0;
 
-  &:hover {
-    border: 1px solid #e1e1e1;
-    border-radius: 2px;
+    border: 1px solid transparent; /* needs to be set so the element dont jump when hovering */
+
+    &:hover {
+      border: 1px dashed #e1e1e1;
+      border-radius: 2px;
+    }
   }
 }
 
@@ -26,6 +50,6 @@ body {
   @extend .pointer;
 }
 
-.component-image {
+.component-text {
   cursor: text;
 }
