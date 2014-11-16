@@ -14,8 +14,6 @@ class @BasePlugin extends BaseModule
 
     @init()
 
-
-
 initializePlugin = (plugin) ->
   name = plugin.name
   dataNamespace = "widgit.#{name}"
@@ -31,7 +29,7 @@ initializePlugin = (plugin) ->
       if typeof option == 'string'
         data[option].apply(data, args)
 
-$(document).on 'page:change', ->
+$(document).on 'page:update', ->
   $.each BasePlugin.widgitPlugins, ->
     initializePlugin(this)
     $(this.selector)[this.name]()

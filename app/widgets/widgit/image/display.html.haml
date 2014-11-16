@@ -1,5 +1,5 @@
-%span{ data: { editor: 'image' } }
+%div{ data: { editor: 'image' } }
   - if @widget.image
-    = image_tag @widget.image.url, class: "img-responsive"
+    = image_tag @widget.image.url, class: 'img-responsive'
   - else
     Upload image
