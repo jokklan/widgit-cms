@@ -1,5 +1,5 @@
 module Widgit
-  class ImageComponent < Apotomo::Widget
+  class HeaderWidget < Apotomo::Widget
     def display(params)
       @component = params[:component]
       render
