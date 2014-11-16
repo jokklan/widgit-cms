@@ -4,7 +4,7 @@ module Widgit
     default_scope { order(:position) }
 
     # Associations
-    belongs_to :componentable, polymorphic: true
+    belongs_to :buildable, polymorphic: true
     has_many :components, inverse_of: :block
 
     # Attributes
@@ -25,7 +25,7 @@ module Widgit
 
     def set_position
       self.position ||= begin
-        if componentable && (last_block = componentable.blocks.last)
+        if buildable && (last_block = buildable.blocks.last)
           last_block.position.to_i + 1
         else
           0

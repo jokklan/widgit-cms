@@ -18,14 +18,14 @@ ActiveRecord::Schema.define(version: 20141104234026) do
   enable_extension "hstore"
 
   create_table "widgit_blocks", force: true do |t|
-    t.integer  "componentable_id"
-    t.string   "componentable_type"
-    t.integer  "position",           null: false
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.integer  "buildable_id"
+    t.string   "buildable_type"
+    t.integer  "position",       null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
-  add_index "widgit_blocks", ["componentable_id", "componentable_type"], name: "index_widgit_blocks_on_componentable", using: :btree
+  add_index "widgit_blocks", ["buildable_id", "buildable_type"], name: "index_widgit_blocks_on_buildable_id_and_buildable_type", using: :btree
 
   create_table "widgit_components", force: true do |t|
     t.integer  "block_id"

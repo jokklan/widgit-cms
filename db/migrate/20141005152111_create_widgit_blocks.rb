@@ -1,7 +1,7 @@
 class CreateWidgitBlocks < ActiveRecord::Migration
   def change
     create_table :widgit_blocks do |t|
-      t.references :componentable, polymorphic: true, index: { name: 'index_widgit_blocks_on_componentable' }
+      t.references :buildable, polymorphic: true, index: true
       t.integer :position, null: false
 
       t.timestamps null: false
