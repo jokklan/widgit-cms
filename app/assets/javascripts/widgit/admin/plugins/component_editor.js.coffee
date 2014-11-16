@@ -41,8 +41,10 @@ class ComponentEditor extends BasePlugin
   addComponent: (btn)->
     type = $(btn).data('type')
 
-    @$this.resource('addComponent', type)
-
+    $.ajax
+      url: "/admin/components/new",
+      method: 'GET',
+      data: { component: { type: type, tile_id: @$this.resource('id') } }
 
 
 # DATA-API

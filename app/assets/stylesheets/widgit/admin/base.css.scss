@@ -11,6 +11,11 @@ body {
   margin-bottom: 5px;
 }
 
-.fixed {
-  position: fixed;
+.absolute {
+  position: absolute;
+}
+
+.tile {
+  min-height: 50px;
+  background-color: grey;
 }
