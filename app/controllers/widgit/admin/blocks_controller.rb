@@ -14,7 +14,7 @@ module Widgit
     private
 
       def block_params
-        params.require(:block).permit(components_attributes: [:type, :text, :position, :columns])
+        params.require(:block).permit(columns_attributes: [:columns])
       end
     end
   end

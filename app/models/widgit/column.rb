@@ -10,6 +10,6 @@ module Widgit
     belongs_to :tile, inverse_of: :columns
 
     # Validations
-    validates :columns, presence: true
+    validates :block, :columns, presence: true
   end
 end

@@ -12,7 +12,8 @@ module Widgit
     has_many :components, through: :tiles
 
     # Attributes
-    accepts_nested_attributes_for :components
+    accepts_nested_attributes_for :columns
+    accepts_nested_attributes_for :tiles
 
     # Instance Methods
     def to_json
