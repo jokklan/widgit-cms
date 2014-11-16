@@ -1,7 +1,10 @@
-%div.hide.absolute{ data: { container: 'new-component' } }
+%div.hide.absolute{ data: { init: 'toolbar' } }
+  %button.btn.btn-default{ type: "button", data: { toggle: 'remove' } }
+    Remove
   - Widgit::Component.types.each do |type|
     %button.btn.btn-default{ type: "button", data: { toggle: 'add-component', type: "Widgit::Components::#{type.titleize}" } }
       Add #{type}
+
 
 .modal.fade{ data: { init: 'dialog' } }
   .modal-dialog

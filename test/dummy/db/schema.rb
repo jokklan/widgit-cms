@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20141116161829) do
 
   create_table "widgit_columns", force: true do |t|
     t.integer  "block_id",   null: false
-    t.integer  "tile_id",    null: false
+    t.integer  "tile_id"
     t.integer  "columns",    null: false
     t.integer  "position",   null: false
     t.datetime "created_at"

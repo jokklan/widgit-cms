@@ -10,7 +10,7 @@ module Widgit
     belongs_to :tile, inverse_of: :columns
 
     # Attributes
-    accepts_nested_attributes_for :tile
+    accepts_nested_attributes_for :tile, allow_destroy: true
 
     # Validations
     validates :block, :columns, presence: true

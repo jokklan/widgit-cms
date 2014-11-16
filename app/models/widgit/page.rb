@@ -5,6 +5,6 @@ module Widgit
     has_many :components, through: :blocks
 
     # Attributes
-    accepts_nested_attributes_for :blocks
+    accepts_nested_attributes_for :blocks, reject_if: :all_blank, allow_destroy: true
   end
 end

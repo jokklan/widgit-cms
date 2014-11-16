@@ -6,6 +6,6 @@ module Widgit
     has_many :components, inverse_of: :tile
 
     # Attributes
-    accepts_nested_attributes_for :components
+    accepts_nested_attributes_for :components, allow_destroy: true
   end
 end

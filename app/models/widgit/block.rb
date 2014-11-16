@@ -12,7 +12,7 @@ module Widgit
     has_many :components, through: :tiles
 
     # Attributes
-    accepts_nested_attributes_for :columns
+    accepts_nested_attributes_for :columns, allow_destroy: true
 
     # Instance Methods
     def to_json
