@@ -1,8 +1,6 @@
 module Widgit
   module Admin
     class BlocksController < Admin::BaseController
-      include Widgit::HasComponents
-
       def new
         @block = Block.new(block_params)
 
