@@ -15,8 +15,15 @@ module Widgit
     # Validations
     validates :block, :columns, presence: true
 
+    # Callbacks
+    after_destroy :destroy_block_if_empty
+
     def to_json
       attributes.symbolize_keys.compact.slice(:id, :columns, :position).to_json
+    end
+
+    def destroy_block_if_empty
+      self.block.destroy_if_empty
     end
   end
 end

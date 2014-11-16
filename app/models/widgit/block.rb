@@ -18,9 +18,16 @@ module Widgit
     validates_associated :columns
     validates_associated :tiles
 
+    # Callbacks
+    before_validation :destroy_if_empty
+
     # Instance Methods
     def to_json
       attributes.symbolize_keys.compact.slice(:id, :position).to_json
+    end
+
+    def destroy_if_empty
+      self.destroy if columns.size.zero?
     end
   end
 end
