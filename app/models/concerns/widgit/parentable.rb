@@ -24,6 +24,17 @@ module Widgit
         self.parentable_children_association = children_association.to_sym
 
         validates parentable_children_association, presence: true
+        accepts_nested_attributes_for parentable_children_association, allow_destroy: true
+
+        define_method("#{parentable_children_association}_attributes=") do |attributes_collections|
+          ids_to_add = attributes_collections.values.map { |attributes| attributes[:id] } - self.send("#{parentable_children_association.to_s.singularize}_ids")
+
+          ids_to_add.each do |id|
+            self.send(parentable_children_association) << "Widgit::#{parentable_children_association.to_s.singularize.classify}".constantize.find(id)
+          end
+
+          super(attributes_collections)
+        end
       end
     end
   end

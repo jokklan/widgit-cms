@@ -9,13 +9,13 @@ class PositionEditor extends BaseModule
     $body = $('body')
     @$blocksContainer = $('[data-editor="position"]')
     @$componentsContainers = $('[data-resource="tile"]')
-    attributes = { 
+    attributes = {
       delay: 150
-      cancel: "[data-editor='text']" 
+      cancel: "[data-editor='text']"
       start: ->
         $body.addClass 'is-sorting'
       stop: ->
-        $body.removeClass 'is-sorting'        
+        $body.removeClass 'is-sorting'
     }
 
     @$blocksContainer.sortable
