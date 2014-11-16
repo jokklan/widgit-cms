@@ -5,7 +5,9 @@ module Widgit
 
     # Associations
     belongs_to :buildable, polymorphic: true
-    has_many :components, inverse_of: :block
+    has_many :columns, inverse_of: :block
+    has_many :tiles, through: :columns
+    has_many :components, through: :tiles
 
     # Attributes
     accepts_nested_attributes_for :components

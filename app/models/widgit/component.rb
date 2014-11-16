@@ -4,18 +4,17 @@ module Widgit
     default_scope { order(:position) }
 
     # Association
-    belongs_to :block, inverse_of: :components
-    has_one :page, through: :block
+    belongs_to :tile, inverse_of: :components
 
     # Validations
-    validates :block, :type, :columns, :position, presence: true
+    validates :tile, :type, :position, presence: true
 
     # Callbacks
     before_validation :set_position, on: :create
 
     # Instance Methods
     def to_json
-      attributes.symbolize_keys.compact.slice(:id, :type, :text, :position, :columns).to_json
+      attributes.symbolize_keys.compact.slice(:id, :type, :text, :position).to_json
     end
 
     def component_type
@@ -32,7 +31,7 @@ module Widgit
     # Private Instance Methods
     def set_position
       self.position ||= begin
-        if block && (last_component = block.components.last)
+        if tile && (last_component = tile.components.last)
           last_component.position.to_i + 1
         else
           0

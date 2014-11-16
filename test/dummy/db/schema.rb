@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141116160909) do
+ActiveRecord::Schema.define(version: 20141116161829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,17 +27,28 @@ ActiveRecord::Schema.define(version: 20141116160909) do
 
   add_index "widgit_blocks", ["buildable_id", "buildable_type"], name: "index_widgit_blocks_on_buildable_id_and_buildable_type", using: :btree
 
-  create_table "widgit_components", force: true do |t|
+  create_table "widgit_columns", force: true do |t|
     t.integer  "block_id"
-    t.string   "type",       null: false
+    t.integer  "tile_id"
     t.integer  "columns",    null: false
+    t.integer  "position",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "widgit_columns", ["block_id"], name: "index_widgit_columns_on_block_id", using: :btree
+  add_index "widgit_columns", ["tile_id"], name: "index_widgit_columns_on_tile_id", using: :btree
+
+  create_table "widgit_components", force: true do |t|
+    t.integer  "tile_id"
+    t.string   "type",       null: false
     t.integer  "position",   null: false
     t.hstore   "properties"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "widgit_components", ["block_id"], name: "index_widgit_components_on_block_id", using: :btree
+  add_index "widgit_components", ["tile_id"], name: "index_widgit_components_on_tile_id", using: :btree
 
   create_table "widgit_images", force: true do |t|
     t.string   "image",      null: false
