@@ -3,7 +3,7 @@ body {
 }
 
 .draggable {
-  outline: black dashed thin;
+  outline: #ccc dashed thin;
 }
 
 .block {
@@ -18,4 +18,23 @@ body {
 .tile {
   min-height: 50px;
   background-color: grey;
+}
+
+.widget {
+  padding: $padding-large-vertical;
+
+  border: 1px solid transparent; /* needs to be set so the element dont jump when hovering */
+
+  &:hover {
+    border: 1px solid #e1e1e1;
+    border-radius: 2px;
+  }
+}
+
+.component-image {
+  @extend .pointer;
+}
+
+.component-image {
+  cursor: text;
 }
