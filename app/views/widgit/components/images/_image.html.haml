@@ -1,0 +1,7 @@
+%div{ data: { resource: 'component', attributes: image.to_json } }
+  %div{ data: { editor: 'image' } }
+    - if image.image
+      = image_tag image.image.url, class: 'img-responsive'
+    - else
+      Upload image
+
