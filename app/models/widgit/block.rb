@@ -13,7 +13,6 @@ module Widgit
 
     # Attributes
     accepts_nested_attributes_for :columns
-    accepts_nested_attributes_for :tiles
 
     # Instance Methods
     def to_json
