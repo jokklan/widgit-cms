@@ -4,11 +4,11 @@ module Widgit
     default_scope { order(:position) }
 
     # Association
-    belongs_to :widget_group, inverse_of: :widgets
-    has_one :page, through: :widget_group
+    belongs_to :block, inverse_of: :widgets
+    has_one :page, through: :block
 
     # Validations
-    validates :widget_group, :type, :columns, :position, presence: true
+    validates :block, :type, :columns, :position, presence: true
 
     # Callbacks
     before_validation :set_position, on: :create
@@ -32,7 +32,7 @@ module Widgit
     # Private Instance Methods
     def set_position
       self.position ||= begin
-        if widget_group && (last_widget = widget_group.widgets.last)
+        if block && (last_widget = block.widgets.last)
           last_widget.position.to_i + 1
         else
           0

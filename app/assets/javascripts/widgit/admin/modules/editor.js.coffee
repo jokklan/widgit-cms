@@ -23,9 +23,9 @@ class Editor extends BaseModule
     type = $(btn).data('type')
 
     $.ajax
-      url: "/admin/widget_groups/new",
+      url: "/admin/blocks/new",
       method: 'GET'
-      data: { widget_group: { widgets_attributes: [{ type: type, columns: 12 }] } }
+      data: { block: { widgets_attributes: [{ type: type, columns: 12 }] } }
 
 $(document).ready ->
   window.editor = new Editor()

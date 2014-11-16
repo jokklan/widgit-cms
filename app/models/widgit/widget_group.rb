@@ -1,11 +1,11 @@
 module Widgit
-  class WidgetGroup < ActiveRecord::Base
+  class Block < ActiveRecord::Base
     # Configuration
     default_scope { order(:position) }
 
     # Associations
     belongs_to :widgetable, polymorphic: true
-    has_many :widgets, inverse_of: :widget_group
+    has_many :widgets, inverse_of: :block
 
     # Attributes
     accepts_nested_attributes_for :widgets
@@ -25,8 +25,8 @@ module Widgit
 
     def set_position
       self.position ||= begin
-        if widgetable && (last_widget_group = widgetable.widget_groups.last)
-          last_widget_group.position.to_i + 1
+        if widgetable && (last_block = widgetable.blocks.last)
+          last_block.position.to_i + 1
         else
           0
         end

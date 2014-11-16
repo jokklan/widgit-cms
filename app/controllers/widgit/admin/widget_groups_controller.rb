@@ -1,10 +1,10 @@
 module Widgit
   module Admin
-    class WidgetGroupsController < Admin::BaseController
+    class BlocksController < Admin::BaseController
       include Widgit::HasWidgets
 
       def new
-        @widget_group = WidgetGroup.new(widget_group_params)
+        @block = Block.new(block_params)
 
         respond_to do |format|
           format.js
@@ -13,8 +13,8 @@ module Widgit
 
     private
 
-      def widget_group_params
-        params.require(:widget_group).permit(widgets_attributes: [:type, :text, :position, :columns])
+      def block_params
+        params.require(:block).permit(widgets_attributes: [:type, :text, :position, :columns])
       end
     end
   end

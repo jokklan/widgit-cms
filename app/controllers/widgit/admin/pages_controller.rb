@@ -47,7 +47,7 @@ module Widgit
       end
 
       def page_params
-        params.require(:page).permit(:title, widget_groups_attributes: [:id, :position, widgets_attributes: [:id, :type, :text, :image_id, :position, :columns]])
+        params.require(:page).permit(:title, blocks_attributes: [:id, :position, widgets_attributes: [:id, :type, :text, :image_id, :position, :columns]])
       end
     end
   end

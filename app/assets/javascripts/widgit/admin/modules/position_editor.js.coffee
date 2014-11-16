@@ -7,7 +7,7 @@ class PositionEditor extends BaseModule
 
   refresh: (options) ->
     @$widgetGroupsContainer = $('[data-editor="position"]')
-    @$widgetsContainers = $('[data-type="widget_group"]')
+    @$widgetsContainers = $('[data-type="block"]')
     @$sortableContainers = @$widgetsContainers.add(@$widgetGroupsContainer)
     @$widgetGroups = $('[data-resource="widget-group"]')
     @$widgets = $('[data-resource="widget"]')
@@ -40,10 +40,10 @@ class PositionEditor extends BaseModule
     @$sortables.removeClass('draggable')
     @$sortableContainers.sortable('disable')
 
-    @saveItems @$widgetGroupsContainer, 'WidgetGroup'
-    @$widgetsContainers.each (index, widget_group)=>
-      $widget_group = $(widget_group)
-      @saveItems $widget_group, 'Widget',
+    @saveItems @$widgetGroupsContainer, 'Block'
+    @$widgetsContainers.each (index, block)=>
+      $block = $(block)
+      @saveItems $block, 'Widget',
 
   saveItems: ($element, type) ->
     items = $element.sortable('instance')._getItemsAsjQuery()
@@ -53,7 +53,7 @@ class PositionEditor extends BaseModule
       $(item).resource('update', 'position', index)
 
       if widgetGroupId = $element.data('id')
-        $(item).resource('update', 'widget_group_id', widgetGroupId)
+        $(item).resource('update', 'block_id', widgetGroupId)
 
 
 # DATA-API
