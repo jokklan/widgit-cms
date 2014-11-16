@@ -1,7 +1,7 @@
 module Widgit
   class HeaderWidget < Apotomo::Widget
     def display(params)
-      @widget = params[:widget]
+      @component = params[:component]
       render
     end
   end

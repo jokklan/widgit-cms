@@ -10,8 +10,8 @@ class Editor extends BaseModule
     $(document).on 'click', '[data-toggle="reorder"]', =>
       @toggleReorder()
 
-    $(document).on 'click', '[data-toggle="add-widget"]', (event)=>
-      @addWidget(event.target)
+    $(document).on 'click', '[data-toggle="add-component"]', (event)=>
+      @addComponent(event.target)
 
   save: ->
     window.page.save()
@@ -19,13 +19,13 @@ class Editor extends BaseModule
   toggleReorder: ->
     window.positionEditor.toggle()
 
-  addWidget: (btn)->
+  addComponent: (btn)->
     type = $(btn).data('type')
 
     $.ajax
-      url: "/admin/widget_groups/new",
+      url: "/admin/blocks/new",
       method: 'GET'
-      data: { widget_group: { widgets_attributes: [{ type: type, columns: 12 }] } }
+      data: { block: { components_attributes: [{ type: type, columns: 12 }] } }
 
 $(document).ready ->
   window.editor = new Editor()

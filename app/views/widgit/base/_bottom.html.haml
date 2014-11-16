@@ -1,5 +1,5 @@
-- Widgit::Widget.types.each do |type|
-  %button.btn.btn-default{ type: "button", data: { toggle: 'add-widget', type: "Widgit::Widgets::#{type.titleize}" } }
+- Widgit::Component.types.each do |type|
+  %button.btn.btn-default{ type: "button", data: { toggle: 'add-component', type: "Widgit::Components::#{type.titleize}" } }
     Add #{type}
 
 .modal.fade{ data: { init: 'dialog' } }
