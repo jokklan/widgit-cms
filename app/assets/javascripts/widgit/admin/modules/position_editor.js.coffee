@@ -7,7 +7,7 @@ class PositionEditor extends BaseModule
 
   refresh: (options) ->
     @$blocksContainer = $('[data-editor="position"]')
-    @$componentsContainers = $('[data-type="block"]')
+    @$componentsContainers = $('[data-resource="tile"]')
     @$sortableContainers = @$componentsContainers.add(@$blocksContainer)
     @$blocks = $('[data-resource="block"]')
     @$components = $('[data-resource="component"]')
@@ -51,9 +51,6 @@ class PositionEditor extends BaseModule
 
     items.each (index, item) =>
       $(item).resource('update', 'position', index)
-
-      if blockId = $element.data('id')
-        $(item).resource('update', 'block_id', blockId)
 
 
 # DATA-API
