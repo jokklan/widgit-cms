@@ -6,7 +6,7 @@ Dropzone.autoDiscover = false;
 # CLASS DEFINITION
 class ImageEditor extends BasePlugin
   defaults: {
-    imageTemplate: '<img alt="_ALT_" src="_SRC_">'
+    imageTemplate: '<img class="img-responsive" alt="_ALT_" src="_SRC_">'
   }
 
   constructor: (el, options) ->
