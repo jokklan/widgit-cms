@@ -12,7 +12,7 @@ module Widgit
     private
 
       def component_params
-        params.require(:component).permit(:type, :tile_id)
+        params.require(:component).permit(:type)
       end
     end
   end

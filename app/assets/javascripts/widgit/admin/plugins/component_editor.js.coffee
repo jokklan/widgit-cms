@@ -44,7 +44,7 @@ class ComponentEditor extends BasePlugin
     $.ajax
       url: "/admin/components/new",
       method: 'GET',
-      data: { component: { type: type, tile_id: @$this.resource('id') } }
+      data: { component: { type: type }, target_id: @$this.resource('id') }
 
 
 # DATA-API

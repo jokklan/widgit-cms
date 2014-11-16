@@ -11,7 +11,7 @@ class @Resource
   constructor: (element, attributes = {}) ->
     @$resource = $(element)
     @attributes = $.extend({}, attributes, @$resource.data('attributes'))
-    @id = @attributes.id
+    @id = @$resource.data('id')
 
   update: (attribute, value) ->
     @attributes[attribute] = value
