@@ -4,7 +4,7 @@ module Widgit
 
     included do
       # Callbacks
-      before_validation :destroy_if_empty
+      before_validation :destroy_if_empty, on: :update
     end
 
   private
@@ -22,6 +22,8 @@ module Widgit
         class_attribute :parentable_children_association
 
         self.parentable_children_association = children_association.to_sym
+
+        validates parentable_children_association, presence: true
       end
     end
   end
