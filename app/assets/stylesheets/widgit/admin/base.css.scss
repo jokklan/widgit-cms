@@ -10,3 +10,24 @@ body {
   padding-bottom: 5px;
   margin-bottom: 5px;
 }
+
+.component {
+  padding: 10px;
+}
+
+.grid-editor-active {
+  .component {
+    border: 2px dotted $gray-light;
+    cursor: pointer;
+
+    span, & { 
+      &::selection{ background-color: transparent;}
+      &::moz-selection{ background-color: transparent;}
+      &::webkit-selection{ background-color: transparent;}    
+    }
+  }
+
+  .tile-active {
+    border: 2px solid red;  
+  }
+}
