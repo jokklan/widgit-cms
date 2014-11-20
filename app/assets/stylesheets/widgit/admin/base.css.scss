@@ -33,10 +33,6 @@ body {
   background: #fff;
 }
 
-.absolute {
-  position: absolute;
-}
-
 .tile {
   min-height: 50px;
 }
@@ -44,6 +40,7 @@ body {
 .component-wrapper {
   .component {
     padding: 15px 0;
+
     border: 1px solid transparent; /* needs to be set so the element dont jump when hovering */
 
     &:hover {
