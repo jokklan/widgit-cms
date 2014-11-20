@@ -6,8 +6,6 @@ class GridEditor extends BaseModule
   
   init: ->
     gridActive  = false
-    clickStart  = false
-    clickPress  = true
 
     $(document).on 'click', '[data-toggle="grid-editor"]', (event) =>      
       if !gridActive
@@ -17,40 +15,10 @@ class GridEditor extends BaseModule
         @gridInActive($(event.currentTarget))
         gridActive = false
 
-    $(document).on 'mousedown touchstart', '[data-resource="component"]', (event) =>
+    $(document).on 'click', '[data-toggle="cut-grid"]', (event) =>
       if gridActive
-        delay = (ms, func) -> setTimeout func, ms
-
-        clickStart  = true
-        clickPress  = false
-
-        delay 500, =>
-          if clickStart
-            clickPress  = true
-
-            @$startTarget = $(event.target)
-            @tilePressed($(event.currentTarget))
-
-            console.log 'mousestart clickpress'
-            console.dir event
-
-    $(document).on 'mouseup touchend', '[data-resource="component"]', (event) =>
-      if gridActive
-
-        clickStart = false
-        $('.tile-active').removeClass 'tile-active'
-
-        if clickPress
-          @mergeColumns($(event.target))
-
-          console.log 'mouseend clickpress'
-          console.dir event
-
-    $(document).on 'click', '[data-resource="component"]', (event) =>
-      if gridActive
-        if gridActive && !clickPress
-          @tileClicked($(event.currentTarget)) 
-          console.log 'clicked'      
+        if gridActive
+          @cutGrid($(event.currentTarget))    
 
   gridActive: ($target)->
     @$gridEditor = $('[data-editor-grid]')
@@ -65,34 +33,49 @@ class GridEditor extends BaseModule
     @$textEditor.attr('contenteditable', true)
     $target.removeClass('btn-success')
 
-  tileClicked: ($target)->
-    attributes = $target.data('attributes')
-    $target.removeClass 'col-sm-' + attributes.columns
+  cutGrid: ($target)->
+    $component = $target.closest "[data-resource=component]"
+    attributes = $component.data('attributes')
+    $component.removeClass 'col-sm-' + attributes.columns
 
-    attributes.columns = attributes.columns/2
+    index         = $target.data 'cut-index'
+    columns       = $target.data 'cut-columns'
+    count         = $target.data 'cut-columns-count'
+    columnsOrigin = attributes.columns
+    
+    attributes.columns = Math.abs(columnsOrigin - (columns * index))
+    newColumns    = columnsOrigin - attributes.columns
 
-    $target.attr('data-attributes', JSON.stringify(attributes))
-    $target.addClass 'col-sm-' + attributes.columns
-    $target.clone().prependTo($target.parent());
+    console.log 'index ' + index
+    console.log 'cut columns ' + columns
+    console.log 'columns attr ' + attributes.columns
+    console.log 'count ' + count
+    
+    #update attributes and class
+    $component.addClass 'col-sm-' + attributes.columns
+    $component.attr('data-attributes', JSON.stringify(attributes))
 
-  tilePressed: ($target) ->
-    $target.addClass 'tile-active'
+    half = count / 2
 
-  mergeColumns: ($endTarget) ->
-    if $endTarget.hasClass('component')
-      $endTarget.remove()
+    console.log 'half ' + half
+
+    if newColumns >= half
+      $component.before '<div class="component col-sm-' + newColumns + '">new column before</div>'
     else
-      $endTarget.closest('.component').remove()  
+      $component.after '<div class="component col-sm-' + newColumns + '">new column after</div>'
 
-    attributes = @$startTarget.data('attributes')
-    @$startTarget.removeClass 'col-sm-' + attributes.columns
-
-    attributes.columns = attributes.columns * 2
-
-    @$startTarget.attr('data-attributes', JSON.stringify(attributes))
-    @$startTarget.addClass 'col-sm-' + attributes.columns    
-
-
-
+    ###
+    $.ajax
+      url: "/admin/blocks/new",
+      method: 'GET'
+      dataType: 'html'
+      data: { block: { components_attributes: [{ type: attributes.type, columns: newColumns }] } }
+      success: (data) ->
+        if index > (count / 2)
+          $component.before data
+        else
+          $component.after data
+    ###       
+    
 $(document).ready ->
   window.grideditor = new GridEditor()

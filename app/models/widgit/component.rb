@@ -22,6 +22,14 @@ module Widgit
       type.demodulize.downcase
     end
 
+    def overlay_column_count
+      (self.columns / 2) - 1 
+    end
+
+    def overlay_columns
+      12 / (self.columns / 2)
+    end    
+
     # Class Methods
     def self.types
       %w(header text image)

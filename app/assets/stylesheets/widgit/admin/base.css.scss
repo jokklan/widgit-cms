@@ -31,3 +31,23 @@ body {
     border: 2px solid red;  
   }
 }
+
+.component-overlay {
+  position: absolute;
+  display: none;
+  text-align: right;
+  width: 100%;
+  margin-left: 12.5px;
+
+  a {
+    -ms-transform: rotate(-90deg); /* IE 9 */
+    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+    transform: rotate(-90deg);  
+  }
+}
+
+.grid-editor-active {
+  .component-overlay { 
+    display: block;
+  }
+}

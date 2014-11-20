@@ -1,2 +1,7 @@
 %div{ class: "component col-sm-#{component.columns}", data: { resource: 'component', attributes: component.to_json } }
   = render_widget "widgit/#{component.component_type}", :display, component: component
+
+  .component-overlay
+    - component.overlay_column_count.times do |index|
+      %div{ class: "col-sm-#{component.overlay_columns}"}
+        %a{href: "#", class: "fa fa-scissors", data: { toggle: "cut-grid", cut_index: index + 1, cut_columns: component.overlay_columns, cut_columns_count: component.overlay_column_count }}
