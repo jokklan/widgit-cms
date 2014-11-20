@@ -1,2 +1,3 @@
 .tile{ data: { resource: 'tile', editor: 'components', id: target_id(tile), attributes: { id: tile.id }.to_json } }
-  = render tile.components
+  .component-wrapper
+    = render tile.components
