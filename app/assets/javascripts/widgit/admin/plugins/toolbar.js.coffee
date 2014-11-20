@@ -19,6 +19,9 @@ class Toolbar extends BasePlugin
     # $(document).on 'click', '[data-toggle="remove"]', (event)=>
     #   @remove()
 
+    $(document).on 'click', '[data-toggle="save-template"]', =>
+      @saveTemplate()
+
     $(document).on 'click', '[data-toggle="toolbar"]', =>
       @toggleToolbar()
 
@@ -70,6 +73,13 @@ class Toolbar extends BasePlugin
       $body.removeClass 'built-mode'
     else
       $body.addClass 'built-mode'
+
+  saveTemplate: ->
+    $.ajax
+      url: "/admin/templates",
+      method: 'POST',
+      data: { template: { stored_attributes: @$currentObject.resource('data') } }
+
 
 # DATA-API
 BasePlugin.addPlugin

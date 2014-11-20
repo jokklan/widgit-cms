@@ -8,5 +8,7 @@ Widgit::Engine.routes.draw do
     resources :blocks, only: [:new]
     resources :images, only: [:create]
     resources :tiles, only: [:show, :update]
+    resources :components, only: [:new]
+    resources :templates, only: [:create]
   end
 end

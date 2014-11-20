@@ -63,6 +63,12 @@ ActiveRecord::Schema.define(version: 20150129210019) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "widgit_templates", force: true do |t|
+    t.json     "stored_attributes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "widgit_tiles", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
