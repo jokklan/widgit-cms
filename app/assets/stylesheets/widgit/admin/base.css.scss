@@ -60,6 +60,7 @@ body {
   right: 0;
   top: 0;
   margin-right: -1 * $grid-gutter-width / 4;
+  z-index: 999;
 }
 
 .grid-editor-active {
