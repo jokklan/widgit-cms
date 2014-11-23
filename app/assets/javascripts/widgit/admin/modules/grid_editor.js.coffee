@@ -35,47 +35,16 @@ class GridEditor extends BaseModule
 
   cutGrid: ($target)->
     $component = $target.closest "[data-resource=component]"
+    $block     = $target.closest "[data-resource=block]"
     attributes = $component.data('attributes')
-    $component.removeClass 'col-sm-' + attributes.columns
 
     index         = $target.data 'cut-index'
     columns       = $target.data 'cut-columns'
-    count         = $target.data 'cut-columns-count'
-    columnsOrigin = attributes.columns
-    
-    attributes.columns = Math.abs(columnsOrigin - (columns * index))
-    newColumns    = columnsOrigin - attributes.columns
+    cutStart      = index * columns
+    cutEnd        = 12 - cutStart
 
-    console.log 'index ' + index
-    console.log 'cut columns ' + columns
-    console.log 'columns attr ' + attributes.columns
-    console.log 'count ' + count
-    
-    #update attributes and class
-    $component.addClass 'col-sm-' + attributes.columns
-    $component.attr('data-attributes', JSON.stringify(attributes))
+    $component.html '<div class="component col-sm-' + cutStart + '">new column before</div>'
+    $component.append '<div class="component col-sm-' + cutEnd + '">new column before</div>'
 
-    half = count / 2
-
-    console.log 'half ' + half
-
-    if newColumns >= half
-      $component.before '<div class="component col-sm-' + newColumns + '">new column before</div>'
-    else
-      $component.after '<div class="component col-sm-' + newColumns + '">new column after</div>'
-
-    ###
-    $.ajax
-      url: "/admin/blocks/new",
-      method: 'GET'
-      dataType: 'html'
-      data: { block: { components_attributes: [{ type: attributes.type, columns: newColumns }] } }
-      success: (data) ->
-        if index > (count / 2)
-          $component.before data
-        else
-          $component.after data
-    ###       
-    
 $(document).ready ->
   window.grideditor = new GridEditor()
