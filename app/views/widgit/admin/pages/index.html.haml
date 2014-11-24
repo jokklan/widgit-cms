@@ -1,11 +1,15 @@
 .row
   .col-xs-12
-    %table.table
-      %thead
-        %tr
-          %th= Widgit::Page.human_attribute_name(:title)
-          %th
-      %tbody
-        = render partial: "page", collection: @pages
-  .col-xs-12
-    = link_to t('.new'), new_admin_page_path, class: 'btn btn-primary'
+    %h2= Widgit::Page.human_attribute_name(:Pages)
+    .row
+      .col-xs-4
+        .panel.panel-default.page-thumbnail
+          .panel-heading
+            %h3.panel-title
+              Create new Page
+          .panel-body.text-center
+
+            = link_to icon('plus-circle'), new_admin_page_path, title: t('.new'), class: 'btn fa-2x', data: { toggle: 'tooltip', container: 'body' }
+
+      = render partial: "page", collection: @pages
+

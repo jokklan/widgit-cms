@@ -1,7 +1,9 @@
-%tr
-  %td= page.title
-  %td
-    .btn-group.pull-right
-      = link_to icon(:eye), page, title: t('.show'), class: 'btn btn-link', data: { toggle: 'tooltip', container: 'body' }
-      = link_to icon(:pencil), edit_admin_page_path(page), class: 'btn btn-link', title: t('.edit'), data: { toggle: 'tooltip', container: 'body' }
-      = link_to icon(:times), admin_page_path(page), method: 'DELETE', title: t('.delete'), class: 'btn btn-link', data: { toggle: 'tooltip', container: 'body', confirm: t('.confirm') }
+.col-xs-4
+  .panel.panel-primary.page-thumbnail
+    .panel-heading
+      %h2.panel-title= page.title
+    .panel-body.text-center
+      .btn-group.btn-group-justified
+        = link_to icon(:eye), page, title: t('.show'), class: 'btn btn-link fa-2x', data: { toggle: 'tooltip', container: 'body' }
+        = link_to icon(:pencil), edit_admin_page_path(page), class: 'btn btn-link fa-2x', title: t('.edit'), data: { toggle: 'tooltip', container: 'body' }
+        = link_to icon(:times), admin_page_path(page), method: 'DELETE', title: t('.delete'), class: 'btn btn-link fa-2x', data: { toggle: 'tooltip', container: 'body', confirm: t('.confirm') }
