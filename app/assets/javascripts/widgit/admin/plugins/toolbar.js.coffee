@@ -14,10 +14,13 @@ class Toolbar extends BasePlugin
       @show(event.currentTarget)
 
     $(document).on 'click', '[data-toggle="add-component"]', (event)=>
-      @addComponent(event.target)
+      @addComponent(event.currentTarget)
 
     $(document).on 'click', '[data-toggle="remove"]', (event)=>
       @remove()
+
+    $(document).on 'click', '[data-editor="save-tile"]', (event)=>
+      @save()
 
   show: (object)->
     @$currentObject = $(object)
@@ -40,6 +43,9 @@ class Toolbar extends BasePlugin
   remove: ->
     @$currentObject.addClass('hide')
     @$currentObject.resource('update', '_destroy', true)
+
+  save: ->
+    @$currentObject.resource('save')
 
 
 # DATA-API

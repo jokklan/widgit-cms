@@ -4,9 +4,10 @@ Widgit::Engine.routes.draw do
   namespace :admin do
     root 'pages#index'
 
-    resources :pages, except: [:show]
+    resources :pages, only: [:index, :new, :edit, :create, :update, :destroy]
     resources :blocks, only: [:new]
     resources :images, only: [:create]
+    resources :tiles, only: [:update]
     resources :components, only: [:new]
   end
 end
