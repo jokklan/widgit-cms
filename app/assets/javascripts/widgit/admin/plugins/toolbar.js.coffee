@@ -21,13 +21,9 @@ class Toolbar extends BasePlugin
 
   show: (object)->
     @$currentObject = $(object)
-    offset = @$currentObject.offset()
+    $block = @$currentObject.closest('[data-resource="block"]')
+    @$toolbar.insertAfter($block)
 
-    @$toolbar.css
-      left: offset.left
-      top: offset.top + @$currentObject.height()
-
-    @$toolbar.removeClass('hide')
 
   addComponent: (btn)->
     type = $(btn).data('type')

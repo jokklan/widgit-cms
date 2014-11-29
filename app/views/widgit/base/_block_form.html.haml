@@ -1,0 +1,8 @@
+.row{ data: { init: 'toolbar' } }
+  .col-sm-12.block-form
+    .block-form-content.fade.fade-hover
+      %button.btn.btn-default{ type: "button", data: { toggle: 'remove' } }
+        Remove
+      - Widgit::Component.types.each do |type|
+        %button.btn.btn-default{ type: "button", data: { toggle: 'add-component', type: "Widgit::Components::#{type.titleize}" } }
+          Add #{type}

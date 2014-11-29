@@ -11,7 +11,7 @@ class Editor extends BaseModule
       @toggleReorder()
 
     $(document).on 'click', '[data-toggle="add-block"]', (event)=>
-      @addBlock(event.target)
+      @addBlock(event.currentTarget)
 
   save: ->
     window.page.save()
