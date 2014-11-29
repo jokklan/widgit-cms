@@ -5,7 +5,7 @@ $ = jQuery
 class Toolbar extends BasePlugin
   constructor: (el, options) ->
     @$toolbar = $(el)
-    @$currentObject = null
+    @$currentTile = null
 
     super(el, options)
 
@@ -20,15 +20,18 @@ class Toolbar extends BasePlugin
       @remove()
 
     $(document).on 'click', '[data-editor="save-tile"]', (event)=>
-      @save()
+      @saveTile()
+
+    $(document).on 'click', '[data-editor="insert-tile"]', (event)=>
+      @insertTile()
 
   show: (object)->
-    @$currentObject = $(object)
-    offset = @$currentObject.offset()
+    @$currentTile = $(object)
+    offset = @$currentTile.offset()
 
     @$toolbar.css
       left: offset.left
-      top: offset.top + @$currentObject.height()
+      top: offset.top + @$currentTile.height()
 
     @$toolbar.removeClass('hide')
 
@@ -38,14 +41,27 @@ class Toolbar extends BasePlugin
     $.ajax
       url: "/admin/components/new",
       method: 'GET',
-      data: { component: { type: type }, target_id: @$currentObject.resource('id') }
+      data: { component: { type: type }, target_id: @$currentTile.resource('id') }
 
   remove: ->
-    @$currentObject.addClass('hide')
-    @$currentObject.resource('update', '_destroy', true)
+    @$currentTile.addClass('hide')
+    @$currentTile.resource('update', '_destroy', true)
 
-  save: ->
-    @$currentObject.resource('save')
+  saveTile: ->
+    @$currentTile.resource('save')
+
+  insertTile: ->
+    id = 5
+
+    request = $.ajax
+      url: "/admin/tiles/#{id}",
+      method: 'GET',
+      dataType: 'html',
+
+    request.done (data, status, xhr)=>
+        @$currentTile.closest('[data-resource="column"]').resource('update', 'tile_id', id)
+        @$currentTile.replaceWith data
+
 
 
 # DATA-API

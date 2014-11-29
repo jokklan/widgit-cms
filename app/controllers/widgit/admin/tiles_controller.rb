@@ -1,7 +1,11 @@
 module Widgit
   module Admin
     class TilesController < Admin::BaseController
-      before_action :find_tile, only: [:update]
+      before_action :find_tile, only: [:show, :update]
+
+      def show
+        render layout: false
+      end
 
       def update
         respond_to do |format|
