@@ -5,7 +5,7 @@ module Widgit
     # Add admin assets to be precompiled
     initializer :assets do |config|
       Rails.application.config.assets.precompile += %w(widgit/admin.js)
-      Rails.application.config.assets.precompile += %w(widgit/admin.css)
+      Rails.application.config.assets.precompile += %w(widgit.css)
     end
 
     # Add app/widgets to view path, for apotomo
