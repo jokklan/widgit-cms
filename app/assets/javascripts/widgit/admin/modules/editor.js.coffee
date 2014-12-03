@@ -7,17 +7,11 @@ class Editor extends BaseModule
     $(document).on 'click', '[data-toggle="save"]', =>
       @save()
 
-    $(document).on 'click', '[data-toggle="reorder"]', =>
-      @toggleReorder()
-
     $(document).on 'click', '[data-toggle="add-block"]', (event)=>
       @addBlock(event.target)
 
   save: ->
     window.page.save()
-
-  toggleReorder: ->
-    window.positionEditor.toggle()
 
   addBlock: (btn)->
     $.ajax

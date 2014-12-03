@@ -18,32 +18,17 @@ class PositionEditor extends BaseModule
 
     @$blocksContainer.sortable
       items: '> [data-resource="block"]'
-      disabled: true
+      delay: 150
     @$componentsContainers.sortable
       connectWith: @$componentsContainers
       items: '> [data-resource="component"]'
-      disabled: true
+      delay: 150
+      update: =>
+        @saveItems @$blocksContainer, 'Block'
 
-  toggle: ->
-    if @reordering
-      @stopReorder()
-      @reordering = false
-    else
-      @startReorder()
-      @reordering = true
-
-  startReorder: ->
-    @$sortableContainers.sortable('enable')
-    @$sortables.addClass('draggable')
-
-  stopReorder: ->
-    @$sortables.removeClass('draggable')
-    @$sortableContainers.sortable('disable')
-
-    @saveItems @$blocksContainer, 'Block'
-    @$componentsContainers.each (index, block)=>
-      $block = $(block)
-      @saveItems $block, 'Component',
+        @$componentsContainers.each (index, block)=>
+          $block = $(block)
+          @saveItems $block, 'Component'
 
   saveItems: ($element, type) ->
     items = $element.sortable('instance')._getItemsAsjQuery()
