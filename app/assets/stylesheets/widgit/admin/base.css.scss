@@ -37,16 +37,14 @@ body {
   min-height: 50px;
 }
 
-.component-wrapper {
-  .component {
-    padding: 15px 0;
+.component {
+  padding: 15px 0;
 
-    border: 1px solid transparent; /* needs to be set so the element dont jump when hovering */
+  border: 1px solid transparent; /* needs to be set so the element dont jump when hovering */
 
-    &:hover {
-      border: 1px dashed #e1e1e1;
-      border-radius: 2px;
-    }
+  &:hover {
+    border: 1px dashed #e1e1e1;
+    border-radius: 2px;
   }
 }
 
