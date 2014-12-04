@@ -1,4 +1,3 @@
-.component{ data: { resource: 'component', attributes: header.to_json } }
+= render layout: 'widgit/components/component', locals: { component: header } do
   %h2{ data: { editor: 'text' } }
     = raw header.text
-

@@ -16,9 +16,13 @@ module Widgit
     # Validations
     validates_associated :components
 
+    # Scopes
+    scope :saved, -> { where(saved: true) }
+
     # Instance Methods
     def components_attributes=(attributes_collections)
-      self.component_ids = attributes_collections.values.map { |attributes| attributes[:id] }
+      component_ids = attributes_collections.values.map { |attributes| attributes[:id] }.map(&:to_i)
+      self.components << Component.find(component_ids)
       super(attributes_collections)
     end
   end

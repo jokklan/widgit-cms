@@ -1,7 +1,6 @@
-.component{ data: { resource: 'component', attributes: image.to_json } }
+= render layout: 'widgit/components/component', locals: { component: image } do
   %div{ data: { editor: 'image' } }
     - if image.image
       = image_tag image.image.url, class: 'img-responsive'
     - else
       Upload image
-
