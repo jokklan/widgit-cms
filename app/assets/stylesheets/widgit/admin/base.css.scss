@@ -55,3 +55,17 @@ body {
 .component-text {
   cursor: text;
 }
+
+.block-form {
+  z-index: 1;
+  position: absolute;
+  margin-top: -15px;
+
+  .block-form-content {
+    background-color: blue;
+  }
+}
+
+.fade.fade-hover:hover {
+  opacity: 1;
+}

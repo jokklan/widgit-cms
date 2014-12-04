@@ -13,8 +13,11 @@
     = render 'header'
     .container{ data: { editor: 'position', type: 'page' } }
       = yield
+      = render 'block_form'
     .container
       .row
         .col-xs-12
           = render 'bottom'
+
     = render 'editor'
+

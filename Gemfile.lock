@@ -52,6 +52,8 @@ GEM
       hooks (~> 0.4.0)
       onfire (~> 0.2.0)
     arel (5.0.1.20140414130214)
+    autoprefixer-rails (4.0.1)
+      execjs
     awesome_print (1.2.0)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
@@ -345,6 +347,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoprefixer-rails
   better_errors
   binding_of_caller
   brakeman
