@@ -21,7 +21,7 @@ module Widgit
 
     # Instance Methods
     def components_attributes=(attributes_collections)
-      component_ids = attributes_collections.values.map { |attributes| attributes[:id] }.map(&:to_i)
+      component_ids = attributes_collections.values.map { |attributes| attributes[:id] }.reject(&:nil?).map(&:to_i)
       self.components << Component.find(component_ids)
       super(attributes_collections)
     end
