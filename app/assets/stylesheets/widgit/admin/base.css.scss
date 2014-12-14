@@ -63,11 +63,29 @@ body {
   bottom: 0;
 }
 
-.list-toolbar {
-  @extend .list-inline;
+.component-toolbar {
+  // height: 80px;
+  // width: 150px;
 
-  li {
-    height: 80px;
-    width: 150px;
+  .component {
+    padding: 0;
+    margin: 0;
+    border: none;
+    // position:absolute;
+    // top: 0px;
+    // padding: 0;
+    // width: 15px;
+    // height: 50px;
+    .handle {
+      // background: red;
+    }
+
+    :not(.handle) {
+      display: none;
+    }
   }
+}
+
+.fa-text {
+  @extend .fa-paragraph;
 }

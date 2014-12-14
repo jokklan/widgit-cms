@@ -9,9 +9,37 @@ class Toolbar extends BasePlugin
 
     super(el, options)
 
+  refresh: (options) ->
+    @$componentsContainers = $('[data-toolbar="component"]')
+    @$tiles = $('[data-resource="tile"]')
+
   init: ->
-    $(document).on 'click', '[data-toggle="remove"]', (event)=>
-      @remove()
+    super()
+
+    # $(document).on 'click', '[data-toggle="remove"]', (event)=>
+    #   @remove()
+
+    @$componentsContainers.sortable
+      connectWith: @$tiles
+      items: '> [data-resource="component"]'
+      handle: '[data-toolbar="handle"]'
+      start: (event, ui) ->
+        ui.item.parent().removeClass('component-toolbar')
+        ui.item.find('.handle').addClass('hide')
+      beforeStop: (event, ui) =>
+        @addComponent ui.item, $(event.target)
+
+  addComponent: ($component, $container) ->
+    $container.addClass('component-toolbar')
+    $container.html $component.clone()
+    $container.find('.handle').removeClass('hide')
+
+    newId = new Date().getTime()
+    $component.find('.handle').remove()
+    $component.removeAttr('data-disabled')
+    $component.removeData('disabled')
+    $component.data('id', newId)
+    $component.resource()
 
   remove: ->
     @$currentTile.addClass('hide')

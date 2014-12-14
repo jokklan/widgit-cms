@@ -2,8 +2,7 @@
   / %button.btn.btn-default{ type: "button", data: { toolbar: 'remove' } }
   /   Remove
 
-  %ul.list-toolbar
+  %ul.list-inline
     - Widgit::Component.types.each do |type|
-      %li.btn.btn-default{ data: { toolbar: 'add-component', type: "Widgit::Components::#{type.titleize}" } }
-        .tile{ data: { resource: 'tile', editor: 'components', disabled: true } }
-          = render "Widgit::Components::#{type.titleize}".constantize.new(disabled: true)
+      %li.component-toolbar{ data: { toolbar: 'component' } }
+        = render "Widgit::Components::#{type.titleize}".constantize.new(disabled: true)

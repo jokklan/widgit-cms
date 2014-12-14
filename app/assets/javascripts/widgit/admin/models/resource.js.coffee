@@ -43,4 +43,4 @@ $.fn.resource = (option, args...) ->
 
 # DATA-API
 $(document).on 'page:update', ->
-  $('[data-resource]').resource()
+  $('[data-resource]:not([data-disabled])').resource()
