@@ -1,15 +1,3 @@
-%div.hide.absolute{ data: { init: 'toolbar' } }
-  %button.btn.btn-default{ type: "button", data: { toggle: 'remove' } }
-    Remove
-  %button.btn.btn-default{ type: "button", data: { editor: 'save-tile' } }
-    Save tile
-  %button.btn.btn-default{ type: "button", data: { editor: 'insert-tile' } }
-    Insert tile
-  - Widgit::Component.types.each do |type|
-    %button.btn.btn-default{ type: "button", data: { toggle: 'add-component', type: "Widgit::Components::#{type.titleize}" } }
-      Add #{type}
-
-
 .modal.fade{ data: { init: 'dialog' } }
   .modal-dialog
     .modal-content

@@ -55,3 +55,19 @@ body {
 .component-text {
   cursor: text;
 }
+
+.fixed-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.list-toolbar {
+  @extend .list-inline;
+
+  li {
+    height: 80px;
+    width: 150px;
+  }
+}
