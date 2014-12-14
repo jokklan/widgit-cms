@@ -23,12 +23,24 @@ class PositionEditor extends BaseModule
       connectWith: @$componentsContainers
       items: '> [data-resource="component"]'
       delay: 150
+      beforeStop: (event, ui) =>
+        @addComponent ui.item, $(event.target)
       update: =>
         @saveItems @$blocksContainer, 'Block'
 
         @$componentsContainers.each (index, block)=>
           $block = $(block)
           @saveItems $block, 'Component'
+
+  addComponent: ($component, $tile) ->
+    if $tile.attr('data-disabled') != undefined && $component.attr('data-disabled') != undefined
+      $tile.html $component.clone()
+
+      newId = new Date().getTime()
+      $component.removeAttr('data-disabled')
+      $component.removeData('disabled')
+      $component.data('id', newId)
+      $component.resource()
 
   saveItems: ($element, type) ->
     items = $element.sortable('instance')._getItemsAsjQuery()
