@@ -1,0 +1,8 @@
+.fixed-bottom.text-center{ data: { init: 'toolbar' } }
+  / %button.btn.btn-default{ type: "button", data: { toolbar: 'remove' } }
+  /   Remove
+
+  %ul.list-inline
+    - Widgit::Component.types.each do |type|
+      %li.component-toolbar{ data: { toolbar: 'component' } }
+        = render "Widgit::Components::#{type.titleize}".constantize.new(disabled: true)

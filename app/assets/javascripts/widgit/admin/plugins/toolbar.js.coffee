@@ -9,39 +9,37 @@ class Toolbar extends BasePlugin
 
     super(el, options)
 
+  refresh: (options) ->
+    @$componentsContainers = $('[data-toolbar="component"]')
+    @$tiles = $('[data-resource="tile"]')
+
   init: ->
-    $(document).on 'mouseenter', '[data-resource="tile"]', (event)=>
-      @show(event.currentTarget)
+    super()
 
-    $(document).on 'click', '[data-toggle="add-component"]', (event)=>
-      @addComponent(event.currentTarget)
+    # $(document).on 'click', '[data-toggle="remove"]', (event)=>
+    #   @remove()
 
-    $(document).on 'click', '[data-toggle="remove"]', (event)=>
-      @remove()
+    @$componentsContainers.sortable
+      connectWith: @$tiles
+      items: '> [data-resource="component"]'
+      handle: '[data-toolbar="handle"]'
+      start: (event, ui) ->
+        ui.item.parent().removeClass('component-toolbar')
+        ui.item.find('.handle').addClass('hide')
+      beforeStop: (event, ui) =>
+        @addComponent ui.item, $(event.target)
 
-    $(document).on 'click', '[data-editor="save-tile"]', (event)=>
-      @saveTile()
+  addComponent: ($component, $container) ->
+    $container.addClass('component-toolbar')
+    $container.html $component.clone()
+    $container.find('.handle').removeClass('hide')
 
-    $(document).on 'click', '[data-editor="insert-tile"]', (event)=>
-      @insertTile()
-
-  show: (object)->
-    @$currentTile = $(object)
-    offset = @$currentTile.offset()
-
-    @$toolbar.css
-      left: offset.left
-      top: offset.top + @$currentTile.height()
-
-    @$toolbar.removeClass('hide')
-
-  addComponent: (btn)->
-    type = $(btn).data('type')
-
-    $.ajax
-      url: "/admin/components/new",
-      method: 'GET',
-      data: { component: { type: type }, target_id: @$currentTile.resource('id') }
+    newId = new Date().getTime()
+    $component.find('.handle').remove()
+    $component.removeAttr('data-disabled')
+    $component.removeData('disabled')
+    $component.data('id', newId)
+    $component.resource()
 
   remove: ->
     @$currentTile.addClass('hide')

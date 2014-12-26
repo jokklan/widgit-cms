@@ -1,2 +1,4 @@
-.component{ data: { resource: 'component', attributes: component.to_json, id: target_id(component) } }
+.component{ data: { resource: 'component', attributes: component.to_json, id: component.id, disabled: component.disabled } }
   = yield
+  - if component.disabled
+    .handle.btn.btn-default.fa{ class: "fa-#{component.component_type}", data: { toolbar: 'handle' } }

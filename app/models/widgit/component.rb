@@ -8,6 +8,9 @@ module Widgit
     # Association
     belongs_to :tile, inverse_of: :components
 
+    # Attributes
+    attr_accessor :disabled
+
     # Validations
     validates :tile, :type, presence: true
 
