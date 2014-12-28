@@ -1,0 +1,111 @@
+
+/* ==== TOOLBAR ==== */ 
+.toolbar-bottom {
+  @extend .easy-transition;  
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -60px;
+  padding-top: 10px;
+  background-color: $brand-success;
+
+  i {
+    font-size: 16px;
+  }
+}
+
+.toolbar-toggle {
+  @extend .absolute, .pointer;
+
+  top: 0;
+  left: 50%;
+  width: 60px;
+  height: 40px;
+  padding: 14px;
+  margin-left: -30px;
+  margin-top: -40px;
+  color: #fff;
+  background-color: $brand-success;
+
+  -webkit-border-radius: 35px 35px 0px 0px;
+  border-radius: 35px 35px 0px 0px;
+
+  i {
+    font-size: 20px;
+  }
+}
+
+.toolbar-divider {
+  margin-left: 5px;
+  padding-left: 13px !important;
+  border-left: 2px solid lighten($brand-success, 10%);
+}
+
+.component-toolbar {
+
+  .component {
+    padding: 0;
+    margin: 0;
+    border: none;
+
+    :not(.handle) {
+      display: none;
+    }
+  }
+}
+
+.btn-component {
+  @extend .middle;
+
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+  background-color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $gray-dark;
+    color: #fff;
+  }
+
+  &:active {
+    background-color: $brand-info;
+    color: #fff;
+  }
+}
+
+.toolbar-message {
+  @extend .fixed, .text-bold, .easy-transition;
+
+  top: 0;
+  right: 0;
+  margin: 15px;
+  font-size: 18px;
+  color: $brand-success;
+  margin-top: -30px;
+
+  -webkit-animation: pulse 5s infinite;
+}
+
+.built-mode {
+  .toolbar-message {
+    margin-top: 15px;
+  }
+
+  .toolbar-bottom {
+    bottom: 0;
+  }
+}
+
+.built-mode {
+  .component {
+    border-color: #e1e1e1;   
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% { color: $brand-success; } 
+  50% { color: $brand-info; }
+  100% { color: $brand-success; }
+}
