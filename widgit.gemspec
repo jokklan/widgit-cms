@@ -18,37 +18,37 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
   s.test_files = Dir['test/**/*']
 
-  s.add_dependency 'rails',                '~> 4.1.6' #'~> 4.2.0.beta2'
-  s.add_dependency 'haml',                 '~> 4.0.5'
-  s.add_dependency 'bootstrap-sass',       '~> 3.2.0'
-  s.add_dependency 'bh',                   '~> 1.1'
+  s.add_dependency 'rails',                '>= 4.1.0'
+  s.add_dependency 'haml',                 '>= 4.0.5'
+  s.add_dependency 'bootstrap-sass',       '>= 3.2.0'
+  s.add_dependency 'bh',                   '>= 1.1'
 
   # Use jquery as the JavaScript library
-  s.add_dependency 'jquery-rails', '~> 3.1.2'
+  s.add_dependency 'jquery-rails', '>= 3.1.2'
 
-  s.add_dependency 'simple_form', '~> 3.0.2'
+  s.add_dependency 'simple_form', '>= 3.0.2'
 
   # Font icon pack from Font Awesome
-  s.add_dependency 'font-awesome-sass', '~> 4.2.0'
+  s.add_dependency 'font-awesome-sass', '>= 4.2.0'
 
   # Use SCSS for stylesheets
-  s.add_dependency 'sass-rails', '~> 5.0.0.beta1'
+  s.add_dependency 'sass-rails', '>= 5.0.0'
 
   # Use CoffeeScript for .js.coffee assets and views
-  s.add_dependency 'coffee-rails', '~> 4.0.1'
+  s.add_dependency 'coffee-rails', '>= 4.0.0'
 
   # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-  s.add_dependency 'turbolinks', '~> 2.4.0'
+  s.add_dependency 'turbolinks', '>= 2.4.0'
 
   # Typecast hstore attributes
-  s.add_dependency 'hstore_accessor', '~> 0.6.1'
+  s.add_dependency 'hstore_accessor', '>= 0.6.1'
 
   # Use postgresql as the database for Active Record
-  s.add_dependency 'pg', '~> 0.17.1'
+  s.add_dependency 'pg', '>= 0.17.0'
 
   # Use postgresql as the database for Active Record
-  s.add_dependency 'apotomo', '~> 1.3.0'
+  s.add_dependency 'apotomo', '>= 1.3.0'
 
   # jQuery UI for Rails assets pipeline
-  s.add_dependency 'jquery-ui-rails', '~> 5.0.2'
+  s.add_dependency 'jquery-ui-rails', '>= 5.0.2'
 end
