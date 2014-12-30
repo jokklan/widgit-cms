@@ -92,13 +92,21 @@ class GridEditor extends BaseModule
     $column
       .removeClass 'col-sm-' + attributes.columns
       .addClass 'col-sm-' + columnStart
+
+    $column.resource('update', 'columns', columnStart)
     
     attributes.columns = columnStart
     $column.attr 'data-attributes', JSON.stringify(attributes)
    
     #Todo: retrieve this with AJAX
-    $column.after "<div class='col-sm-#{columnEnd}' data-attributes={'columns':#{columnEnd}} data-resource='column'><div class='tile'></div></div>"
+    $newColumn = $('<div data-resource="column"></div>')
+    $newColumn.addClass "col-sm-#{columnEnd}"
+    $newColumn.attr 'data-attributes', JSON.stringify({ columns: columnEnd })
+    $newColumn.html '<div class="tile" data-editor="components" data-resource="tile">'
+    $column.after $newColumn
+    # $column.after "<div class='col-sm-#{columnEnd}' data-attributes={'columns':#{columnEnd}} data-resource='column'><div class='tile' data-editor='components' data-resource='tile'></div></div>"
 
+    $(document).trigger('page:update')
     @createCutOverlays()
     @createMergeOverlays()
 
