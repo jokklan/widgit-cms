@@ -12,6 +12,7 @@ class Editor extends BaseModule
 
   save: ->
     window.page.save()
+    alert "Saved!"
 
   addBlock: (btn)->
     $.ajax

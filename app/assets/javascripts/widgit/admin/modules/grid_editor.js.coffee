@@ -17,10 +17,12 @@ class GridEditor extends BaseModule
 
     $(document).on 'click', '[data-toggle="cut-grid"]', (event) =>
       if gridActive
+        event.preventDefault()
         @cutGrid($(event.currentTarget))
 
     $(document).on 'click', '[data-toggle="merge-grid"]', (event) =>
       if gridActive
+        event.preventDefault()
         @mergeGrid($(event.currentTarget))      
 
   gridActive: ($target)->
@@ -29,7 +31,7 @@ class GridEditor extends BaseModule
 
     @$gridEditor.addClass('grid-editor-active')
     @$textEditor.attr('contenteditable', false)
-    $target.addClass('btn-success')
+    $target.addClass('btn-info')
 
     @createCutOverlays()
     @createMergeOverlays()
@@ -37,7 +39,7 @@ class GridEditor extends BaseModule
   gridInactive: ($target)->
     @$gridEditor.removeClass('grid-editor-active')
     @$textEditor.attr('contenteditable', true)
-    $target.removeClass('btn-success')
+    $target.removeClass('btn-info')
 
   createCutOverlays: ->
     $('[data-cut-overlay]').remove()
@@ -57,7 +59,7 @@ class GridEditor extends BaseModule
         cutIndex = i + 1
         template += 
         "
-          <div class='col-sm-#{overlayColumns}'>
+          <div class='col-sm-#{overlayColumns} overlay-column'>
             <a  href='#' 
                 class='fa fa-scissors' 
                 data-toggle='cut-grid'

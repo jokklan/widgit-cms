@@ -1,5 +1,5 @@
 body {
-  padding-top: 70px;
+  padding-top: 20px;
 }
 
 .draggable {
@@ -76,7 +76,6 @@ body {
 .component-text {
   cursor: text;
   padding: 3px;
-  background-color: $gray-lighter;
 }
 
 .component {
@@ -102,10 +101,23 @@ body {
   display: none;
   text-align: right;
   width: 100%;
-  margin-left: $grid-gutter-width / 4;
-  bottom: 0;
+  height: 100%;
+  //margin-left: $grid-gutter-width / 4;
+  top: 0;
 
-  a {
+  .overlay-column {
+    @extend .middle;
+
+    border-right: 2px dashed $gray-light;
+    height: 100%;
+
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end; 
+  }
+
+  a {  
+    margin-right: -35px;
+
     // Todo: install Compass
     -ms-transform: rotate(-90deg); /* IE 9 */
     -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
@@ -113,12 +125,29 @@ body {
   }
 }
 
+.merge-overlay,
+.cut-overlay a {
+  display: block;
+  background-color: $gray-dark;
+  padding: 10px;
+  font-size: 18px;
+  color: #fff !important;
+  border-radius: 20px;
+
+  &:active,
+  &:hover {
+    background-color: $gray-light;    
+  }
+}
+
 .merge-overlay {
+  margin-top: 10px;
   position: absolute;
   display: none;
+  line-height: 0;
   right: 0;
   top: 0;
-  margin-right: -1 * $grid-gutter-width / 4;
+  margin-right: -20px;
   z-index: 999;
 }
 
@@ -164,4 +193,8 @@ body {
 
 .fa-text {
   @extend .fa-paragraph;
+}
+
+.modal-backdrop {
+  z-index: 1030;
 }
