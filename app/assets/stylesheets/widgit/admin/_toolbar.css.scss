@@ -96,11 +96,22 @@
   .toolbar-bottom {
     bottom: 0;
   }
-}
 
-.built-mode {
-  .component {
-    border-color: #e1e1e1;   
+  .tile {
+    border-color: $gray-lighter;
+    background-color: $gray-lighter;
+
+    .component {
+      background-color: #fff;
+    }    
+  }
+
+  .block {
+    background-color: darken($gray-lighter, 5%);
+  }
+
+  .add-block {
+    display: block;
   }
 }
 

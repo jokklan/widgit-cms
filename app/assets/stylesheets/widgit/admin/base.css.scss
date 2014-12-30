@@ -25,8 +25,31 @@ body {
   }
 }
 
+.add-block {
+  @extend .row, .text-bold, .pointer, .easy-transition;
+
+  widht: 100%;
+  background-color: $gray-dark;
+  border-radius: 2px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 120px;
+  margin-top: 20px;  
+  color: #fff;
+  display: none;
+
+  &:active,
+  &:hover {
+    background-color: $gray;   
+  }
+}
+
 .block {
-  padding: 5px 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 2px;
 }
 
 .ui-sortable-helper {
@@ -34,21 +57,25 @@ body {
 }
 
 .tile {
-  min-height: 50px;
+  min-height: 44px;
+  border: 2px solid transparent; /* needs to be set so the element dont jump when hovering */
+  border-radius: 2px;   
 }
 
 .component {
-  padding: 15px 10px;
-  border: 1px dashed transparent; /* needs to be set so the element dont jump when hovering */
-  border-radius: 2px;   
+  padding: 5px;
+  border-radius: 2px;
+  margin: 5px;
 }
 
 .component-image {
   @extend .pointer;
 }
 
+.component-header,
 .component-text {
   cursor: text;
+  padding: 3px;
 }
 
 .fa-text {
