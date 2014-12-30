@@ -19,6 +19,9 @@ class Toolbar extends BasePlugin
     # $(document).on 'click', '[data-toggle="remove"]', (event)=>
     #   @remove()
 
+    $(document).on 'click', '[data-toggle="toolbar"]', =>
+      @toggleToolbar()
+
     @$componentsContainers.sortable
       connectWith: @$tiles
       items: '> [data-resource="component"]'
@@ -60,7 +63,13 @@ class Toolbar extends BasePlugin
         @$currentTile.closest('[data-resource="column"]').resource('update', 'tile_id', id)
         @$currentTile.replaceWith data
 
+  toggleToolbar: ->
+    $body    = $('body') 
 
+    if $body.hasClass 'built-mode'
+      $body.removeClass 'built-mode'
+    else
+      $body.addClass 'built-mode'
 
 # DATA-API
 BasePlugin.addPlugin
