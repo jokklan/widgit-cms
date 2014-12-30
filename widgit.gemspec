@@ -6,10 +6,10 @@ require 'widgit/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = 'widgit-cms'
+  s.name        = 'construct_io'
   s.version     = Widgit::VERSION
-  s.authors     = ['Johan Frølich']
-  s.email       = ['johanfrolich@gmail.com']
+  s.platform    = Gem::Platform::RUBY
+  s.authors     = ['Johan Frølich', 'Joachim Blicher Lundberg', 'Theis Othmar Frøhlich']
   s.homepage    = 'https://github.com/jokklan/widgit-cms'
   s.summary     = 'A modern, higly flexible CMS system for Rails'
   s.description = 'A modern, higly flexible CMS system for Rails'
@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
   s.test_files = Dir['test/**/*']
+  s.require_paths = ['lib']
+  s.required_ruby_version = '>= 1.9.3'
 
   s.add_dependency 'rails',                '>= 4.1.0'
   s.add_dependency 'haml',                 '>= 4.0.5'
