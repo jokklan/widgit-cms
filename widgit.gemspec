@@ -53,4 +53,10 @@ Gem::Specification.new do |s|
 
   # jQuery UI for Rails assets pipeline
   s.add_dependency 'jquery-ui-rails', '>= 5.0.2'
+
+  # Use dropzone js for fileupload interface
+  s.add_dependency 'dropzonejs-rails'
+
+  # Use carrierwave for fileupload
+  s.add_dependency 'carrierwave'
 end
