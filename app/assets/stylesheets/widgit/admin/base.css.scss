@@ -188,6 +188,7 @@ body {
   font-size: 40px;
 }
 
+.fa-,
 .fa-icon {
   @extend .fa-flag;
 }
@@ -202,7 +203,7 @@ body {
 
 .icon-list-item {
   cursor: pointer;
-  margin: 5px;
+  margin: 12px;
 
   &:hover {
     color: $gray-light;

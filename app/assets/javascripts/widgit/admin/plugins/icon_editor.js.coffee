@@ -27,7 +27,6 @@ class IconEditor extends BasePlugin
       @update()  
 
   update: ->
-    console.log @icon
     @$parent.resource('update', 'icon', @icon)    
 
   makeModal: ->
@@ -44,7 +43,7 @@ class IconEditor extends BasePlugin
             "    
 
   makeIconList: ->
-    icons = ["camera", "cutlery", "phone", "rocket"]
+    icons = ["camera", "cutlery", "phone", "rocket", "plug", "smile-o", "taxi", "star", "soccer-ball-o"]
 
     iconHtml = ''
 
