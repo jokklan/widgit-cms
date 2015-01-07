@@ -27,6 +27,7 @@ class IconEditor extends BasePlugin
       @update()  
 
   update: ->
+    $(document).trigger 'page:update'
     @$parent.resource('update', 'icon', @icon)    
 
   makeModal: ->
