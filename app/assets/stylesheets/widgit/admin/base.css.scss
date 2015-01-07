@@ -63,6 +63,7 @@ body {
 }
 
 .component {
+  position: relative;  
   padding: 5px;
   border-radius: 2px;
   margin: 5px;
@@ -169,26 +170,26 @@ body {
 }
 
 .component-toolbar {
-  // height: 80px;
-  // width: 150px;
-
   .component {
     padding: 0;
     margin: 0;
     border: none;
-    // position:absolute;
-    // top: 0px;
-    // padding: 0;
-    // width: 15px;
-    // height: 50px;
-    .handle {
-      // background: red;
-    }
 
     :not(.handle) {
       display: none;
     }
   }
+}
+
+.component-icon {
+  @extend .text-center;
+
+  display: block;
+  font-size: 40px;
+}
+
+.fa-icon {
+  @extend .fa-flag;
 }
 
 .fa-text {
@@ -197,4 +198,13 @@ body {
 
 .modal-backdrop {
   z-index: 1030;
+}
+
+.icon-list-item {
+  cursor: pointer;
+  margin: 5px;
+
+  &:hover {
+    color: $gray-light;
+  }
 }
