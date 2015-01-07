@@ -25,7 +25,7 @@ module Widgit
 
     # Class Methods
     def self.types
-      %w(header text image)
+      %w(header text image icon)
     end
   end
 end
