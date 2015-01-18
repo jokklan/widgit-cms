@@ -52,8 +52,13 @@ body {
   border-radius: 2px;
 }
 
-.ui-sortable-helper {
-  background: #fff;
+.block,
+.component {
+  @include transition(box-shadow 0.2s linear);
+
+  &:active {
+    @include box-shadow(rgba(0, 0, 0, 0.3) 0px 0px 10px);
+  }  
 }
 
 .tile {

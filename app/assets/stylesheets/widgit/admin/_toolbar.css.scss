@@ -8,7 +8,7 @@
   right: 0;
   bottom: -60px;
   padding-top: 10px;
-  background-color: $brand-success;
+  background-color: $gray-dark;
   z-index: 1000;
   i {
     font-size: 16px;
@@ -26,7 +26,7 @@
   margin-left: -30px;
   margin-top: -40px;
   color: #fff;
-  background-color: $brand-success;
+  background-color: $gray-dark;
 
   -webkit-border-radius: 35px 35px 0px 0px;
   border-radius: 35px 35px 0px 0px;
@@ -39,7 +39,7 @@
 .toolbar-divider {
   margin-left: 5px;
   padding-left: 13px !important;
-  border-left: 2px solid lighten($brand-success, 10%);
+  border-left: 2px solid $gray;
 }
 
 .component-toolbar {
@@ -98,16 +98,25 @@
   }
 
   .tile {
-    border-color: $gray-lighter;
-    background-color: $gray-lighter;
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
 
     .component {
-      background-color: #fff;
-    }    
+      background-color: rgba(255, 255, 255, 0.2);
+    }
   }
 
-  .block {
-    background-color: darken($gray-lighter, 5%);
+  .color-white {
+    background-color: #f5f5f5;
+
+    .tile {
+      border-color: rgba(0, 0, 0, 0.05);
+      background-color: rgba(0, 0, 0, 0.05);
+
+      .component {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }    
   }
 
   .add-block {
