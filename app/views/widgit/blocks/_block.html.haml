@@ -1,2 +1,3 @@
 .row.block{ class: "color-#{block.color}", data: { resource: 'block', attributes: block.to_json, editor: 'color' } }
-  = render block.columns
+  .container
+    = render block.columns
