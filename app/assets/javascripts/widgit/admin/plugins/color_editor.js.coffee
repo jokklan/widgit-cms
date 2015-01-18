@@ -39,8 +39,7 @@ class ColorEditor extends BasePlugin
 
       attributes       = $block.data 'attributes'
       previousColor    = attributes.color     
-
-      @newColor         = $target.data('color-item')
+      @newColor        = $target.data('color-item')
       attributes.color = @newColor
 
       $block
@@ -48,7 +47,6 @@ class ColorEditor extends BasePlugin
         .addClass 'color-' + @newColor  
 
       $modal.modal('hide')
-
 
       @update()  
 
@@ -71,7 +69,6 @@ class ColorEditor extends BasePlugin
 
   makeColorList: ->
     colors = ["white", "blue", "green", "yellow", "red"]
-
     colorHtml = ''
 
     for index, color of colors
