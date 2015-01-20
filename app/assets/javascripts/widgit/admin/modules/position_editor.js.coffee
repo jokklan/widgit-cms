@@ -30,6 +30,9 @@ class PositionEditor extends BaseModule
           $block = $(block)
           @saveItems $block, 'Component'
 
+    $(document).on 'click', '[data-toggle="drag-boxes"]', =>
+      @showDragBoxes()          
+
   saveItems: ($element, type) ->
     items = $element.sortable('instance')._getItemsAsjQuery()
     data = []
@@ -37,6 +40,13 @@ class PositionEditor extends BaseModule
     items.each (index, item) =>
       $(item).resource('update', 'position', index)
 
+  showDragBoxes: ->
+    $body    = $('body') 
+
+    if $body.hasClass 'drag-boxes'
+      $body.removeClass 'drag-boxes'
+    else
+      $body.addClass 'drag-boxes'
 
 # DATA-API
 $(document).ready ->

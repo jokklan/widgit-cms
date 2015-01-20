@@ -1,6 +1,3 @@
-.toolbar-message
-  BUILT MODE
-
 .toolbar-bottom.text-center{ data: { init: 'toolbar' } }
   / %button.btn.btn-default{ type: "button", data: { toolbar: 'remove' } }
   /   Remove
@@ -17,5 +14,9 @@
         %i.fa.fa-scissors
 
     %li
-      .btn.btn-default{ data: { toggle: 'save' }}
+      .btn.btn-default.btn-drag-boxes{ type: 'button', data: { toggle: 'drag-boxes' } }
+        %i.fa.fa-arrows        
+
+    %li.toolbar-divider
+      .btn.btn-success{ data: { toggle: 'save' }}
         %i.fa.fa-floppy-o        

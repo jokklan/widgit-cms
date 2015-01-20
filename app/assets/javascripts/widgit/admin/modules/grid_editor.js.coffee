@@ -34,7 +34,7 @@ class GridEditor extends BaseModule
     $target.addClass('btn-info')
 
     @createCutOverlays()
-    @createMergeOverlays()
+    @createMergeOverlays()    
 
   gridInactive: ($target)->
     @$gridEditor.removeClass('grid-editor-active')
