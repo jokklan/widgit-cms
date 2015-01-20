@@ -37,8 +37,8 @@
 }
 
 .toolbar-divider {
-  margin-left: 5px;
-  padding-left: 13px !important;
+  margin-left: 15px;
+  padding-left: 20px !important;
   border-left: 2px solid $gray;
 }
 
@@ -65,7 +65,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: $gray-dark;
+    background-color: $gray-light;
     color: #fff;
   }
 
@@ -75,34 +75,22 @@
   }
 }
 
-.toolbar-message {
-  @extend .fixed, .text-bold, .easy-transition;
-
-  top: 0;
-  right: 0;
-  margin: 15px;
-  font-size: 18px;
-  color: $brand-success;
-  margin-top: -30px;
-
-  -webkit-animation: pulse 5s infinite;
-}
-
 .built-mode {
-  .toolbar-message {
-    margin-top: 15px;
-  }
-
   .toolbar-bottom {
     bottom: 0;
   }
 
+  .add-block {
+    display: block;
+  }
+}
+
+.drag-boxes {
   .tile {
-    border-color: rgba(255, 255, 255, 0.2);
-    background-color: rgba(255, 255, 255, 0.2);
+    @extend .tile-highlight;
 
     .component {
-      background-color: rgba(255, 255, 255, 0.2);
+      @extend .component-highlight;
     }
   }
 
@@ -110,17 +98,16 @@
     background-color: #f5f5f5;
 
     .tile {
-      border-color: rgba(0, 0, 0, 0.05);
-      background-color: rgba(0, 0, 0, 0.05);
+      @extend .tile-highlight-inverted;
 
       .component {
-        background-color: rgba(0, 0, 0, 0.05);
+        @extend .component-highlight-inverted;
       }
     }    
   }
 
-  .add-block {
-    display: block;
+  .btn-drag-boxes {
+    @extend .btn-info;
   }
 }
 
