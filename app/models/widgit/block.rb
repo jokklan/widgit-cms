@@ -22,7 +22,7 @@ module Widgit
 
     # Instance Methods
     def to_json
-      attributes.symbolize_keys.compact.slice(:id, :position).to_json
+      attributes.symbolize_keys.compact.slice(:id, :position, :color).to_json
     end
   end
 end

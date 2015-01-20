@@ -1,0 +1,20 @@
+$colors: white #ffffff, 
+         blue  #7197D0,
+         green #71D07D,
+         yellow #D0C071,
+         red #D07171;
+
+@each $color in $colors {
+  .color-#{nth($color, 1)} {
+    background-color: nth($color, 2);
+  }
+}
+
+.color-list-item {
+  @extend .inline-block;
+
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  border: 1px solid $gray-lighter;
+}
