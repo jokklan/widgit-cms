@@ -1,3 +1,9 @@
-%div{ data: { init: 'configurationpanel' } }
-  - Widgit.components.each do |component|
-    = render "widgit/components/#{component.pluralize}/configuration"
+.off-canvas
+  .toggle{ data: { toggle: 'off-canvas' } }
+    = icon 'cog'
+  .col-xs-12
+    %div{ data: { init: 'configurationpanel' } }
+      - Widgit.components.each do |component|
+        .hidden{ data: { configuration: component } }
+          %h2= component.titleize
+          = render "widgit/components/#{component.pluralize}/configuration"
