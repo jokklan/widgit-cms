@@ -10,6 +10,10 @@ class Editor extends BaseModule
     $(document).on 'click', '[data-toggle="add-block"]', (event)=>
       @addBlock(event.target)
 
+    $(document).on 'click', '[data-toggle="off-canvas"]', =>
+      @toggleSidePanel()
+      $offCanvas  = $('.off-canvas')
+
   save: ->
     window.page.save()
     alert "Saved!"
@@ -19,6 +23,9 @@ class Editor extends BaseModule
       url: "/admin/blocks/new",
       method: 'GET'
       data: { block: { columns_attributes: [{ columns: 12 }] } }
+
+  toggleSidePanel: ->
+    $('.off-canvas').toggleClass('active')
 
 $(document).ready ->
   window.editor = new Editor()
