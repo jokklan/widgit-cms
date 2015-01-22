@@ -11,4 +11,7 @@ class Component extends Resource
     super(attribute, value)
     @$tile.resource('updateDom')
 
+  type: ->
+    @attributes.type.split('::').pop().toLowerCase()
+
 Resource.addType('component', Component)

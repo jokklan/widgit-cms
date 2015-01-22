@@ -1,0 +1,3 @@
+%div{ data: { init: 'configurationpanel' } }
+  - Widgit.components.each do |component|
+    = render "widgit/components/#{component.pluralize}/configuration"
