@@ -1,31 +1,66 @@
+$off-canvas-width: 300px;
+
 .off-canvas {
   @extend .easy-transition;
+  @extend .text-invert;
 
   position: fixed;
   top: 0;
-  left: -300px;
+  left: -$off-canvas-width;
   height: 100%;
-  width: 300px;
-  background: $gray-dark;
-  color: #fff;
+  width: $off-canvas-width;
+  background: #222;
   padding: 15px;
+  z-index: 999;
+
+  i {
+    -webkit-transition-duration: 0.8s;
+    -moz-transition-duration: 0.8s;
+    -o-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    transition-property: transform;
+  }
 
   &.active {
     left: 0;
+
+    i {
+      -webkit-transform:rotate(-180deg);
+      -moz-transform:rotate(-180deg);
+      -o-transform:rotate(-180deg);
+    }
+
+    .toggle {
+      cursor: pointer;
+      left: 255px;
+      color: #ccc;
+    }
   }
 
   .toggle {
     @extend .fa-2x;
     @extend .absolute;
+    @extend .easy-transition;
 
     cursor: pointer;
     padding-left: 10px;
     top: 0;
-    left: 300px;
+    left: $off-canvas-width;
     color: $brand-primary;
-
-    i {
-      @extend .easy-rotation;
-    }
   }
 }
+
+/* Pushing all body content to right, when sidepanel is active */
+
+.offcanvas-active {
+  margin-left: $off-canvas-width;
+}
+
+body {
+  @extend .easy-transition;
+}
+

@@ -26,6 +26,7 @@ class Editor extends BaseModule
 
   toggleSidePanel: ->
     $('.off-canvas').toggleClass('active')
+    $('body').toggleClass('offcanvas-active')
 
 $(document).ready ->
   window.editor = new Editor()

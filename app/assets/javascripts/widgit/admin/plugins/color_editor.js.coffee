@@ -2,8 +2,8 @@
 $ = jQuery
 
 # CLASS DEFINITION
-class ColorEditor extends BasePlugin 
-  
+class ColorEditor extends BasePlugin
+
   constructor: (el, options) ->
     super(el, options)
     @$parent = @$this.closest('[data-resource]')
@@ -27,32 +27,32 @@ class ColorEditor extends BasePlugin
         if !modalOpen and !$('.ui-sortable-helper').length
           $modal = $target.find('[data-color="modal"]')
           $modal.modal()
-          modalOpen = true 
-      , 1500   
+          modalOpen = true
+      , 1500
 
     $(document).on 'mouseup', '[data-resource="block"]', ->
-      clearTimeout(holdDelay)      
+      clearTimeout(holdDelay)
 
-    @$this.find('[data-color-item]').on 'click', (event) =>  
-      $target = $(event.currentTarget) 
+    @$this.find('[data-color-item]').on 'click', (event) =>
+      $target = $(event.currentTarget)
       $block  = $target.closest '[data-resource="block"]'
 
       attributes       = $block.data 'attributes'
-      previousColor    = attributes.color     
+      previousColor    = attributes.color
       @newColor        = $target.data('color-item')
       attributes.color = @newColor
 
       $block
         .removeClass 'color-' + previousColor
-        .addClass 'color-' + @newColor  
+        .addClass 'color-' + @newColor
 
       $modal.modal('hide')
 
-      @update()  
+      @update()
 
   update: ->
     $(document).trigger 'page:update'
-    @$parent.resource('update', 'color', @newColor)    
+    @$parent.resource('update', 'color', @newColor)
 
   makeModal: ->
     modal = "
@@ -65,10 +65,10 @@ class ColorEditor extends BasePlugin
                   </div>
                 </div>
               </div>
-            "    
+            "
 
   makeColorList: ->
-    colors = ["white", "blue", "green", "yellow", "red"]
+    colors = ["white", "blue", "green", "yellow", "red", "light-gray"]
     colorHtml = ''
 
     for index, color of colors

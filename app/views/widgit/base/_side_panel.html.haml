@@ -1,7 +1,7 @@
 .off-canvas
   .toggle{ data: { toggle: 'off-canvas' } }
-    = icon 'cog'
-  .col-xs-12
+    = icon 'caret-square-o-right'
+  .col-xs-12{ data: { toggle: 'off-canvas' } }
     %div{ data: { init: 'configurationpanel' } }
       - Widgit.components.each do |component|
         .hidden{ data: { configuration: component } }
