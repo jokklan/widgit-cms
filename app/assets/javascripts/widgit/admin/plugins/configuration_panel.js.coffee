@@ -20,8 +20,8 @@ class ConfigurationPanel extends BasePlugin
       @$element = $(event.currentTarget)
       type = @$element.resource('type')
 
-      @$configuration_panels.hide()
-      @$configuration_panels.filter("[data-configuration=\"#{type}\"]").show()
+      @$configuration_panels.addClass('hidden')
+      @$configuration_panels.filter("[data-configuration=\"#{type}\"]").removeClass('hidden')
 
 
 
