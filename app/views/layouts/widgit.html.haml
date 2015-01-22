@@ -10,6 +10,7 @@
     %meta{content: "IE=Edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
     %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", name: "viewport"}
   %body{ data: { id: @page.id } }
+    = render 'off_canvas'
     = render 'header'
     .div{ data: { editor: 'position', editor_grid: 'true', type: 'page' } }
       = yield

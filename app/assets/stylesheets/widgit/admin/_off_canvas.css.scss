@@ -1,0 +1,31 @@
+.off-canvas {
+  @extend .easy-transition;
+
+  position: fixed;
+  top: 0;
+  left: -300px;
+  height: 100%;
+  width: 300px;
+  background: $gray-dark;
+  color: #fff;
+  padding: 15px;
+
+  &.active {
+    left: 0;
+  }
+
+  .toggle {
+    @extend .fa-2x;
+    @extend .absolute;
+
+    cursor: pointer;
+    padding-left: 10px;
+    top: 0;
+    left: 300px;
+    color: $brand-primary;
+
+    i {
+      @extend .easy-rotation;
+    }
+  }
+}
