@@ -8,19 +8,13 @@ class PositionEditor extends BaseModule
   refresh: (options) ->
     @$blocksContainer = $('[data-editor="position"]')
     @$componentsContainers = $('[data-resource="tile"]')
-    @$sortableContainers = @$componentsContainers.add(@$blocksContainer)
-    @$blocks = $('[data-resource="block"]')
-    @$components = $('[data-resource="component"]')
-    @$sortables = @$components.add(@$blocks)
-
-  init: (echo) ->
-    super()
 
     @$blocksContainer.sortable
       items: '> [data-resource="block"]'
       delay: 150
+
     @$componentsContainers.sortable
-      connectWith: @$componentsContainers
+      connectWith: '[data-resource="tile"]'
       items: '> [data-resource="component"]'
       delay: 150
       update: =>
@@ -30,8 +24,11 @@ class PositionEditor extends BaseModule
           $block = $(block)
           @saveItems $block, 'Component'
 
+  init: (echo) ->
+    super()
+
     $(document).on 'click', '[data-toggle="drag-boxes"]', =>
-      @showDragBoxes()          
+      @showDragBoxes()
 
   saveItems: ($element, type) ->
     items = $element.sortable('instance')._getItemsAsjQuery()
@@ -41,7 +38,7 @@ class PositionEditor extends BaseModule
       $(item).resource('update', 'position', index)
 
   showDragBoxes: ->
-    $body    = $('body') 
+    $body    = $('body')
 
     if $body.hasClass 'drag-boxes'
       $body.removeClass 'drag-boxes'
