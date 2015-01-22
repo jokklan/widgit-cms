@@ -1,7 +1,8 @@
-$colors: white #ffffff, 
-         blue  #7197D0,
+$colors: white #ffffff,
+         blue  #3498db,
          green #71D07D,
          yellow #D0C071,
+         light-gray #ecf0f1,
          red #D07171;
 
 @each $color in $colors {
@@ -17,4 +18,11 @@ $colors: white #ffffff,
   height: 50px;
   margin: 5px;
   border: 1px solid $gray-lighter;
+}
+
+/* TODO make better solution for this */
+.color-blue,
+.color-green,
+.color-red {
+  @extend .text-invert;
 }
