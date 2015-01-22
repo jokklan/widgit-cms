@@ -6,17 +6,26 @@ class PositionEditor extends BaseModule
   reordering: false
 
   refresh: (options) ->
+    $body = $('body')
     @$blocksContainer = $('[data-editor="position"]')
     @$componentsContainers = $('[data-resource="tile"]')
+    attributes = { 
+      delay: 150
+      cancel: "[data-editor='text']" 
+      start: ->
+        $body.addClass 'is-sorting'
+      stop: ->
+        $body.removeClass 'is-sorting'        
+    }
 
     @$blocksContainer.sortable
       items: '> [data-resource="block"]'
-      delay: 150
+      attributes
 
     @$componentsContainers.sortable
       connectWith: '[data-resource="tile"]'
       items: '> [data-resource="component"]'
-      delay: 150
+      attributes
       update: =>
         @saveItems @$blocksContainer, 'Block'
 
