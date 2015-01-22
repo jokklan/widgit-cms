@@ -23,7 +23,7 @@ class Toolbar extends BasePlugin
       @toggleToolbar()
 
     @$componentsContainers.sortable
-      connectWith: @$tiles
+      connectWith: '[data-resource="tile"]'
       items: '> [data-resource="component"]'
       handle: '[data-toolbar="handle"]'
       start: (event, ui) ->
@@ -64,7 +64,7 @@ class Toolbar extends BasePlugin
         @$currentTile.replaceWith data
 
   toggleToolbar: ->
-    $body    = $('body') 
+    $body    = $('body')
 
     if $body.hasClass 'built-mode'
       $body.removeClass 'built-mode'
