@@ -3,5 +3,23 @@
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;   
+  transition: all 0.3s ease-in-out;
+}
+
+.easy-rotation {
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  transition-property: transform;
+
+  &:hover {
+    -webkit-transform:rotate(70deg);
+    -moz-transform:rotate(70deg);
+    -o-transform:rotate(70deg);
+  }
 }
