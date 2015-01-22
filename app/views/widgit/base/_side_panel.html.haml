@@ -7,3 +7,9 @@
         .hidden{ data: { configuration: component } }
           %h2= component.titleize
           = render "widgit/components/#{component.pluralize}/configuration"
+      .hidden{ data: { configuration: 'block' } }
+        %h2 Block
+        = render "widgit/blocks/configuration"
+      .hidden{ data: { configuration: 'tile' } }
+        %h2 Tile
+        = render "widgit/tiles/configuration"
