@@ -4,6 +4,7 @@ $ = jQuery
 # CLASS DEFINITION
 class @BaseModule
   defaults: {}
+  initialized: false
   constructor: (options) ->
     @options = $.extend({}, @defaults, options)
 
@@ -15,4 +16,6 @@ class @BaseModule
     @refresh()
     $(document).on 'page:update', =>
       @refresh()
+
+    @initialized = true
 
