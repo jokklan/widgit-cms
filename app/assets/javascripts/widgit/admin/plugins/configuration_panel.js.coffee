@@ -31,6 +31,12 @@ class ConfigurationPanel extends BasePlugin
     $(document).on 'click', '[data-panel="back"]', (event)=>
       @back()
 
+  getElement: ->
+    @getCurrentPanel().element
+
+  getPanelObject: ->
+    @getCurrentPanel().panel
+
   getCurrentPanel: ->
     @activePanels[@activePanels.length-1] || { panel: $(), element: $() }
 
@@ -43,11 +49,11 @@ class ConfigurationPanel extends BasePlugin
       element: $element
 
   activateCurrentPanel: ->
-    @getCurrentPanel().panel.removeClass 'hidden'
+    @getPanelObject().removeClass 'hidden'
 
   activatePanel: (type, $element)->
-    $element ||= @getCurrentPanel().element
-    @getCurrentPanel().panel.addClass 'hidden'
+    $element ||= @getElement()
+    @getPanelObject().addClass 'hidden'
     @activePanels.push
       panel: @$panels.filter("[data-panel=\"#{type}\"]")
       element: $element
@@ -57,9 +63,9 @@ class ConfigurationPanel extends BasePlugin
     return $element
 
   back: ->
-    @getCurrentPanel().panel.addClass 'hidden'
+    @getPanelObject().addClass 'hidden'
     @activePanels.pop()
-    @getCurrentPanel().panel.removeClass 'hidden'
+    @getPanelObject().removeClass 'hidden'
 
 # DATA-API
 BasePlugin.addPlugin
