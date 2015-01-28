@@ -16,6 +16,10 @@
       Color Picker
       - %w(white blue green yellow red light-gray).each do |color|
         .color-list-item{ class: "color-#{color}", data: { color_item: color } }
+    .hidden{ data: { panel: 'images' } }
+      Images
+      - %w(white blue green yellow red light-gray).each do |color|
+        .color-list-item{ class: "color-#{color}", data: { color_item: color } }
 
   .col-xs-12
     %button.btn.btn-default{ type: 'button', data: { panel: 'back' } }

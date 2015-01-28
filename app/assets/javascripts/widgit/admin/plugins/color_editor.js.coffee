@@ -12,6 +12,9 @@ class ColorEditor extends BasePlugin
   init: ->
     $(document).on 'click', '[data-editor="color"]', =>
       @$element = @$panel.panel('activatePanel', 'color-picker')
+      attributes       = @$element.data 'attributes'
+      previousColor    = attributes.color
+      $("[data-color-item=#{previousColor}]").addClass('active')
 
     $(document).on 'click', '[data-color-item]', (event) =>
       $target = $(event.currentTarget)
@@ -20,6 +23,9 @@ class ColorEditor extends BasePlugin
       previousColor    = attributes.color
       @newColor        = $target.data('color-item')
       attributes.color = @newColor
+
+      $('[data-color-item]').removeClass('active')
+      $target.addClass('active')
 
       @$element
         .removeClass 'color-' + previousColor
