@@ -3,6 +3,8 @@ $ = jQuery
 
 # CLASS DEFINITION
 class Block extends Resource
+  type: 'block'
+
   data: ->
     columns_attributes = @$resource.find('[data-resource="column"]').map(-> $(this).resource('data')).get()
 
