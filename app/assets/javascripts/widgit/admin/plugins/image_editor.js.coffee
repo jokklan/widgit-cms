@@ -11,7 +11,7 @@ class ImageEditor extends BasePlugin
 
   constructor: (el, options) ->
     @$dialog = $('[data-init="dialog"]')
-    @$parent = $(el).closest('[data-resource]')
+    @$panel  = $('[data-init="panel"]')
 
     super(el, options)
 
@@ -22,11 +22,16 @@ class ImageEditor extends BasePlugin
 
       @$dialog.dialog('open')
 
+
   update: (name, id, url)->
+    $element = @$panel.panel('getElement')
     html = @options.imageTemplate.replace('_ALT_', name).replace('_SRC_', url)
 
-    @$this.html(html)
-    @$parent.resource('update', 'image_id', id)
+    @$this.find('img').add($element.find('img')).attr
+      src: url
+      alt: name
+
+    $element.resource('update', 'image_id', id)
 
 # DATA-API
 BasePlugin.addPlugin

@@ -3,6 +3,8 @@ $ = jQuery
 
 # CLASS DEFINITION
 class Column extends Resource
+  type: 'column'
+
   data: ->
     tile_attributess = @$resource.find('[data-resource="tile"]').resource('data')
 

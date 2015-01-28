@@ -18,6 +18,10 @@ $colors: white #ffffff,
   height: 50px;
   margin: 5px;
   border: 1px solid $gray-lighter;
+
+  &.active {
+    border: 1px solid black;
+  }
 }
 
 /* TODO make better solution for this */

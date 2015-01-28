@@ -19,15 +19,20 @@ initializePlugin = (plugin) ->
   dataNamespace = "widgit.#{name}"
 
   $.fn[name] = (option, args...) ->
-    @each ->
+    if typeof option == 'string'
       $this = $(this)
       data = $this.data(dataNamespace)
 
-      if !data
-        $this.data dataNamespace, (data = new plugin.klass(this, option))
+      data[option].apply(data, args)
+    else
+      @each ->
+        $this = $(this)
+        data = $this.data(dataNamespace)
 
-      if typeof option == 'string'
-        data[option].apply(data, args)
+        if !data
+          $this.data dataNamespace, (data = new plugin.klass(this, option))
+
+
 
 $(document).on 'page:update', ->
   $.each BasePlugin.widgitPlugins, ->
