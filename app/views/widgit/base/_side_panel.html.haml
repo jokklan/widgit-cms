@@ -1,15 +1,23 @@
-.off-canvas
+.off-canvas{ data: { init: 'panel' } }
   .toggle{ data: { toggle: 'off-canvas' } }
     = icon 'caret-square-o-right'
-  .col-xs-12{ data: { toggle: 'off-canvas' } }
-    %div{ data: { init: 'configurationpanel' } }
-      - Widgit.components.each do |component|
-        .hidden{ data: { configuration: component } }
-          %h2= component.titleize
-          = render "widgit/components/#{component.pluralize}/configuration"
-      .hidden{ data: { configuration: 'block' } }
-        %h2 Block
-        = render "widgit/blocks/configuration"
-      .hidden{ data: { configuration: 'tile' } }
-        %h2 Tile
-        = render "widgit/tiles/configuration"
+  .col-xs-12
+    - Widgit.components.each do |component|
+      .hidden{ data: { panel: component } }
+        %h2= component.titleize
+        = render "widgit/components/#{component.pluralize}/configuration"
+    .hidden{ data: { panel: 'block' } }
+      %h2 Block
+      = render "widgit/blocks/configuration"
+    .hidden{ data: { panel: 'tile' } }
+      %h2 Tile
+      = render "widgit/tiles/configuration"
+    .hidden{ data: { panel: 'color-picker' } }
+      Color Picker
+      - %w(white blue green yellow red light-gray).each do |color|
+        .color-list-item{ class: "color-#{color}", data: { color_item: color } }
+
+  .col-xs-12
+    %button.btn.btn-default{ type: 'button', data: { panel: 'back' } }
+      Back
+

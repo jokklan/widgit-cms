@@ -12,7 +12,6 @@ class Editor extends BaseModule
 
     $(document).on 'click', '[data-toggle="off-canvas"]', =>
       @toggleSidePanel()
-      $offCanvas  = $('.off-canvas')
 
   save: ->
     window.page.save()
