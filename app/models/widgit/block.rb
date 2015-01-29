@@ -2,8 +2,10 @@ module Widgit
   class Block < ActiveRecord::Base
     include Positionable
     include Parentable
+    include Configurable
 
     # Extensions
+    configurable background_color: :color
     positionable :buildable
     parentable :columns
 
@@ -23,6 +25,12 @@ module Widgit
     # Instance Methods
     def to_json
       attributes.symbolize_keys.compact.slice(:id, :position, :color).to_json
+    end
+
+    def attribute_types
+      {
+
+      }
     end
   end
 end
