@@ -30,13 +30,13 @@
   padding: 20px;
   text-align: center;
   margin-bottom: 120px;
-  margin-top: 20px;  
+  margin-top: 20px;
   color: #fff;
   display: none;
 
   &:active,
   &:hover {
-    background-color: $gray;   
+    background-color: $gray;
   }
 }
 
@@ -51,38 +51,38 @@
 
   &:active {
     @include box-shadow(rgba(0, 0, 0, 0.3) 0px 0px 10px);
-  }  
+  }
 }
 
 .tile {
   min-height: 44px;
   border: 2px solid transparent; /* needs to be set so the element dont jump when hovering */
-  border-radius: 2px;   
+  border-radius: 2px;
 }
 
 .tile-highlight {
   border-color: rgba(255, 255, 255, 0.2);
-  background-color: rgba(255, 255, 255, 0.2);  
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .tile-highlight-inverted {
   border-color: rgba(255, 255, 255, 0.2);
-  background-color: rgba(255, 255, 255, 0.2);  
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .component {
-  position: relative;  
+  position: relative;
   padding: 5px;
   border-radius: 2px;
   margin: 5px;
 }
 
 .component-highlight {
-  background-color: rgba(255, 255, 255, 0.2);  
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .component-highlight-inverted {
-  background-color: rgba(0, 0, 0, 0.05); 
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .component-image {
@@ -136,6 +136,10 @@
 
 .modal-backdrop {
   z-index: 1030;
+}
+
+.modal-body {
+  color: #222;
 }
 
 .icon-list-item {

@@ -13,7 +13,7 @@
       %h2 Tile
       = render "widgit/tiles/configuration"
     .hidden{ data: { panel: 'color-picker' } }
-      Color Picker
+      %h4 Color Picker
       - %w(white blue green yellow red light-gray).each do |color|
         .color-list-item{ class: "color-#{color}", data: { color_item: color } }
 
