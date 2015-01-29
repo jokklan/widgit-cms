@@ -2,20 +2,12 @@
   .toggle{ data: { toggle: 'off-canvas' } }
     = icon 'caret-square-o-right'
   .col-xs-12
-    - Widgit.components.each do |component|
-      .hidden{ data: { panel: component } }
-        %h2= component.titleize
-        = render "widgit/components/#{component.pluralize}/configuration"
-    .hidden{ data: { panel: 'block' } }
-      %h2 Block
-      = render "widgit/blocks/configuration"
-    .hidden{ data: { panel: 'tile' } }
-      %h2 Tile
-      = render "widgit/tiles/configuration"
-    .hidden{ data: { panel: 'color-picker' } }
-      %h4 Color Picker
-      - %w(white blue green yellow red light-gray).each do |color|
-        .color-list-item{ class: "color-#{color}", data: { color_item: color } }
+    - resource_classes.each do |resource_class|
+      .hidden{ data: { panel: resource_class.model_name.element } }
+        %h2= resource_class.model_name.human
+        = widgit_form_for resource_class.new, url: '#' do |f|
+          - resource_class.configurable_attributes.each do |attribute, type|
+            = f.input attribute, as: type
 
   .col-xs-12
     %button.btn.btn-default{ type: 'button', data: { panel: 'back' } }
