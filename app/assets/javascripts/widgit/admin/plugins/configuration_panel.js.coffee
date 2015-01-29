@@ -41,6 +41,7 @@ class ConfigurationPanel extends BasePlugin
     @activePanels[@activePanels.length-1] || { panel: $(), element: $() }
 
   resetPanels: ->
+    @$panels.addClass('hidden')
     @activePanels = []
 
   addPanel: (type, $element)->
