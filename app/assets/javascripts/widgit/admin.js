@@ -1,3 +1,5 @@
+//= require_tree ./admin/utilities
+
 //= require ./admin/modules/base_module
 //= require_tree ./admin/modules
 
