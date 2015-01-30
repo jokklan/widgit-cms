@@ -2,56 +2,29 @@
 $ = jQuery
 
 # CLASS DEFINITION
-class IconEditor extends BasePlugin 
-  
+class IconEditor extends BasePlugin
+
   constructor: (el, options) ->
     super(el, options)
-    @$parent = @$this.closest('[data-resource]')
+    @$dialog = $('[data-init="dialog"]')
+    @$panel = $('[data-init="panel"]')
 
   init: ->
+    $(document).on 'click', '[data-editor="icon"]', =>
+      @$dialog.dialog 'setCallback', (data)=>
+        @update(data.icon)
 
-    @$this.append @makeModal()
+      @$dialog.dialog('open', 'icon')
 
-    @$this.find('[data-toggle="icon"]').on 'click', (event) =>
-      $(event.currentTarget).siblings('[data-icon="modal"]').modal()
+  update: (icon)->
+    $element = @$panel.panel('getElement')
 
-    @$this.find('[data-icon-item]').on 'click', (event) =>  
-      $target = $(event.currentTarget)
-      $parent = $target.closest('[data-editor="icon"]')
-      $icon = $parent.find('[data-toggle="icon"]')
-      @icon = $target.data 'icon-item'
+    $element.find('.fa')
+      .removeClassPrefix 'fa-'
+      .addClass "fa-#{icon}"
 
-      $icon.removeClass().addClass('fa fa-' + @icon)
+    $element.resource('update', 'icon', icon)
 
-      $parent.find('[data-icon="modal"]').modal('hide')
-      @update()  
-
-  update: ->
-    $(document).trigger 'page:update'
-    @$parent.resource('update', 'icon', @icon)    
-
-  makeModal: ->
-    modal = "
-              <div class='modal fade text-left' data-icon='modal'>
-                <div class='modal-dialog'>
-                  <div class='modal-content'>
-                    <div class='modal-body'>
-                      #{@makeIconList()}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            "    
-
-  makeIconList: ->
-    icons = ["camera", "cutlery", "phone", "rocket", "plug", "smile-o", "taxi", "star", "soccer-ball-o"]
-
-    iconHtml = ''
-
-    for index, icon of icons
-      iconHtml += "<div class='icon-list-item fa fa-#{icon}' data-icon-item='#{icon}'></div>"
-
-    iconHtml
 
 # DATA-API
 BasePlugin.addPlugin
