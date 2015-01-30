@@ -6,16 +6,21 @@
           %span &times;
         %h4.modal-title Images
       .modal-body.row
-        - Widgit::Image.all.in_groups_of(4, false).each do |group|
-          .row
-            - group.in_groups_of(2, false).each do |pair|
-              - pair.each do |image|
-                .col-xs-12.col-sm-6.col-md-3
-                  = link_to '#', data: { dialog: 'link', attributes: image.to_json } do
-                    = image_tag image.url, class: 'img-responsive img-thumbnail'
-                .clearfix.visible-xs-block
-              .clearfix.visible-sm-block
+        .hidden{ data: { dialog_panel: 'image' } }
+          - Widgit::Image.all.in_groups_of(4, false).each do |group|
+            .row
+              - group.in_groups_of(2, false).each do |pair|
+                - pair.each do |image|
+                  .col-xs-12.col-sm-6.col-md-3
+                    = link_to '#', data: { dialog: 'link', attributes: image.to_json } do
+                      = image_tag image.url, class: 'img-responsive img-thumbnail'
+                  .clearfix.visible-xs-block
+                .clearfix.visible-sm-block
 
-        .dropzone#test{ data: { editor: 'upload' } }
+          .dropzone#test{ data: { editor: 'upload' } }
+        .hidden{ data: { dialog_panel: 'color' } }
+          %h4 Color Picker
+          - %w(white blue green yellow red light-gray).each do |color|
+            .color-list-item{ class: "color-#{color}", data: { dialog: 'link', attributes: { color: color }.to_json } }
       .modal-footer
         %button.btn.btn-default{ type: 'button', data: { dismiss: 'modal' } } Close

@@ -5,8 +5,10 @@ Dropzone.autoDiscover = false;
 
 # CLASS DEFINITION
 class Dialog extends BasePlugin
+  currentPanel: null
   constructor: (el, options) ->
     @$modal = $(el)
+    @$panels = @$modal.find('[data-dialog-panel]')
     @callback = ->
 
     super(el, options)
@@ -14,19 +16,25 @@ class Dialog extends BasePlugin
   init: ->
     $(document).on 'click', '[data-dialog="link"]', (event)=>
       event.preventDefault()
-      imageAttributes = $(event.currentTarget).data('attributes')
-      @callback(imageAttributes)
+      attributes = $(event.currentTarget).data('attributes')
+      @callback(attributes)
       @close()
 
 
   setCallback: (callback) ->
     @callback = callback
 
-  open: ->
+  getCurrentPanel: ->
+    @$panels.filter("[data-dialog-panel=#{@currentPanel}]")
+
+  open: (panel)->
+    @currentPanel = panel
     @$modal.modal('show')
+    @getCurrentPanel().removeClass('hidden')
 
   close: ->
     @$modal.modal('hide')
+    @getCurrentPanel().addClass('hidden')
 
 # DATA-API
 BasePlugin.addPlugin

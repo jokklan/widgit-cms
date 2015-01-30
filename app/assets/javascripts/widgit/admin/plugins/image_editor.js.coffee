@@ -20,7 +20,7 @@ class ImageEditor extends BasePlugin
       @$dialog.dialog 'setCallback', (data)=>
         @update(data.name, data.id, data.url)
 
-      @$dialog.dialog('open')
+      @$dialog.dialog('open', 'image')
 
 
   update: (name, id, url)->

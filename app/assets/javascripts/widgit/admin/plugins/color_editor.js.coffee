@@ -6,32 +6,25 @@ class ColorEditor extends BasePlugin
 
   constructor: (el, options) ->
     super(el, options)
+    @$dialog = $('[data-init="dialog"]')
     @$panel = $('[data-init="panel"]')
-    @$element = null
 
   init: ->
     $(document).on 'click', '[data-editor="color"]', =>
-      @$element = @$panel.panel('activatePanel', 'color-picker')
-      attributes       = @$element.data 'attributes'
-      previousColor    = attributes.color
-      $("[data-color-item=#{previousColor}]").addClass('active')
+      @$dialog.dialog 'setCallback', (data)=>
+        @update(data.color)
 
-    $(document).on 'click', '[data-color-item]', (event) =>
-      $target = $(event.currentTarget)
+      @$dialog.dialog('open', 'color')
 
-      attributes       = @$element.data 'attributes'
-      previousColor    = attributes.color
-      @newColor        = $target.data('color-item')
-      attributes.color = @newColor
+  update: (color)->
+    $element = @$panel.panel('getElement')
 
-      $('[data-color-item]').removeClass('active')
-      $target.addClass('active')
+    $element
+      .removeClassPrefix 'color-'
+      .addClass "color-#{color}"
 
-      @$element
-        .removeClass 'color-' + previousColor
-        .addClass 'color-' + @newColor
+    $element.resource('update', 'color', color)
 
-      @$element.resource('update', 'color', @newColor)
 
 # DATA-API
 BasePlugin.addPlugin
