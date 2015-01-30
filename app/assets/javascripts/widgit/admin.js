@@ -6,5 +6,8 @@
 //= require ./admin/plugins/base_plugin
 //= require_tree ./admin/plugins
 
+//= require ./admin/editors/base_editor
+//= require_tree ./admin/editors
+
 //= require ./admin/models/resource
 //= require_tree ./admin/models
