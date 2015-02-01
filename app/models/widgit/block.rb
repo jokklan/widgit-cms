@@ -27,6 +27,10 @@ module Widgit
       attributes.symbolize_keys.compact.slice(:id, :position, :background_color).to_json
     end
 
+    def columns_layout=(value)
+      self.columns_attributes = value.map { |columns| { columns: columns } }
+    end
+
     def attribute_types
       {
 
