@@ -6,8 +6,8 @@
       .hidden{ data: { panel: resource_class.model_name.element } }
         %h2= resource_class.model_name.human
         = widgit_form_for resource_class.new, url: '#' do |f|
-          - resource_class.configurable_attributes.each do |attribute, type|
-            = f.input attribute, as: type
+          - resource_class.configurable_attributes.each do |attribute|
+            = f.input attribute.name, as: attribute.input_type, input_html: { data: { input: attribute.data_type, attr: attribute.name } }
 
   .col-xs-12
     %button.btn.btn-default{ type: 'button', data: { panel: 'back' } }

@@ -5,7 +5,7 @@ module Widgit
     include Configurable
 
     # Extensions
-    configurable background_color: :color
+    configurable background_color: { data_type: :color, input_type: :string }
     positionable :buildable
     parentable :columns
 
