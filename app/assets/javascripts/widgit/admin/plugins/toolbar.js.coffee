@@ -16,9 +16,6 @@ class Toolbar extends BasePlugin
   init: ->
     super()
 
-    # $(document).on 'click', '[data-toggle="remove"]', (event)=>
-    #   @remove()
-
     $(document).on 'click', '[data-toggle="toolbar"]', =>
       @toggleToolbar()
 
@@ -43,10 +40,6 @@ class Toolbar extends BasePlugin
     $component.removeData('disabled')
     $component.data('id', newId)
     $component.resource()
-
-  remove: ->
-    @$currentTile.addClass('hide')
-    @$currentTile.resource('update', '_destroy', true)
 
   saveTile: ->
     @$currentTile.resource('save')

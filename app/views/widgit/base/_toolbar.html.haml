@@ -10,10 +10,6 @@
       %li.component-toolbar{ data: { toolbar: 'component' } }
         = render "Widgit::Components::#{type.titleize}".constantize.new(disabled: true)
     %li.toolbar-divider
-      .btn.btn-default{ type: 'button', data: { toggle: 'grid-editor' } }
-        %i.fa.fa-scissors
-
-    %li
       .btn.btn-default.btn-drag-boxes{ type: 'button', data: { toggle: 'drag-boxes' } }
         %i.fa.fa-arrows
 

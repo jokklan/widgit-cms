@@ -1,3 +1,4 @@
-.row.block{ class: "color-#{block.background_color}", data: { resource: 'block', attributes: block.to_json } }
+.row.block{ class: "color-#{block.background_color}", style: "background-image: url(#{block.background_image.try(:url)});", data: { resource: 'block', attributes: block.to_json } }
   .container
-    = render block.columns
+    .row
+      = render block.columns

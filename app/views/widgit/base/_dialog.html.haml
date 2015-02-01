@@ -18,13 +18,19 @@
                 .clearfix.visible-sm-block
 
           .dropzone#test{ data: { editor: 'upload' } }
-        .hidden{ data: { dialog_panel: 'color' } }
-          %h4 Color Picker
-          - %w(white blue green yellow red light-gray).each do |color|
-            .color-list-item{ class: "color-#{color}", data: { dialog: 'link', attributes: { color: color }.to_json } }
         .hidden{ data: { dialog_panel: 'icon' } }
-          %h4 Color Picker
+          %h4 Icons
           - %w(camera cutlery phone rocket plug smile-o taxi star soccer-ball-o).each do |icon|
             .icon-list-item.fa{ class: "fa-#{icon}", data: { dialog: 'link', attributes: { icon: icon }.to_json } }
+        .hidden.overflow-scroll{ data: { dialog_panel: 'block' } }
+        .col-xs-12
+          %h4 Block Templates
+          - [[12], [6, 6], [4, 4, 4], [3, 3, 3, 3], [2, 2, 2, 2, 2, 2], [8, 4], [4, 8], [12, 6, 6], [12, 4, 4, 4], [12, 3, 3, 3, 3]].each do |columns|
+            .block-list-item
+              .btn.btn-default{ data: { toggle: 'add-block', columns: columns } }
+                - columns.each do |column|
+                  %div.block-column{class: "col-sm-#{column}"}
+                    %div
+
       .modal-footer
         %button.btn.btn-default{ type: 'button', data: { dismiss: 'modal' } } Close
