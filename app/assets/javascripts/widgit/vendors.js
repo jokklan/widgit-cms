@@ -2,6 +2,8 @@
 //= require jquery
 //= require jquery-ui/sortable
 
+//= require jquery.nouislider
+
 // Twitter Bootstrap
 // require bootstrap/affix
 // require bootstrap/alert
