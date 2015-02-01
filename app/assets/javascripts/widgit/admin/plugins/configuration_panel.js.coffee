@@ -58,7 +58,17 @@ class ConfigurationPanel extends BasePlugin
       element: $element
 
   activateCurrentPanel: ->
-    @getPanelObject().removeClass 'hidden'
+    $panel = @getPanelObject()
+    attributes = @getElement().resource('data')
+    $inputs = $panel.find('[data-input]')
+
+    $inputs.each (index, input) =>
+      $input = $(input)
+      attributeName = $input.data('attr')
+      value = attributes[attributeName]
+      $input.val(value)
+
+    $panel.removeClass 'hidden'
 
   activatePanel: (type, $element)->
     $element ||= @getElement()

@@ -17,7 +17,7 @@ module Widgit
 
     # Instance Methods
     def to_json
-      attributes.symbolize_keys.compact.slice(:id, :type, :text, :position).to_json
+      attributes.symbolize_keys.slice(:id, :type, :position).merge(self.properties || {}).compact.to_json
     end
 
     def component_type
