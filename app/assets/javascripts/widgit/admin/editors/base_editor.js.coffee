@@ -11,22 +11,24 @@ class @BaseEditor extends BaseModule
     @$panel = $('[data-init="panel"]')
 
   init: ->
-    $(document).on 'click', "[data-editor=#{@editorName}]", =>
+    $(document).on 'click', "[data-input=#{@editorName}]", (event)=>
       @$dialog.dialog 'setCallback', (data)=>
-        @update(data)
+
+        @update($(event.currentTarget), data)
 
       @$dialog.dialog('open', @editorName)
 
   attributeName: ->
     @editorName
 
-  update: (data)->
+  update: ($input, data)->
     $element = @$panel.panel('getElement')
 
     @updateDomElement($element, data)
-    @updateResource($element, data)
+    @updateInput($input, data)
+
+  updateInput: ($input, data) ->
+    $input.val(data[@attributeName()])
+    $input.change()
 
   updateDomElement: ($element, data) ->
-
-  updateResource: ($element, data) ->
-    $element.resource('update', @attributeName(), data[@attributeName()])
