@@ -15,6 +15,14 @@ class ConfigurationPanel extends BasePlugin
   init: ->
     super()
 
+    $(document).on 'change', '[data-input]', (event) =>
+      $input = $(event.currentTarget)
+      $element = @getElement()
+      attributeName = $input.data('attr')
+      value = $input.val()
+
+      $element.resource('update', attributeName, value)
+
     $(document).on 'click', '[data-resource]:not([data-disabled])', (event)=>
       event.stopPropagation()
       $resource = $(event.currentTarget)

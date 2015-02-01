@@ -3,7 +3,7 @@ module Widgit
     class Icon < Component
       # Extensions
       hstore_accessor :properties, { icon: :string }
-      configurable icon: :icon
+      configurable icon: { data_type: :icon, input_type: :string }
     end
   end
 end
