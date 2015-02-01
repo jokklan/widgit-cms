@@ -45,6 +45,12 @@ $off-canvas-width: 300px;
     left: $off-canvas-width;
     color: $brand-primary;
   }
+
+  input {
+    @extend .full-width;
+
+    color: $gray-darker;
+  }
 }
 
 /* Pushing all body content to right, when sidepanel is active */
