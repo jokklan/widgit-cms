@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129210019) do
+ActiveRecord::Schema.define(version: 20150201155528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,12 +20,14 @@ ActiveRecord::Schema.define(version: 20150129210019) do
   create_table "widgit_blocks", force: true do |t|
     t.integer  "buildable_id"
     t.string   "buildable_type"
-    t.integer  "position",                           null: false
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-    t.string   "background_color", default: "white"
+    t.integer  "position",                                              null: false
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
+    t.string   "background_color",    default: "white"
+    t.integer  "background_image_id"
   end
 
+  add_index "widgit_blocks", ["background_image_id"], name: "index_widgit_blocks_on_background_image_id", using: :btree
   add_index "widgit_blocks", ["buildable_id", "buildable_type"], name: "index_widgit_blocks_on_buildable_id_and_buildable_type", using: :btree
 
   create_table "widgit_columns", force: true do |t|
