@@ -1,3 +1,3 @@
 = render layout: 'widgit/components/component', locals: { component: header } do
-  %h2.component-header{ data: { editor: 'text' } }
+  = content_tag "h#{header.level}", class: 'component-header', data: { editor: 'text' } do
     = raw header.text

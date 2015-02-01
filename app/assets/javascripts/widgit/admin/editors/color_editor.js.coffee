@@ -4,6 +4,7 @@ $ = jQuery
 # CLASS DEFINITION
 class ColorEditor extends BaseEditor
   editorName: 'color'
+  dialog: true
 
   updateDomElement: ($element, data) ->
     $element

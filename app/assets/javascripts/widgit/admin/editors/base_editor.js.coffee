@@ -4,6 +4,7 @@ $ = jQuery
 # CLASS DEFINITION
 class @BaseEditor extends BaseModule
   editorName: undefined
+  dialog: false
 
   constructor: (el, options) ->
     super(el, options)
@@ -11,12 +12,21 @@ class @BaseEditor extends BaseModule
     @$panel = $('[data-init="panel"]')
 
   init: ->
-    $(document).on 'click', "[data-input=#{@editorName}]", (event)=>
-      @$dialog.dialog 'setCallback', (data)=>
+    if @dialog
+      $(document).on 'click', "[data-input=#{@editorName}]", (event)=>
+        @$dialog.dialog 'setCallback', (data)=>
+          @update($(event.currentTarget), data)
 
-        @update($(event.currentTarget), data)
+        @$dialog.dialog('open', @editorName)
+    else
+      $(document).on 'change', "[data-input=#{@editorName}]", (event)=>
+        $input = $(event.currentTarget)
+        attributeName = $input.data('attr')
+        value = $input.val()
+        data = {}
+        data[attributeName] = value
 
-      @$dialog.dialog('open', @editorName)
+        @update($input, data)
 
   attributeName: ->
     @editorName
@@ -29,6 +39,7 @@ class @BaseEditor extends BaseModule
 
   updateInput: ($input, data) ->
     $input.val(data[@attributeName()])
-    $input.change()
+    if @dialog
+      $input.change()
 
   updateDomElement: ($element, data) ->

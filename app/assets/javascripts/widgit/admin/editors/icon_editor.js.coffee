@@ -4,6 +4,7 @@ $ = jQuery
 # CLASS DEFINITION
 class IconEditor extends BaseEditor
   editorName: 'icon'
+  dialog: true
 
   updateDomElement: ($element, data)->
     $element.find('.fa')
