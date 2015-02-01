@@ -61,13 +61,13 @@
 }
 
 .tile-highlight {
-  border-color: rgba(255, 255, 255, 0.2);
-  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .tile-highlight-inverted {
-  border-color: rgba(255, 255, 255, 0.2);
-  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .component {
@@ -156,15 +156,21 @@
 }
 
 .block-list-item {
-  width: 100px;
-  float: left;
-  margin: 5px;
+  @extend .col-xs-3;
+
+  .btn {
+    @extend .btn-block;
+    @extend .gt-top;
+
+    min-height: 50px;
+  }
 
   .block-column {
     padding: 2px;
 
     > div {
-      height: 10px;
+      min-height: 15px;
+      height: 100%;
       background-color: grey;
     }
   }
