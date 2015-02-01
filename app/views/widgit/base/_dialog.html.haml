@@ -18,10 +18,6 @@
                 .clearfix.visible-sm-block
 
           .dropzone#test{ data: { editor: 'upload' } }
-        .hidden{ data: { dialog_panel: 'color' } }
-          %h4 Color Picker
-          - %w(white blue green yellow red light-gray).each do |color|
-            .color-list-item{ class: "color-#{color}", data: { dialog: 'link', attributes: { color: color }.to_json } }
         .hidden{ data: { dialog_panel: 'icon' } }
           %h4 Color Picker
           - %w(camera cutlery phone rocket plug smile-o taxi star soccer-ball-o).each do |icon|
