@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20150201155528) do
   create_table "widgit_blocks", force: true do |t|
     t.integer  "buildable_id"
     t.string   "buildable_type"
-    t.integer  "position",                                              null: false
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
+    t.integer  "position",                              null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "background_color",    default: "white"
     t.integer  "background_image_id"
   end

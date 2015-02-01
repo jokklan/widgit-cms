@@ -13,7 +13,7 @@ class Editor extends BaseModule
       @$dialog.dialog('open', 'block')
 
     $(document).on 'click', '[data-toggle="add-block"]', (event)=>
-      @addBlock(event.target)
+      @addBlock(event.currentTarget)
 
     $(document).on 'click', '[data-toggle="off-canvas"]', =>
       @toggleSidePanel()
