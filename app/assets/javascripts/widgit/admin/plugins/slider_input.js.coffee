@@ -9,24 +9,22 @@ class SliderInput extends BasePlugin
   init: () ->
     $input = $('[data-input="slider"]').find('input')
     $slider = $('[data-slider="target"]')
-
-    sizes = ["small", "medium", "large"]  
-
+    
     $('[data-slider="target"]').noUiSlider
-      start: [1]
+      start: [2]
       step: 1
       range:
-        'min': 0
-        'max': sizes.length - 1 
+        'min': 1
+        'max': 3
 
     $slider.on 'change', ->
-      val = Math.round($(this).val())
+      $input
+        .val Math.round $(this).val()
+        .trigger 'change'
 
-      for size, i in sizes
-        if val == i
-          $input
-            .val(size)
-            .trigger 'change'    
+    $(document).on "activate:panel", ->
+      unless $input.closest('[data-panel]').hasClass "hidden"
+        $slider.val($input.val() || 2)
 
 # DATA-API
 BasePlugin.addPlugin
