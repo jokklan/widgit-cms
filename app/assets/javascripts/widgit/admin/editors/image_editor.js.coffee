@@ -13,7 +13,7 @@ class ImageEditor extends BaseEditor
       alt: data.name
 
   attributeName: ->
-    'image_id'
+    'id'
 
 $(document).ready ->
   window.imageEditor = new ImageEditor()
