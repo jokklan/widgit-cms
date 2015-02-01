@@ -1,6 +1,7 @@
 module Widgit
   class Component < ActiveRecord::Base
     include Positionable
+    include Configurable
 
     # Extensions
     positionable :tile
