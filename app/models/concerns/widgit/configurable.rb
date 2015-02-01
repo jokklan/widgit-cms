@@ -4,12 +4,11 @@ module Widgit
 
     Setting = Struct.new(:name, :data_type, :input_type, :default_value)
 
-    included do
-      class_attribute :configurable_attributes
-    end
-
     module ClassMethods
       def configurable(settings = {})
+        class_attribute :configurable_attributes
+        self.configurable_attributes = []
+
         settings.each do |setting, options|
           add_setting(setting, options)
         end
