@@ -11,7 +11,7 @@
     %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", name: "viewport"}
   %body.offcanvas-active{ data: { id: @page.id } }
     = render 'side_panel'
-    .div{ data: { editor: 'position', editor_grid: 'true', type: 'page' } }
+    .div{ data: { editor: 'position', type: 'page' } }
       = yield
     .container
       .row
