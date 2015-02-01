@@ -10,3 +10,5 @@ class IconEditor extends BaseEditor
       .removeClassPrefix 'fa-'
       .addClass "fa-#{data.icon}"
 
+$(document).ready ->
+  window.iconEditor = new IconEditor()

@@ -9,3 +9,6 @@ class ColorEditor extends BaseEditor
     $element
       .removeClassPrefix 'color-'
       .addClass "color-#{data.color}"
+
+$(document).ready ->
+  window.colorEditor = new ColorEditor()
