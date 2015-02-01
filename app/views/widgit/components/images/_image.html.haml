@@ -1,2 +1,2 @@
 = render layout: 'widgit/components/component', locals: { component: image } do
-  = image_tag image.image.url, class: 'img-responsive'
+  = link_to_if image.link_url.present?, image_tag(image.image.url, class: 'img-responsive'), image.link_url, target: '_blank'

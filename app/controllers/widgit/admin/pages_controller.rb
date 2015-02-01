@@ -47,7 +47,7 @@ module Widgit
       end
 
       def page_params
-        params.require(:page).permit(:title, blocks_attributes: [:_destroy, :id, :position, :background_color, columns_attributes: [:_destroy, :id, :columns, :position, :tile_id, tile_attributes: [:_destroy, :id, :position, components_attributes: [:_destroy, :id, :type, :column, :text, :icon, :image_id, :position, :level]]]])
+        params.require(:page).permit(:title, blocks_attributes: [:_destroy, :id, :position, :background_color, columns_attributes: [:_destroy, :id, :columns, :position, :tile_id, tile_attributes: [:_destroy, :id, :position, components_attributes: [:_destroy, :id, :type, :column, :text, :icon, :image_id, :position, :level, :link_url]]]])
       end
     end
   end
