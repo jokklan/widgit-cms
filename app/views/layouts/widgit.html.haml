@@ -9,7 +9,7 @@
     %meta{charset: "utf-8"}
     %meta{content: "IE=Edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
     %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", name: "viewport"}
-  %body{ data: { id: @page.id } }
+  %body.offcanvas-active{ data: { id: @page.id } }
     = render 'side_panel'
     .div{ data: { editor: 'position', editor_grid: 'true', type: 'page' } }
       = yield
