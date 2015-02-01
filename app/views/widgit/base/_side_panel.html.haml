@@ -10,6 +10,8 @@
             = f.input attribute.name, as: attribute.input_type, input_html: { data: { input: attribute.data_type, attr: attribute.name } }
 
   .col-xs-12
-    %button.btn.btn-default{ type: 'button', data: { panel: 'back' } }
+    %button.btn.btn-default{ type: 'button', data: { config: 'delete' } }
+      Delete
+    %button.btn.btn-default{ type: 'button', data: { config: 'back' } }
       Back
 

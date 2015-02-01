@@ -36,8 +36,11 @@ class ConfigurationPanel extends BasePlugin
 
       @activateCurrentPanel()
 
-    $(document).on 'click', '[data-panel="back"]', (event)=>
+    $(document).on 'click', '[data-config="back"]', (event)=>
       @back()
+
+    $(document).on 'click', '[data-config="delete"]', (event)=>
+      @delete()
 
   getElement: ->
     @getCurrentPanel().element
@@ -85,6 +88,11 @@ class ConfigurationPanel extends BasePlugin
     @getPanelObject().addClass 'hidden'
     @activePanels.pop()
     @getPanelObject().removeClass 'hidden'
+
+  delete: ->
+    $element = @getElement()
+    $element.addClass('hidden')
+    $element.resource('update', '_destroy', true)
 
 # DATA-API
 BasePlugin.addPlugin
