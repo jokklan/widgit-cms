@@ -12,7 +12,7 @@ module Widgit
     private
 
       def block_params
-        params.require(:block).permit(columns_attributes: [:columns])
+        params.require(:block).permit(columns_layout: [])
       end
     end
   end

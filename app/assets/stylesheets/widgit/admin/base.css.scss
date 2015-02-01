@@ -150,3 +150,22 @@
     color: $gray-light;
   }
 }
+
+.overflow-scroll {
+  overflow: scroll;
+}
+
+.block-list-item {
+  width: 100px;
+  float: left;
+  margin: 5px;
+
+  .block-column {
+    padding: 2px;
+
+    > div {
+      height: 10px;
+      background-color: grey;
+    }
+  }
+}
