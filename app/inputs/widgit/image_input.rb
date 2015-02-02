@@ -1,10 +1,8 @@
 module Widgit
   class ImageInput < SimpleForm::Inputs::StringInput
-    ## Because image tage doesnot work if not included the below
-     include ActionView::Helpers::AssetTagHelper
-     def input
-      ("#{super}" + "#{image_tag(nil)}").html_safe
-     end
+    def input
+      super + template.image_tag(nil, class: 'img-responsive gt-bottom')
+    end
 
     def input_type
       :string

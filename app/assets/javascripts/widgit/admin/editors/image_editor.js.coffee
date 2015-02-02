@@ -14,14 +14,9 @@ class ImageEditor extends BaseEditor
       alt: data.name
 
   updateInput: ($input, data) ->
+    super($input, data)
     $input.parent().find('img').attr
       src: data.url
-      class: 'img-responsive gt-bottom'
-      "data-input": 'image'
-
-    $input.parent().find('input').attr
-      class: 'hidden'
-
 
   attributeName: ->
     'id'
