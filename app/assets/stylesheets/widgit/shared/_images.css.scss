@@ -1,0 +1,12 @@
+.block {
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: top;
+}
+
+@media (min-width: $screen-md) {
+  .block {
+    background-size: cover;
+    background-position: center;
+  }
+}

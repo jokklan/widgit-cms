@@ -111,9 +111,3 @@
     @extend .btn-info;
   }
 }
-
-@-webkit-keyframes pulse {
-  0% { color: $brand-success; } 
-  50% { color: $brand-info; }
-  100% { color: $brand-success; }
-}
