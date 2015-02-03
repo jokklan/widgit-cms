@@ -24,5 +24,6 @@
 
 //= require rangy/rangy-core
 //= require hallo
+//= require mousetrap
 
 //= require dropzone
