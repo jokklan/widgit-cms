@@ -2,7 +2,7 @@
 $ = jQuery
 
 # CLASS DEFINITION
-class @BaseEditor extends BaseModule
+class @BaseEditor extends BasePlugin
   editorName: undefined
   dialog: false
 
@@ -15,30 +15,42 @@ class @BaseEditor extends BaseModule
     if @dialog
       $(document).on 'click', "[data-input=#{@editorName}]", (event)=>
         @$dialog.dialog 'setCallback', (data)=>
-          @update($(event.currentTarget), data)
+          @update(data)
 
         @$dialog.dialog('open', @editorName)
     else
       $(document).on 'change', "[data-input=#{@editorName}]", (event)=>
-        $input = $(event.currentTarget)
-        attributeName = $input.data('attr')
-        value = $input.val()
+        attributeName = @$this.data('attr')
         data = {}
         data[attributeName] = value
 
-        @update($input, data)
+        @update(data)
 
   attributeName: ->
     @editorName
 
-  update: ($input, data)->
+  update: (data)->
     $element = @$panel.panel('getElement')
 
-    @updateInput($input, data)
+    @updateInput($data)
 
-  updateInput: ($input, data) ->
-    $input.val(data[@attributeName()])
+  updateInput: (data) ->
+    @$this.val(data[@attributeName()])
+
+  updateInputWithElement: ($element) ->
+    attributeName = @$this.data('attr')
+    value = $element.resource('data')[attributeName]
+    data = {}
+
     if @dialog
-      $input.change()
+      data = $.extend(data, @$dialog.dialog('getAttributes', @editorName, value))
+    else
+      data[attributeName] = value
 
-  updateDomElement: ($element, data) ->
+    @updateInput data
+
+
+BasePlugin.addPlugin
+  name: 'editor'
+  klass: BaseEditor
+  selector: '[data-input="string"]'

@@ -6,5 +6,7 @@ class ColorEditor extends BaseEditor
   editorName: 'color'
   dialog: true
 
-$(document).ready ->
-  window.colorEditor = new ColorEditor()
+BasePlugin.addPlugin
+  name: 'editor'
+  klass: ColorEditor
+  selector: '[data-input="color"]'

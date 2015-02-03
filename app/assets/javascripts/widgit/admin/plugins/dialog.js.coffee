@@ -14,7 +14,7 @@ class Dialog extends BasePlugin
     super(el, options)
 
   init: ->
-    $(document).on 'click', '[data-dialog="link"]', (event)=>
+    $(document).on 'click', '[data-dialog-link]', (event)=>
       event.preventDefault()
       attributes = $(event.currentTarget).data('attributes')
       @callback(attributes)
@@ -23,6 +23,9 @@ class Dialog extends BasePlugin
 
   setCallback: (callback) ->
     @callback = callback
+
+  getAttributes: (type, id) ->
+    $("[data-dialog-panel=#{type}]").find("[data-dialog-link=#{id}]").data('attributes')
 
   getCurrentPanel: ->
     @$panels.filter("[data-dialog-panel=#{@currentPanel}]")

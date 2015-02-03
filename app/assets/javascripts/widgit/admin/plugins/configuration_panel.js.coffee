@@ -62,14 +62,12 @@ class ConfigurationPanel extends BasePlugin
 
   activateCurrentPanel: ->
     $panel = @getPanelObject()
-    attributes = @getElement().resource('data')
     $inputs = $panel.find('[data-input]')
 
     $inputs.each (index, input) =>
-      $input = $(input)
-      attributeName = $input.data('attr')
-      value = attributes[attributeName]
-      $input.val(value)
+      $(input).editor('updateInputWithElement', @getElement())
+      # $input.val(value)
+      # $input.change()
 
     $panel.removeClass 'hidden'
     $(document).trigger "activate:panel"

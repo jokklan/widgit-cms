@@ -7,3 +7,4 @@ $.fn.removeClassRegex = (regex) ->
 $.fn.removeClassPrefix = (prefix) ->
   regex = new RegExp("(^|\\s)#{prefix}\\S+", 'g');
   $(@).removeClassRegex regex
+

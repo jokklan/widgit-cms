@@ -12,7 +12,7 @@
               - group.in_groups_of(2, false).each do |pair|
                 - pair.each do |image|
                   .col-xs-12.col-sm-6.col-md-3
-                    = link_to '#', data: { dialog: 'link', attributes: image.to_json } do
+                    = link_to '#', data: { dialog_link: image.id, attributes: image.to_json } do
                       = image_tag image.url, class: 'img-responsive img-thumbnail'
                   .clearfix.visible-xs-block
                 .clearfix.visible-sm-block
@@ -21,7 +21,11 @@
         .hidden{ data: { dialog_panel: 'icon' } }
           %h4 Icons
           - %w(camera cutlery phone rocket plug smile-o taxi star soccer-ball-o).each do |icon|
-            .icon-list-item.fa{ class: "fa-#{icon}", data: { dialog: 'link', attributes: { icon: icon }.to_json } }
+            .icon-list-item.fa{ class: "fa-#{icon}", data: { dialog_link: icon, dialog_id: icon, attributes: { icon: icon }.to_json } }
+        .hidden{ data: { dialog_panel: 'color' } }
+          %h4 Color Picker
+          - %w(white blue green yellow red light-gray).each do |color|
+            .color-list-item{ class: "color-#{color}", data: { dialog_link: color, attributes: { color: color }.to_json } }
         .hidden.overflow-scroll{ data: { dialog_panel: 'block' } }
         .col-xs-12
           %h4 Block Templates
