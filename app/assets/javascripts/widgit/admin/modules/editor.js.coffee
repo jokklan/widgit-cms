@@ -6,6 +6,10 @@ class Editor extends BaseModule
   init: ->
     @$dialog = $('[data-init="dialog"]')
 
+    @delegateClicks()
+    @delegateKeys()
+
+  delegateClicks: ->
     $(document).on 'click', '[data-toggle="save"]', =>
       @save()
 
@@ -17,6 +21,20 @@ class Editor extends BaseModule
 
     $(document).on 'click', '[data-toggle="off-canvas"]', =>
       @toggleSidePanel()
+
+    $(document).on 'click', '[data-toggle="toolbar"]', =>
+      @toggleToolbar()      
+
+  delegateKeys: ->
+    Mousetrap.bind ['ctrl+s', 'meta+s'], (event) =>
+      event.preventDefault
+      @save()
+
+    Mousetrap.bind 'q', (event) =>
+      @toggleSidePanel()     
+
+    Mousetrap.bind 'w', (event) =>
+      @toggleToolbar()       
 
   save: ->
     window.page.save()
@@ -33,6 +51,10 @@ class Editor extends BaseModule
   toggleSidePanel: ->
     $('.off-canvas').toggleClass('active')
     $('body').toggleClass('offcanvas-active')
+
+  toggleToolbar: ->
+    $('body').toggleClass 'built-mode'
+
 
 $(document).ready ->
   window.editor = new Editor()
