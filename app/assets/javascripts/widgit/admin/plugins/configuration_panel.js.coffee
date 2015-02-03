@@ -72,6 +72,7 @@ class ConfigurationPanel extends BasePlugin
       $input.val(value)
 
     $panel.removeClass 'hidden'
+    $(document).trigger "activate:panel"
 
   activatePanel: (type, $element)->
     $element ||= @getElement()

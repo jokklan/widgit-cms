@@ -51,6 +51,28 @@ $off-canvas-width: 300px;
 
     color: $gray-darker;
   }
+
+  .slider-labels {
+    @extend .full-width, .gt-top;
+
+    padding: 0;
+    list-style: none;
+
+    li {
+      @extend .inline-block, .text-center;    
+
+      width: 33.3%;
+      font-size: 10px;
+
+      &:first-child {
+        @extend .text-left;
+      }
+
+      &:last-child {
+        @extend .text-right;  
+      }
+    }
+  }
 }
 
 /* Pushing all body content to right, when sidepanel is active */
