@@ -8,11 +8,6 @@ class ImageEditor extends BaseEditor
   editorName: 'image'
   dialog: true
 
-  updateDomElement: ($element, data)->
-    $element.find('img').attr
-      src: data.url
-      alt: data.name
-
   updateInput: ($input, data) ->
     super($input, data)
     $input.parent().find('img').attr

@@ -9,6 +9,12 @@ module Widgit
         end
       end
 
+      def show
+        @block = Block.find(params[:id])
+
+        @block.assign_attributes params.require(:block).permit!
+      end
+
     private
 
       def block_params

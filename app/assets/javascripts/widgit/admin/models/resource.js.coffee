@@ -11,10 +11,14 @@ class @Resource
   constructor: (element, attributes = {}) ->
     @$resource = $(element)
     @attributes = $.extend({}, attributes, @$resource.data('attributes'))
-    @id = @$resource.data('id')
+    @id = @attributes['id']
 
   update: (attribute, value) ->
     @attributes[attribute] = value
+    @updateDom()
+
+  updateDom: ->
+    @$block.resource('updateDom')
 
   data: ->
     @attributes

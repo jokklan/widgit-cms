@@ -5,6 +5,10 @@ $ = jQuery
 class Tile extends Resource
   type: 'tile'
 
+  constructor: (element, attributes = {}) ->
+    super(element, attributes)
+    @$block = @$resource.closest('[data-resource="block"]')
+
   data: ->
     components_attributes = @$resource.find('[data-resource="component"]').map(-> $(this).resource('data')).get()
     $.extend({}, @attributes, { components_attributes: components_attributes })

@@ -10,4 +10,10 @@ class Block extends Resource
 
     $.extend({}, @attributes, { columns_attributes: columns_attributes })
 
+  updateDom: ->
+    $.ajax
+      url: "/admin/blocks/#{@id}",
+      method: 'GET'
+      data: { block: @data() }
+
 Resource.addType('block', Block)

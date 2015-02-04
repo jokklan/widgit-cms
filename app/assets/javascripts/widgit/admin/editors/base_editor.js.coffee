@@ -34,7 +34,6 @@ class @BaseEditor extends BaseModule
   update: ($input, data)->
     $element = @$panel.panel('getElement')
 
-    @updateDomElement($element, data)
     @updateInput($input, data)
 
   updateInput: ($input, data) ->

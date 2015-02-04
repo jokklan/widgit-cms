@@ -5,7 +5,7 @@ Widgit::Engine.routes.draw do
     root 'pages#index'
 
     resources :pages, only: [:index, :new, :edit, :create, :update, :destroy]
-    resources :blocks, only: [:new]
+    resources :blocks, only: [:new, :show]
     resources :images, only: [:create]
     resources :tiles, only: [:show, :update]
   end
