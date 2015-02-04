@@ -6,5 +6,5 @@ class IconEditor extends BaseEditor
   editorName: 'icon'
   dialog: true
 
-$(document).ready ->
-  window.iconEditor = new IconEditor()
+$(document).on 'page:change', ->
+  $('[data-input="icon"]').editor(IconEditor)

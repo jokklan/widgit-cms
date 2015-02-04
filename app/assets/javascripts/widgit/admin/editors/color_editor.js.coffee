@@ -6,7 +6,5 @@ class ColorEditor extends BaseEditor
   editorName: 'color'
   dialog: true
 
-BasePlugin.addPlugin
-  name: 'editor'
-  klass: ColorEditor
-  selector: '[data-input="color"]'
+$(document).on 'page:change', ->
+  $('[data-input="color"]').editor(ColorEditor)

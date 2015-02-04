@@ -9,13 +9,13 @@ class ImageEditor extends BaseEditor
   dialog: true
 
   updateInput: (data) ->
+    console.log("HEJ")
     super(data)
-    @$this.parent().find('img').attr
+    @$input.parent().find('img').attr
+      src: data.url
 
   attributeName: ->
     'id'
 
-BasePlugin.addPlugin
-  name: 'editor'
-  klass: ImageEditor
-  selector: '[data-input="image"]'
+$(document).on 'page:change', ->
+  $('[data-input="image"]').editor(ImageEditor)

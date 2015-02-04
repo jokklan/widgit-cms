@@ -2,12 +2,13 @@
 $ = jQuery
 
 # CLASS DEFINITION
-class @BaseEditor extends BasePlugin
+class @BaseEditor extends BaseModule
   editorName: undefined
   dialog: false
 
   constructor: (el, options) ->
-    super(el, options)
+    super(options)
+    @$input = $(el)
     @$dialog = $('[data-init="dialog"]')
     @$panel = $('[data-init="panel"]')
 
@@ -20,7 +21,7 @@ class @BaseEditor extends BasePlugin
         @$dialog.dialog('open', @editorName)
     else
       $(document).on 'change', "[data-input=#{@editorName}]", (event)=>
-        attributeName = @$this.data('attr')
+        attributeName = @$input.data('attr')
         data = {}
         data[attributeName] = value
 
@@ -32,13 +33,14 @@ class @BaseEditor extends BasePlugin
   update: (data)->
     $element = @$panel.panel('getElement')
 
-    @updateInput($data)
+    @updateInput(data)
+    @$input.change()
 
   updateInput: (data) ->
-    @$this.val(data[@attributeName()])
+    @$input.val(data[@attributeName()])
 
   updateInputWithElement: ($element) ->
-    attributeName = @$this.data('attr')
+    attributeName = @$input.data('attr')
     value = $element.resource('data')[attributeName]
     data = {}
 
@@ -49,8 +51,12 @@ class @BaseEditor extends BasePlugin
 
     @updateInput data
 
+$.fn.editor = (methodOrClass, args...) ->
+  @each ->
+    $this = $(this)
+    data = $this.data('widgit.editor')
 
-BasePlugin.addPlugin
-  name: 'editor'
-  klass: BaseEditor
-  selector: '[data-input="string"]'
+    if data
+      data[methodOrClass].apply(data, args)
+    else
+      $this.data 'widgit.editor', (data = new methodOrClass(this, args))

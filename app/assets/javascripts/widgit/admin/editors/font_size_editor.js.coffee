@@ -15,5 +15,5 @@ class FontSizeEditor extends BaseEditor
   attributeName: ->
     'font_size'
 
-$(document).ready ->
-  window.fontSizeEditor = new FontSizeEditor()
+$(document).on 'page:change', ->
+  $('[data-input="font_size"]').editor(FontSizeEditor)

@@ -8,5 +8,5 @@ class HeaderLevelEditor extends BaseEditor
   attributeName: ->
     'level'
 
-$(document).ready ->
-  window.headerLevelEditor = new HeaderLevelEditor()
+$(document).on 'page:change', ->
+  $('[data-input="header_level"]').editor(HeaderLevelEditor)
