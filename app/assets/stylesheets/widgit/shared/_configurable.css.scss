@@ -2,6 +2,10 @@
 .font-size-1 {
   &.p {
     font-size: 18px;
+  }
+
+  &.fa {
+    font-size: 100px;
   } 
 }
 
@@ -9,12 +13,20 @@
   &.p {
     font-size: 14px;
   } 
+
+  &.fa {
+    font-size: 50px;
+  }
 }
 
 .font-size-3 {
   &.p {
     font-size: 10px;
-  }   
+  } 
+
+  &.fa {
+    font-size: 25px;    
+  }    
 }
 
 // Text aligns
