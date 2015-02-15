@@ -1,14 +1,14 @@
-$off-canvas-width: 300px;
+$side-panel-width: 300px;
 
-.off-canvas {
+.side-panel {
   @extend .easy-transition;
   @extend .text-invert;
 
   position: fixed;
   top: 0;
-  left: -$off-canvas-width;
+  left: -$side-panel-width;
   height: 100%;
-  width: $off-canvas-width;
+  width: $side-panel-width;
   background: #222;
   padding: 15px;
   z-index: 999;
@@ -42,7 +42,7 @@ $off-canvas-width: 300px;
     cursor: pointer;
     padding-left: 10px;
     top: 0;
-    left: $off-canvas-width;
+    left: $side-panel-width;
     color: $brand-primary;
   }
 
@@ -77,11 +77,11 @@ $off-canvas-width: 300px;
 
 /* Pushing all body content to right, when sidepanel is active */
 
-.offcanvas-active {
-  margin-left: $off-canvas-width;
+.side-panel-active {
+  margin-left: $side-panel-width;
 }
 
-body {
+.page-wrapper {
   @extend .easy-transition;
 }
 

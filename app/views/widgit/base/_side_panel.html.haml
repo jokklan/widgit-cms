@@ -1,5 +1,5 @@
-.off-canvas.active{ data: { init: 'panel' } }
-  .toggle{ data: { toggle: 'off-canvas' } }
+.side-panel.active{ data: { init: 'panel', side_panel: true } }
+  .toggle{ data: { toggle: 'side-panel' } }
     = icon 'caret-square-o-right'
   .col-xs-12
     - resource_classes.each do |resource_class|

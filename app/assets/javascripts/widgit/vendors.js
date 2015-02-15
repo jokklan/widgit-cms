@@ -24,6 +24,8 @@
 
 //= require rangy/rangy-core
 //= require hallo
+
+// Key-binding plugin
 //= require mousetrap
 
 //= require dropzone

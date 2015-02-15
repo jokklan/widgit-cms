@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
 
   # Use SCSS for stylesheets
   s.add_dependency 'sass-rails', '>= 5.0.0'
+  s.add_dependency 'compass-rails'
 
   # Use CoffeeScript for .js.coffee assets and views
   s.add_dependency 'coffee-rails', '>= 4.0.0'

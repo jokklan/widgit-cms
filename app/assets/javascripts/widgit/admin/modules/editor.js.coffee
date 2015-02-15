@@ -19,7 +19,7 @@ class Editor extends BaseModule
     $(document).on 'click', '[data-toggle="add-block"]', (event)=>
       @addBlock(event.currentTarget)
 
-    $(document).on 'click', '[data-toggle="off-canvas"]', =>
+    $(document).on 'click', '[data-toggle="side-panel"]', =>
       @toggleSidePanel()
 
     $(document).on 'click', '[data-toggle="toolbar"]', =>
@@ -38,7 +38,6 @@ class Editor extends BaseModule
 
   save: ->
     window.page.save()
-    alert "Saved!"
 
   addBlock: (btn)->
     columns_layout = $(btn).data('columns')
@@ -49,8 +48,8 @@ class Editor extends BaseModule
       data: { block: { columns_layout: columns_layout } }
 
   toggleSidePanel: ->
-    $('.off-canvas').toggleClass('active')
-    $('body').toggleClass('offcanvas-active')
+    $('[data-side-panel]').toggleClass('active')
+    $('[data-page-wrapper]').toggleClass('side-panel-active')
 
   toggleToolbar: ->
     $('body').toggleClass 'built-mode'
