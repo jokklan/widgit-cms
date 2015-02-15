@@ -20,7 +20,6 @@ class Dialog extends BasePlugin
       @callback(attributes)
       @close()
 
-
   setCallback: (callback) ->
     @callback = callback
 

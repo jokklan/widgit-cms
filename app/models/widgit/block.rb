@@ -5,7 +5,7 @@ module Widgit
     include Configurable
 
     # Extensions
-    configurable background_color: { data_type: :color, input_type: :string }, background_image_id: { data_type: :image, input_type: :image }
+    configurable background_color: { data_type: :background_color, input_type: :color }, background_image_id: { data_type: :image, input_type: :image }
     positionable :buildable
     parentable :columns
 

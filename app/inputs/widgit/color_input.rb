@@ -1,7 +1,7 @@
 module Widgit
   class ColorInput < SimpleForm::Inputs::StringInput
     def input
-      template.content_tag :div, super, data: { editor: 'color' }
+      template.content_tag(:div, super, class: "color-editor", data: { editor: 'color' }) 
     end
 
     def input_type

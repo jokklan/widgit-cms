@@ -28,6 +28,6 @@ class SliderInput extends BasePlugin
 
 # DATA-API
 BasePlugin.addPlugin
-  name: 'uploadeditor'
+  name: 'sliderinput'
   klass: SliderInput
   selector: '[data-slider="target"]'

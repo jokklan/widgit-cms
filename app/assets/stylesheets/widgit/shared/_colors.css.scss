@@ -1,32 +1,48 @@
 $colors: white #ffffff,
+         black $gray-darker,
          blue  #3498db,
          green #71D07D,
-         yellow #D0C071,
+         yellow #F5E389,
+         orange #FD9D4D,
          light-gray #ecf0f1,
          red #D07171;
 
 @each $color in $colors {
-  .color-#{nth($color, 1)} {
+  .background-color-#{nth($color, 1)} {
     background-color: nth($color, 2);
+  }
+
+  .color-#{nth($color, 1)} {
+    color: nth($color, 2);
+  }
+}
+
+.color-editor {
+  margin-left: -5px;
+  margin-right: -5px;
+
+  input {
+    @extend .hidden;
   }
 }
 
 .color-list-item {
-  @extend .inline-block;
+  @extend .inline-block, .pointer;
 
   width: 47px;
   height: 47px;
   margin: 5px;
   border: 1px solid $gray-lighter;
-
-  &.active {
-    border: 1px solid black;
+  
+  &:hover {
+    opacity: 0.7;
   }
 }
 
 /* TODO make better solution for this */
-.color-blue,
-.color-green,
-.color-red {
+.background-color-black,
+.background-color-blue,
+.background-color-green,
+.background-color-red {
   @extend .text-invert;
 }

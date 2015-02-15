@@ -5,13 +5,14 @@ $ = jQuery
 class @BaseEditor extends BaseModule
   editorName: undefined
   dialog: false
+  itemList: false
 
   constructor: (el, options) ->
     super(el, options)
     @$dialog = $('[data-init="dialog"]')
     @$panel = $('[data-init="panel"]')
 
-  init: ->
+  init: ->  
     if @dialog
       $(document).on 'click', "[data-input=#{@editorName}]", (event)=>
         @$dialog.dialog 'setCallback', (data)=>
@@ -19,7 +20,9 @@ class @BaseEditor extends BaseModule
 
         @$dialog.dialog('open', @editorName)
     else
-      $(document).on 'change', "[data-input=#{@editorName}]", (event)=>
+      @itemEditor() if @itemList
+    
+      $(document).on 'change', "[data-input=#{@editorName}]", (event)=>        
         $input = $(event.currentTarget)
         attributeName = $input.data('attr')
         value = $input.val()
@@ -33,7 +36,6 @@ class @BaseEditor extends BaseModule
 
   update: ($input, data)->
     $element = @$panel.panel('getElement')
-
     @updateInput($input, data)
 
   updateInput: ($input, data) ->

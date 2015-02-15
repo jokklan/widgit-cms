@@ -32,8 +32,6 @@ initializePlugin = (plugin) ->
         if !data
           $this.data dataNamespace, (data = new plugin.klass(this, option))
 
-
-
 $(document).on 'page:update', ->
   $.each BasePlugin.widgitPlugins, ->
     initializePlugin(this)
