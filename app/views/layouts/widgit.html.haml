@@ -9,13 +9,13 @@
     %meta{charset: "utf-8"}
     %meta{content: "IE=Edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
     %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", name: "viewport"}
-  %body.offcanvas-active{ data: { id: @page.id } }
+  %body{ data: { id: @page.id } }
     = render 'side_panel'
-    .div{ data: { editor: 'position', type: 'page' } }
+    .page-wrapper.side-panel-active{ data: { editor: 'position', type: 'page', page_wrapper: true } }
       = yield
-    .container
-      .row
-        .col-xs-12
-          = render 'bottom'
+      .container
+        .row
+          .col-xs-12
+            = render 'bottom'
     = render 'toolbar'
     = render 'dialog'
