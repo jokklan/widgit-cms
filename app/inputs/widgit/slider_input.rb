@@ -10,7 +10,6 @@ module Widgit
           template.content_tag(:li, "Large")
         end
       end
-
     end
 
     def input_type
