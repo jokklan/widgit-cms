@@ -1,6 +1,7 @@
 require 'widgit/version'
 require 'widgit/dependencies'
 require 'widgit/engine'
+require "compass-rails"
 
 module Widgit
   mattr_accessor :components
