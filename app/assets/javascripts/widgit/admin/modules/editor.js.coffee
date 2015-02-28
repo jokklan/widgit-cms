@@ -8,6 +8,8 @@ class Editor extends BaseModule
 
     @delegateClicks()
     @delegateKeys()
+    @toggleSidePanel()
+
 
   delegateClicks: ->
     $(document).on 'click', '[data-toggle="save"]', =>
@@ -48,8 +50,21 @@ class Editor extends BaseModule
       data: { block: { columns_layout: columns_layout } }
 
   toggleSidePanel: ->
-    $('[data-side-panel]').toggleClass('active')
-    $('[data-page-wrapper]').toggleClass('side-panel-active')
+    $sidePanel   = $('[data-side-panel]')
+    $pageWrapper = $('[data-page-wrapper]')
+
+    if $sidePanel.hasClass('active')
+      styling = {"max-width" : "none" }
+    else
+      contentWidth = $(window).width() - $sidePanel.outerWidth()
+      styling      = {"max-width" : "#{contentWidth}px"}
+
+    $sidePanel.toggleClass('active')
+    $pageWrapper.toggleClass('side-panel-active')
+    
+    $.delay 500, ->
+      $pageWrapper.css styling
+      $(".container").css styling    
 
   toggleToolbar: ->
     $('body').toggleClass 'built-mode'

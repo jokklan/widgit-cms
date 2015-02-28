@@ -1,4 +1,4 @@
-$side-panel-width: 300px;
+$side-panel-width: 280px;
 
 .side-panel {
   @extend .easy-transition;
@@ -28,7 +28,7 @@ $side-panel-width: 300px;
 
     .toggle {
       cursor: pointer;
-      left: 255px;
+      left: 235px;
       color: #ccc;
       z-index: 99;
     }
@@ -75,13 +75,15 @@ $side-panel-width: 300px;
   }
 }
 
-/* Pushing all body content to right, when sidepanel is active */
-
 .side-panel-active {
   margin-left: $side-panel-width;
+
+  &.page-wrapper, 
+  .container {
+    max-width: 1000px;
+  }
 }
 
 .page-wrapper {
   @extend .easy-transition;
 }
-
