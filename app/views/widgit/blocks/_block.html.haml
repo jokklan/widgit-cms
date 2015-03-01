@@ -1,4 +1,6 @@
-.row.block{ class: "background-color-#{block.background_color}", style: "background-image: url(#{block.background_image.try(:url)});", data: { resource: 'block', id: block.id, attributes: block.to_json } }
-  .container
-    .row
-      = render block.columns
+/ .row.block{ class: "background-color-#{block.background_color}", style: "background-image: url(#{block.background_image.try(:url)});", data: { resource: 'block', id: block.id, attributes: block.to_json } }
+/   .container
+/     .row
+/       = render block.columns
+
+= react_component('Block', { background_color: block.background_color, background_image_url: block.background_image.try(:url), columns: block.columns.map(&:public_attributes) }, { prerender: true })

@@ -29,3 +29,9 @@
 //= require mousetrap
 
 //= require dropzone
+
+
+// ReactJS
+//= require react
+//= require react_ujs
+

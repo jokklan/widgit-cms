@@ -8,6 +8,15 @@ module Widgit
       def image
         @image ||= Widgit::Image.find_by_id(image_id) || Widgit::Image.new
       end
+
+      def public_attributes
+        properties.slice(:link_url).merge(image.public_attributes).merge(type: component_type).symbolize_keys.compact
+         # name: image_alt(image.image.url), path: image.image.url, link_url: image.link_url }
+      end
+
+      def component_type
+        type.split('::').last
+      end
     end
   end
 end

@@ -8,11 +8,15 @@ module Widgit
 
     # Instance Methods
     def to_json
+      public_attributes.to_json
+    end
+
+    def public_attributes
       {
         id: id,
         url: url,
         name: image.file.filename
-      }.to_json
+      }
     end
   end
 end
