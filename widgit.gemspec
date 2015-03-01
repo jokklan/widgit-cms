@@ -60,4 +60,10 @@ Gem::Specification.new do |s|
 
   # Use carrierwave for fileupload
   s.add_dependency 'carrierwave'
+
+  # Use react js as javascript framework for interactive view components
+  s.add_dependency 'react-rails', '~> 1.0.0.pre'
+
+  # Evaluate javascript code in ruby
+  s.add_dependency 'therubyracer'
 end
