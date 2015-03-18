@@ -30,6 +30,8 @@
 
 //= require dropzone
 
+// Publish/Subscribe
+//= require pubsub
 
 // ReactJS
 //= require react
