@@ -1,1 +1,1 @@
-= render @page.blocks
+= react_component('Page', { data: @page.blocks.map(&:public_attributes) }, { prerender: true })

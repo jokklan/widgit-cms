@@ -21,7 +21,7 @@ module Widgit
     end
 
     def public_attributes
-      attributes.symbolize_keys.compact.slice(:id, :columns, :position).merge(tile: tile.public_attributes)
+      attributes.symbolize_keys.compact.slice(:id, :columns, :position).merge(tile: tile.try(:public_attributes))
     end
   end
 end

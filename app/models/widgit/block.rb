@@ -25,7 +25,7 @@ module Widgit
 
     # Instance Methods
     def to_json
-      attributes.symbolize_keys.compact.slice(:id, :position, :background_color, :background_image_id).to_json
+      public_attributes.to_json
     end
 
     def columns_layout=(value)
@@ -36,6 +36,10 @@ module Widgit
       {
 
       }
+    end
+
+    def public_attributes
+      attributes.symbolize_keys.compact.slice(:id, :position, :background_color, :background_image_id).merge(background_image_url: background_image.try(:url), columns: columns.map(&:public_attributes))
     end
   end
 end

@@ -10,7 +10,7 @@ module Widgit
       end
 
       def public_attributes
-        properties.slice(:link_url).merge(image.public_attributes).merge(type: component_type).symbolize_keys.compact
+        properties.symbolize_keys.slice(:image_id, :link_url).merge(image: image.public_attributes).merge(type: component_type).compact
          # name: image_alt(image.image.url), path: image.image.url, link_url: image.link_url }
       end
 
