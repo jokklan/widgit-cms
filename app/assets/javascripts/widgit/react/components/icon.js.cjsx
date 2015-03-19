@@ -1,6 +1,8 @@
 'use strict'
 
 @Icon = React.createClass
+  name: 'Icon'
+
   getInitialState: ->
     this.props.initialData
 

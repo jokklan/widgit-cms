@@ -1,6 +1,8 @@
 'use strict'
 
 @Image = React.createClass
+  name: 'Image'
+
   getInitialState: ->
     this.props.initialData
 

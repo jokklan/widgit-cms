@@ -12,7 +12,7 @@
       inputs.map (input) =>
         data[input.attribute] = input.value
 
-      @setState(component: component, inputs: inputs, data: data)
+      @setState(component: component, inputs: inputs, data: data, title: component.name)
 
   startDialog: (event)->
     dialogType = event.target.getAttribute('data-dialog')
@@ -47,6 +47,7 @@
         <input name={input.attribute} value={@state.data[input.attribute]} type={input.type} onChange={this.handleChange} onBlur={this.handleBlur} />
 
     <div>
+      <h2>{@state.title}</h2>
       {inputs}
-      <Dialog ref="dialog" onConfirm={this.handleDialogComplete} />
+      <Dialog ref="dialog" onConfirm={@handleDialogComplete} />
     </div>
