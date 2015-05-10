@@ -25,5 +25,9 @@ module Widgit
       self.components << Component.find(component_ids)
       super(attributes_collections)
     end
+
+    def public_attributes
+      { id: id, components: components.map(&:public_attributes) }
+    end
   end
 end

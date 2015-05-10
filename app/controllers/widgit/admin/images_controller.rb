@@ -1,6 +1,14 @@
 module Widgit
   module Admin
     class ImagesController < Admin::BaseController
+      def index
+        @images = Image.all
+
+        respond_to do |format|
+          format.json { render json: @images.map(&:public_attributes) }
+        end
+      end
+
       def create
         @image = Image.new(image_params)
 

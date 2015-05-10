@@ -1,0 +1,2 @@
+//= require widgit/components
+

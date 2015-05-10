@@ -29,3 +29,11 @@
 //= require mousetrap
 
 //= require dropzone
+
+// Publish/Subscribe
+//= require pubsub
+
+// ReactJS
+//= require react
+//= require react_ujs
+

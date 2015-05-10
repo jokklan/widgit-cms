@@ -17,7 +17,11 @@ module Widgit
 
     # Callbacks
     def to_json
-      attributes.symbolize_keys.compact.slice(:id, :columns, :position).to_json
+      public_attributes.to_json
+    end
+
+    def public_attributes
+      attributes.symbolize_keys.compact.slice(:id, :columns, :position).merge(tile: tile.try(:public_attributes))
     end
   end
 end

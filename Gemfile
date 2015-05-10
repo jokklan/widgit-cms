@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 ruby '2.2.0'
 
+# Temporary gem versions
+gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
+
 gemspec
 
 group :development do
