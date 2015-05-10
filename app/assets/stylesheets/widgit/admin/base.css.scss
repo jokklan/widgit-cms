@@ -123,22 +123,6 @@
   }
 }
 
-.component-icon {
-  @extend .text-center;
-
-  display: block;
-  font-size: 40px;
-}
-
-.fa-,
-.fa-icon {
-  @extend .fa-flag;
-}
-
-.fa-text {
-  @extend .fa-paragraph;
-}
-
 .modal-backdrop {
   z-index: 1030;
 }

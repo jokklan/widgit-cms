@@ -20,5 +20,6 @@
     <div id="page">
       <SidePanel onPageChange={this.handlePageChange} />
       {blocks}
+      <Toolbar />
     </div>
 

@@ -25,7 +25,7 @@ class Editor extends BaseModule
       @toggleSidePanel()
 
     $(document).on 'click', '[data-toggle="toolbar"]', =>
-      @toggleToolbar()      
+      @toggleToolbar()
 
   delegateKeys: ->
     Mousetrap.bind ['ctrl+s', 'meta+s'], (event) =>
@@ -33,10 +33,10 @@ class Editor extends BaseModule
       @save()
 
     Mousetrap.bind 'q', (event) =>
-      @toggleSidePanel()     
+      @toggleSidePanel()
 
     Mousetrap.bind 'w', (event) =>
-      @toggleToolbar()       
+      @toggleToolbar()
 
   save: ->
     window.page.save()
