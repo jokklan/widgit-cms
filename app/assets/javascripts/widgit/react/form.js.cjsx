@@ -35,7 +35,7 @@
     @setState(data: data)
 
   handleDialogComplete: (data)->
-    @state.component.setState(data)
+    @state.component.handleUpdate(data)
 
   render: ->
     inputs = @state.inputs.map (input) =>

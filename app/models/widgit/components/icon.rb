@@ -23,7 +23,9 @@ module Widgit
                   }
 
       def public_attributes
-        properties.symbolize_keys.slice(:icon, :font_size, :text_align).merge(type: component_type).compact
+        properties.symbolize_keys.slice(:icon, :font_size, :text_align)
+          .merge(type: component_type)
+          .merge(id: id).compact
       end
 
       def component_type

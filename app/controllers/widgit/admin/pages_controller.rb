@@ -30,7 +30,7 @@ module Widgit
             format.html { redirect_to edit_admin_page_path(@page) }
             format.json { render nothing: true }
           else
-            format.json { raise @page.errors.inspect }
+            format.json { @page.errors }
           end
         end
       end

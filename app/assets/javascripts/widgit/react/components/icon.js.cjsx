@@ -3,6 +3,12 @@
 @Icon = React.createClass
   name: 'Icon'
 
+  # componentDidUpdate: (previousProps, previousState)->
+  #   @props.onUpdate(@state)
+
+  handleUpdate: (data)->
+    @props.onUpdate(data)
+
   getInitialState: ->
     this.props.initialData
 

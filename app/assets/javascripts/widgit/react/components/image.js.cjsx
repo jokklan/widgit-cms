@@ -3,6 +3,12 @@
 @Image = React.createClass
   name: 'Image'
 
+  handleUpdate: (data)->
+    @setState(data)
+    newState = {}
+    newState[@state.id] = { id: @state.id, image_id: data.image_id } #$.extend({}, @state, data)
+    @props.onUpdate(newState)
+
   getInitialState: ->
     this.props.initialData
 

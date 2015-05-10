@@ -2,6 +2,9 @@
   toggleToolbar: ->
     $('body').toggleClass 'built-mode'
 
+  save: ->
+    PubSub.publish 'toolbar:save'
+
   render: ->
     <div className="toolbar-bottom text-center">
       <button className="toolbar-toggle" onClick={@toggleToolbar}>
@@ -34,7 +37,7 @@
         </li>
 
         <li className="toolbar-divider">
-          <button className="btn btn-success">
+          <button className="btn btn-success" onClick={@save}>
             <i className="fa fa-floppy-o" />
           </button>
         </li>

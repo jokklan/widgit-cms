@@ -10,7 +10,7 @@
         @setState(data: data)
 
   handleImageClick: (data)->
-    @props.onSelect(image: data)
+    @props.onSelect(image: data, image_id: data.id)
 
   render: ->
     images = @state.data.map (image, index)=>

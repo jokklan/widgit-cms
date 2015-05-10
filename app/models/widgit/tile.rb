@@ -27,7 +27,15 @@ module Widgit
     end
 
     def public_attributes
-      { id: id, components: components.map(&:public_attributes) }
+      { id: id, components_attributes: component_attributes }
+    end
+
+  private
+
+    def component_attributes
+      hash = {}
+      components.map { |component| hash[component.id] = component.public_attributes }
+      return hash
     end
   end
 end

@@ -39,7 +39,15 @@ module Widgit
     end
 
     def public_attributes
-      attributes.symbolize_keys.compact.slice(:id, :position, :background_color, :background_image_id).merge(background_image_url: background_image.try(:url), columns: columns.map(&:public_attributes))
+      attributes.symbolize_keys.compact.slice(:id, :position, :background_color, :background_image_id).merge(background_image_url: background_image.try(:url), columns_attributes: columns_attributes)
+    end
+
+  private
+
+    def columns_attributes
+      hash = {}
+      columns.map { |column| hash[column.id] = column.public_attributes }
+      return hash
     end
   end
 end
